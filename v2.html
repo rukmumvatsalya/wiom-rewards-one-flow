@@ -844,6 +844,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .prow .d{font-size:15px;font-weight:600}
   .prow .pd{font-size:11.5px;color:var(--text-ter);margin-left:6px;font-weight:400}
   .prow .p{font-size:16px;font-weight:800}
+  /* price stays covered until the customer asks for it — no ₹565 anchor on open */
+  .peek{display:inline-flex;align-items:center;gap:7px;background:var(--bg-neutral-sec);border:none;
+    border-radius:100px;padding:6px 12px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .peek:active{background:#e6e1ed}
+  .peek .mask{font-size:15px;line-height:20px;font-weight:800;color:var(--text-ter);letter-spacing:1.5px}
+  .peek svg{flex:none;color:var(--text-brand)}
+  .prow .p.shown{animation:peekIn .34s var(--ease) both}
+  @keyframes peekIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}}
+  .psheet-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .psheet-all{flex:none;font-size:12.5px;font-weight:700;color:var(--text-brand);cursor:pointer}
 
   /* ── ऑफर स्क्रीन ── */
   .of-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
@@ -2447,15 +2457,30 @@ function openRewardTease(){
 function openPriceSheet(){
   const scr = screenEl('edu2');
   if(!scr || scr.querySelector('.psheet-scrim')) return;
-  const rows = PLANS.map(p => `<div class="prow"><span class="d">${p.days} दिन<span class="pd">${p.span}</span></span><span class="p">₹${p.cost}</span></div>`).join('');
+  const EYE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6.6 10-6.6S22 12 22 12s-3.6 6.6-10 6.6S2 12 2 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.7" stroke="currentColor" stroke-width="1.8"/></svg>';
+  const rows = PLANS.map(p => {
+    const right = p.days === 1
+      ? `<span class="p">₹${p.cost}</span>`
+      : `<button class="peek" data-cost="${p.cost}"><span class="mask">₹•••</span>${EYE}</button>`;
+    return `<div class="prow"><span class="d">${p.days} दिन<span class="pd">${p.span}</span></span>${right}</div>`;
+  }).join('');
   const sh = ciNode(`<div class="psheet-scrim"><div class="psheet">
     <div class="psheet-grab"></div>
-    <h3>रिचार्ज कितने का होता है?</h3>
-    <div class="sub">जितने दिन का रिचार्ज, उतना ही पैसा। कोई महीने का बंधन नहीं।</div>
+    <div class="psheet-head"><h3>रिचार्ज कितने का होता है?</h3><span class="psheet-all">सभी दिखाएँ</span></div>
+    <div class="sub">जितने दिन का रिचार्ज, उतना ही पैसा। बाकी कीमतें देखने के लिए टैप करें।</div>
     <div style="margin-top:12px">${rows}</div>
     <button class="cta" style="margin-top:16px">समझ गया</button>
   </div></div>`);
   scr.appendChild(sh);
+  const reveal = btn => {
+    if(!btn || !btn.parentNode) return;
+    const p = document.createElement('span');
+    p.className = 'p shown'; p.textContent = `₹${btn.dataset.cost}`;
+    btn.replaceWith(p);
+  };
+  sh.querySelectorAll('.peek').forEach(b => b.onclick = e => { e.stopPropagation(); reveal(b); });
+    const all = sh.querySelector('.psheet-all');
+  all.onclick = e => { e.stopPropagation(); sh.querySelectorAll('.peek').forEach(reveal); all.style.display = 'none'; };
   sh.onclick = e => { if(e.target === sh || e.target.classList.contains('cta')) sh.remove(); };
 }
 
