@@ -1337,7 +1337,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <section class="screen" data-s="rewards">
       <div class="statusbar" data-sb></div>
       <div class="appbar"><div class="appbar-row">
-        <div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="appbar-icon" id="rwBack"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h1 class="t3" style="margin-left:2px">इनाम</h1>
         <div class="spacer"></div>
         <div class="appbar-icon"><svg class="ab-lang" viewBox="0 0 24 24" fill="none"><rect x="1.5" y="2.5" width="15" height="15" rx="4" fill="#352d42"/><text x="9" y="13.6" font-family="Noto Sans, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">A</text><rect x="10" y="9" width="12.5" height="12.5" rx="3.5" fill="#352d42" stroke="#faf9fc" stroke-width="1.4"/><text x="16.2" y="18.6" font-family="Noto Sans Devanagari, Noto Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">अ</text></svg></div>
@@ -1350,7 +1350,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </div>
         <div class="rwl" id="rwList"></div>
       </div>
-      <div class="actions"><button class="cta" id="rwCta">आगे बढ़ें</button></div>
     </section>
 
     <!-- 12 slot -->
@@ -1450,12 +1449,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           </div>
         </div>
         <div class="pm-sum rv d2">
-          <div class="pm-row"><span class="k">नेट कनेक्शन लगाने का</span><span class="v zero">₹0</span></div>
+          <div class="pm-row" id="pmRow1"><span class="k">नेट कनेक्शन लगाने का</span><span class="v zero">₹0</span></div>
           <div class="pm-row"><span class="k" id="pmPlanK">1 दिन का रिचार्ज</span><span class="v" id="pmPlanV">₹23</span></div>
-          <div class="pm-off">
-            <div class="pm-off-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg> साथ में तीन ऑफर भी</div>
-            <div class="pm-off-list"><span>2 दिन मुफ़्त</span><span>7 दिन मुफ़्त</span><span>14 दिन मुफ़्त</span></div>
-          </div>
+          <div class="pm-off" id="pmOff"></div>
           <div class="pm-row total"><span class="k">अभी देना है</span><span class="v" id="pmTotal">₹23</span></div>
         </div>
       </div>
@@ -1639,7 +1635,7 @@ const LM_TYPES=[{k:'मंदिर / मस्जिद / गुरुद्व
 const state={idx:0,plan:0,phone:'',date:'27 जुलाई',
   locAddr:'Rajiv Colony, Sector 33',serviceable:true,
   name:'',landmark:'Hanuman Mandir',voiceDone:false,timers:[],
-  offersGrabbed:false,rewardPick:1,rewardApplied:false,celeDone:false};
+  offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
 const cur=()=>PLANS[state.plan];
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -1685,7 +1681,14 @@ function onEnter(id){
     case 'detail':renderDetail();break;
     case 'paymethod':syncAmounts();break;
     case 'processing':syncAmounts();later(()=>goTo('paydone'),2000);break;
-    case 'paydone':$('#pdSub').textContent=`अमाउंट: ₹${cur().cost}`;later(()=>goTo('rewardsadded'),1900);break;
+    case 'paydone':
+      $('#pdSub').textContent=`अमाउंट: ₹${cur().cost}`;
+      if(state.redeemOffer>=0){                     /* redeem recharge — the offer lands, back to the wallet */
+        state.rewardPick=state.redeemOffer; state.rewardApplied=true; state.rewardMsgPending=true;
+        state.redeemOffer=-1; rwTab='used';
+        later(()=>goTo('rewards'),1900);
+      } else later(()=>goTo('rewardsadded'),1900);
+      break;
     case 'rewardsadded':enterRewardsAdded();break;
     case 'rewards':renderRewards();break;
     case 'chat-pay':runChatPay();break;
@@ -1843,12 +1846,16 @@ function renderLandmark(){
 /* amounts / confirm */
 function payPlan(){return cur();}
 function syncAmounts(){
-  const p=payPlan();
-  $('#pmTitle').textContent=`₹${p.cost} देकर बुकिंग पक्की करें`;
+  const p=payPlan(), rd=state.redeemOffer>=0;
+  $('#pmTitle').textContent = rd ? `₹${p.cost} का रिचार्ज करें` : `₹${p.cost} देकर बुकिंग पक्की करें`;
   $('#pmPlanK').textContent=`${p.days} दिन का रिचार्ज`;
   $('#pmPlanV').textContent=`₹${p.cost}`;
   $('#pmTotal').textContent=`₹${p.cost}`;
   $('#pmCta').textContent=`UPI से ₹${p.cost} दें`;
+  const _r1=$('#pmRow1'); if(_r1) _r1.style.display = rd ? 'none' : '';
+  const _r2=$('#pmOff'); if(_r2) _r2.innerHTML = rd
+    ? `<div class="pm-off-h">${PM_GIFT} ${OFFERS[state.redeemOffer].k} इनाम इसी रिचार्ज पर लगेगा</div><div class="pm-off-list"><span>+${OFFERS[state.redeemOffer].free} दिन मुफ़्त</span></div>`
+    : `<div class="pm-off-h">${PM_GIFT} साथ में तीन ऑफर भी</div><div class="pm-off-list">${OFFERS.map(o=>`<span>${o.free} दिन मुफ़्त</span>`).join('')}</div>`;
   $('#procAmt').textContent=`₹${p.cost} रिचार्ज की स्थिति जाँची जा रही है`;
   $('#pmLoc').textContent=state.locAddr;
 }
@@ -1860,13 +1867,26 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
-const restart=()=>{Object.assign(state,{offersGrabbed:false,rewardPick:1,rewardApplied:false,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
+const restart=()=>{Object.assign(state,{offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
 $('#btnRestart').onclick=restart;
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='Escape'){closeSheets();return;}if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='r')restart();});
 
 /* ═══════ J3 ported: plans (V10) + detail (recharge=booking) + celebration ═══════ */
 function renderDetail(){
   const p=cur(), el=$('#detailContent');
+  const rd = state.redeemOffer >= 0 ? OFFERS[state.redeemOffer] : null;
+  if(rd){
+    el.innerHTML=`<h1 class="fig-h one-line rv d1" style="margin-top:8px">रिचार्ज करें — इनाम लग जाएगा</h1>
+      <div class="hero-fig green rv d1" style="margin-top:24px"><div class="fh-top"><div class="fh-amt">${p.days} + ${rd.free} दिन का नेट</div><div class="fh-cap">सिर्फ ₹${p.cost} में</div></div><div class="fh-foot">${rd.free} दिन मुफ़्त — इसी रिचार्ज पर अपने आप लगेंगे</div></div>
+      <div class="figtrust rv d2" style="margin-top:32px">
+        <div class="ft-row"><span class="ft-ic gift">${GIFT_ROW}</span><div class="ft-t"><b>${rd.k} इनाम इसी रिचार्ज पर लगेगा</b><span class="sub">${p.days} दिन का रिचार्ज · ${rd.free} दिन मुफ़्त · नेट चलेगा ${p.days+rd.free} दिन</span></div></div>
+        <div class="ft-row"><span class="ft-ic">${TICK24}</span><div class="ft-t">बाकी दो इनाम आपके खाते में रखे रहेंगे</div></div>
+      </div>`;
+    const c0=$('#detailCta'); c0.textContent=`₹${p.cost} का रिचार्ज करें`;
+    c0.onclick=()=>goTo('paymethod');
+    const ap0=$('#detailAllPlans'); if(ap0) ap0.style.display='none';
+    return;
+  }
   el.innerHTML=`<h1 class="fig-h one-line rv d1" style="margin-top:8px">रिचार्ज करें - यही आपकी बुकिंग है</h1>
     <div class="hero-fig green rv d1" style="margin-top:24px"><div class="fh-top"><div class="fh-amt">${p.days} दिन का रिचार्ज</div><div class="fh-cap">सिर्फ ₹${p.cost} में</div></div><div class="fh-foot">इसी रिचार्ज से नेट लगेगा भी, और चलेगा भी</div></div>
     <div class="figtrust rv d2" style="margin-top:32px">
@@ -1880,6 +1900,7 @@ function renderDetail(){
   const ap=$('#detailAllPlans'); if(ap) ap.style.display='none';   /* Figma 3002:6152 shows it; the offer path fixes the recharge */
 }
 const GIFT_ROW='<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+const PM_GIFT='<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 const HI_MONTHS=['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
 function activeTill(days){ const b=new Date(2026,6,27); const d=new Date(b.getFullYear(),b.getMonth(),b.getDate()+days); return `${d.getDate()} ${HI_MONTHS[d.getMonth()]} ${d.getFullYear()}`; }
 function celeNode(h){ const d=document.createElement('div'); d.innerHTML=h.trim(); return d.firstChild; }
@@ -2001,7 +2022,7 @@ function countTo(card){
     if(p<1) requestAnimationFrame(frame);
   })(performance.now());
 }
-function initRewardTabs(){ $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); }); }
+function initRewardTabs(){ const _b=$('#rwBack'); if(_b) _b.onclick=leaveRewards; $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); }); }
 function initOffers(){
   $$('#ofVer span').forEach(b=> b.onclick=()=>setOfferVer(b.dataset.v));
   const b=$('#offersCta'); if(!b) return;
@@ -2134,12 +2155,19 @@ function renderRewards(){
   $$('#rwTabs .rwtab').forEach(t => t.classList.toggle('on', t.dataset.t === rwTab));
   const rows = OFFERS.map((o,i)=>({o,i,st:rwStatus(i)})).filter(r => r.st === rwTab);
   l.innerHTML = rows.length ? rows.map(r => rwCardHTML(r.o, r.i, r.st)).join('') : rwEmpty(rwTab);
+  /* an offer is redeemed BY recharging for that many days — the button opens that recharge */
   $$('#rwList [data-rw]').forEach(b => b.onclick = ()=>{
-    state.rewardPick = +b.dataset.rw; state.rewardApplied = true;
-    rwTab = 'used'; renderRewards();
-    const c = $('#rwCta'); c.textContent = 'आगे बढ़ें';
+    const i = +b.dataset.rw, need = OFFERS[i].pay;
+    const pi = PLANS.findIndex(p => p.days === need);
+    if(pi < 0) return;
+    state.redeemOffer = i; state.plan = pi;
+    goTo('detail');
   });
-  const c = $('#rwCta'); c.onclick = applyReward;
+}
+/* leaving the wallet is what carries the news back into chat */
+function leaveRewards(){
+  if(state.rewardMsgPending){ state.rewardMsgPending = false; applyReward(); return; }
+  prev();
 }
 
 function syncCostCta(){
