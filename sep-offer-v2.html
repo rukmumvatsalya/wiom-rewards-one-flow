@@ -1092,6 +1092,59 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .rwr.gone .rwr-exp{color:var(--crit)}
 .rwr-empty{text-align:center;padding:52px 20px;color:var(--text-ter);font-size:13.5px;line-height:20px}
 .rwr-empty .e{font-size:34px;display:block;margin-bottom:12px;opacity:.5}
+
+/* ═══ भुगतान स्क्रीन के वर्शन — कार्ट जैसा अनुभव ═══ */
+.pmv{display:none}.pmv.on{display:block}
+/* B · बिल का ब्यौरा (Swiggy/Zomato) */
+.cartcard{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;overflow:hidden;margin-top:12px}
+.cart-item{display:flex;align-items:center;gap:11px;padding:12px 14px}
+.cart-ic{width:38px;height:38px;flex:none;border-radius:10px;background:var(--blue-soft);display:grid;place-items:center}
+.cart-b{flex:1;min-width:0}
+.cart-b .t{font-size:14.5px;line-height:20px;font-weight:700;color:var(--text-pri)}
+.cart-b .s{font-size:11.5px;line-height:16px;color:var(--text-ter);margin-top:2px}
+.cart-p{font-size:15px;font-weight:800;white-space:nowrap}
+.cart-offer{display:flex;align-items:center;gap:9px;background:var(--bg-positive-pri);border-top:1px dashed var(--stroke-positive);
+  padding:9px 14px;opacity:0;transform:translateY(-6px)}
+.pmv.on .cart-offer{animation:cartOff .5s cubic-bezier(.34,1.5,.5,1) .35s both}
+@keyframes cartOff{to{opacity:1;transform:none}}
+.cart-offer .ck{width:19px;height:19px;flex:none;border-radius:50%;background:var(--text-positive);display:grid;place-items:center}
+.cart-offer .t{font-size:13px;line-height:18px;font-weight:800;color:var(--text-positive)}
+.cart-offer .s{margin-left:auto;font-size:11px;font-weight:700;color:var(--text-positive);opacity:.8;white-space:nowrap}
+.billcard{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;padding:2px 15px 12px;margin-top:10px}
+.bill-h{font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--text-ter);padding:9px 0 2px}
+.bill-r{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:13.5px;line-height:19px;color:var(--text-sec)}
+.bill-r b{font-weight:700;color:var(--text-pri);white-space:nowrap}
+.bill-r b.free{color:var(--text-positive)}
+.bill-t{display:flex;justify-content:space-between;gap:12px;border-top:1.5px solid var(--stroke-pri);margin-top:5px;padding-top:11px;
+  font-size:16px;font-weight:800;color:var(--text-pri)}
+.bill-t b{font-size:19px;font-weight:800}
+.savebar{display:flex;align-items:center;gap:8px;background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);
+  border-radius:12px;padding:9px 12px;margin-top:9px;font-size:12px;line-height:17px;font-weight:700;color:var(--text-positive)}
+/* C · जुड़ता गया (Urban Company) */
+.addlist{margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.addrow{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--stroke-pri);border-radius:14px;
+  padding:13px 14px;opacity:0;transform:translateX(-12px)}
+.pmv.on .addrow:nth-child(1){animation:addIn .45s cubic-bezier(.22,1,.36,1) .1s both}
+.pmv.on .addrow:nth-child(2){animation:addIn .45s cubic-bezier(.22,1,.36,1) .28s both}
+.pmv.on .addrow:nth-child(3){animation:addIn .5s cubic-bezier(.34,1.5,.5,1) .5s both}
+@keyframes addIn{to{opacity:1;transform:none}}
+.addrow .ck{width:26px;height:26px;flex:none;border-radius:50%;background:var(--bg-positive-pri);display:grid;place-items:center}
+.addrow .b{flex:1;min-width:0}
+.addrow .b .t{font-size:14px;line-height:20px;font-weight:700}
+.addrow .b .s{font-size:11.5px;line-height:16px;color:var(--text-positive);font-weight:600;margin-top:1px}
+.addrow .p{font-size:14.5px;font-weight:800;white-space:nowrap}
+.addrow .p.free{color:var(--text-positive)}
+.addrow.gift{background:var(--bg-positive-pri);border-color:var(--stroke-positive)}
+.addrow.gift .ck{background:#fff}
+.addtot{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid var(--stroke-pri);
+  border-radius:14px;padding:14px;margin-top:12px;font-size:15px;font-weight:800;opacity:0}
+.pmv.on .addtot{animation:addUp .45s cubic-bezier(.22,1,.36,1) .68s both}
+@keyframes addUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.addtot b{font-size:20px;font-weight:800}
+@media (prefers-reduced-motion:reduce){
+  .cart-offer,.addrow,.addtot{opacity:1;transform:none}
+  .pmv.on .cart-offer,.pmv.on .addrow,.pmv.on .addtot{animation:none}
+}
 </style>
 </head>
 <body>
@@ -1437,10 +1490,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <section class="screen" data-s="paymethod">
       <div class="statusbar" data-sb></div>
       <div class="appbar">
-        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="vswitch" id="pmVer" style="margin:0 10px 0 auto"><span class="on" data-v="a">A</span><span data-v="b">B</span><span data-v="c">C</span></div></div>
         <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 देकर बुकिंग पक्की करें</h1></div>
       </div>
       <div class="content">
+        <div class="pmv on" data-v="a">
         <div class="rv d1">
           <span class="pm-tag">📍 नेट लगवाने की जगह</span>
           <div class="pm-addr">
@@ -1455,6 +1510,46 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           <div class="pm-off" id="pmOff"></div>
           <div class="pm-row total"><span class="k">अभी देना है</span><span class="v" id="pmTotal">₹23</span></div>
         </div>
+        </div>
+
+        <!-- B · बिल का ब्यौरा -->
+        <div class="pmv" data-v="b">
+          <span class="pm-tag">📍 नेट लगवाने की जगह</span>
+          <div class="pm-addr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:1px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg><div class="a">Rajiv Colony, Sector 33</div></div>
+          <div class="cartcard">
+            <div class="cart-item">
+              <span class="cart-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9.5a13 13 0 0118 0" stroke="#1461cc" stroke-width="2" stroke-linecap="round"/><path d="M6.5 13.5a8 8 0 0111 0" stroke="#1461cc" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.7" fill="#1461cc"/></svg></span>
+              <div class="cart-b"><div class="t" id="cartT">1 दिन का नेट रिचार्ज</div><div class="s">80–100 Mbps · डेटा की कोई लिमिट नहीं</div></div>
+              <span class="cart-p" id="cartP">₹23</span>
+            </div>
+            <div class="cart-offer">
+              <span class="ck"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="t">3 ऑफर अपने आप लगे</span><span class="s" id="cartOff">2+2 · 7+7 · 14+14</span>
+            </div>
+          </div>
+          <div class="billcard">
+            <div class="bill-h">बिल का ब्यौरा</div>
+            <div class="bill-r"><span id="billK">नेट रिचार्ज (1 दिन)</span><b id="billV">₹23</b></div>
+            <div class="bill-r"><span>नेट बॉक्स + लगवाई</span><b class="free">मुफ़्त</b></div>
+            <div class="bill-r"><span>जमा राशि</span><b class="free">₹0</b></div>
+            <div class="bill-r"><span>GST</span><b class="free">₹0</b></div>
+            <div class="bill-t"><span>कुल देना है</span><b id="billT">₹23</b></div>
+          </div>
+          <div class="savebar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex:none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg><span>तीनों ऑफर इसी बुकिंग के साथ आपके खाते में जुड़ रहे हैं</span></div>
+        </div>
+
+        <!-- C · जुड़ता गया -->
+        <div class="pmv" data-v="c">
+          <span class="pm-tag">📍 नेट लगवाने की जगह</span>
+          <div class="pm-addr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:1px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg><div class="a">Rajiv Colony, Sector 33</div></div>
+          <div class="addlist">
+            <div class="addrow"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="b"><div class="t">नेट कनेक्शन</div><div class="s">जुड़ गया</div></div><span class="p free">मुफ़्त</span></div>
+            <div class="addrow"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="b"><div class="t" id="addT">1 दिन का रिचार्ज</div><div class="s">जुड़ गया</div></div><span class="p" id="addP">₹23</span></div>
+            <div class="addrow gift"><span class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex:none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg></span><div class="b"><div class="t">3 ऑफर</div><div class="s">साथ में अपने आप लग गए</div></div><span class="p free">मुफ़्त</span></div>
+          </div>
+          <div class="addtot"><span>कुल देना है</span><b id="addTot">₹23</b></div>
+        </div>
+
       </div>
       <div class="actions">
         <button class="cta" data-go="processing" id="pmCta">UPI से ₹23 दें</button>
@@ -1847,7 +1942,26 @@ function renderLandmark(){
 
 /* amounts / confirm */
 function payPlan(){return cur();}
+
+/* ═══ भुगतान स्क्रीन के वर्शन ═══ */
+let pmVer = 'a';
+function setPmVer(v){
+  pmVer = v;
+  $$('#pmVer span').forEach(x => x.classList.toggle('on', x.dataset.v === v));
+  $$('.screen[data-s="paymethod"] .pmv').forEach(x => x.classList.toggle('on', x.dataset.v === v));
+  const pane = $(`.screen[data-s="paymethod"] .pmv[data-v="${v}"]`);
+  if(pane){ pane.classList.remove('on'); void pane.offsetWidth; pane.classList.add('on'); }
+  syncAmounts();
+}
+function syncCartAmounts(){
+  const p = payPlan();
+  const set = (id,t)=>{ const el=$('#'+id); if(el) el.textContent=t; };
+  set('cartT', `${p.days} दिन का नेट रिचार्ज`); set('cartP', `₹${p.cost}`);
+  set('billK', `नेट रिचार्ज (${p.days} दिन)`);  set('billV', `₹${p.cost}`); set('billT', `₹${p.cost}`);
+  set('addT',  `${p.days} दिन का रिचार्ज`);      set('addP',  `₹${p.cost}`); set('addTot', `₹${p.cost}`);
+}
 function syncAmounts(){
+  syncCartAmounts();
   const p=payPlan(), rd=state.redeemOffer>=0;
   $('#pmTitle').textContent = rd ? `₹${p.cost} का रिचार्ज करें` : `₹${p.cost} देकर बुकिंग पक्की करें`;
   $('#pmPlanK').textContent=`${p.days} दिन का रिचार्ज`;
@@ -2024,6 +2138,7 @@ function countTo(card){
     if(p<1) requestAnimationFrame(frame);
   })(performance.now());
 }
+function initPmVer(){ $$('#pmVer span').forEach(b=> b.onclick=()=>setPmVer(b.dataset.v)); }
 function initRewardTabs(){ const _b=$('#rwBack'); if(_b) _b.onclick=leaveRewards; $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); }); }
 function initOffers(){
   $$('#ofVer span').forEach(b=> b.onclick=()=>setOfferVer(b.dataset.v));
@@ -2193,7 +2308,7 @@ function syncCostCta(){
   }
 }
 
-buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs();
+buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs(); initPmVer();
 const q=new URLSearchParams(location.search);const start=FLOW.findIndex(f=>f.id===q.get('screen'));
 go(start>=0?start:0);
 </script>
