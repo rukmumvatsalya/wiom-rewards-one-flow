@@ -1055,6 +1055,42 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px)}
 .mnav button:active{background:rgba(22,16,33,.62)}
 @media(max-width:900px){.mnav{display:flex}}
+
+/* ═══ इनाम पेज — जैसा लाइव ऐप में है ═══ */
+.rwtabs{display:flex;border-bottom:1px solid var(--stroke-pri);margin:0 -16px}
+.rwtab{flex:1;text-align:center;padding:12px 4px 11px;font-size:14px;font-weight:600;color:var(--text-sec);
+  cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;-webkit-tap-highlight-color:transparent}
+.rwtab.on{color:var(--text-brand);font-weight:700;border-bottom-color:var(--bg-brand-focus)}
+.rwl{padding-top:16px}
+.rwr{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;padding:14px;margin-bottom:12px}
+.rwr-top{display:flex;align-items:flex-start;gap:10px}
+.rwr-pill{display:inline-flex;align-items:center;gap:5px;background:#FFF0D6;color:#8A5A00;
+  font-size:11px;line-height:15px;font-weight:700;padding:4px 10px;border-radius:100px}
+.rwr-ic{margin-left:auto;width:34px;height:34px;flex:none;border-radius:50%;background:var(--bg-positive-pri);display:grid;place-items:center}
+.rwr-t{font-size:19px;line-height:26px;font-weight:800;color:var(--text-positive);margin-top:11px;letter-spacing:-.2px}
+.rwr-d{font-size:13.5px;line-height:19px;color:var(--text-pri);margin-top:3px}
+.rwr-div{border-top:1px dashed #e4dfee;margin:12px -14px 0}
+.rwr-info{display:flex;align-items:flex-start;gap:7px;background:var(--bg-neutral-sec);border-radius:10px;
+  padding:9px 11px;margin-top:12px;font-size:12px;line-height:17px;color:var(--text-sec)}
+.rwr-info svg{flex:none;margin-top:1px}
+.rwr-cta{width:100%;margin-top:12px;background:var(--bg-brand-focus);color:#fff;border:none;border-radius:12px;
+  padding:13px;font:700 15px/22px 'Noto Sans','Noto Sans Devanagari',sans-serif;cursor:pointer}
+.rwr-cta:active{transform:scale(.99)}
+.rwr-exp{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;line-height:16px;color:var(--text-ter)}
+/* इस्तेमाल हुए */
+.rwr.used{background:var(--bg-info-pri);border-color:transparent}
+.rwr.used .rwr-pill{background:#E4DEF6;color:#7A7290}
+.rwr.used .rwr-ic{background:#E4DEF6}
+.rwr.used .rwr-t{color:var(--text-sec)}
+.rwr.used .rwr-d{color:var(--text-sec)}
+/* बीते हुए */
+.rwr.gone{background:#FDECEF;border-color:transparent}
+.rwr.gone .rwr-pill{background:#F7DBE0;color:#98707A}
+.rwr.gone .rwr-ic{background:#F7DBE0}
+.rwr.gone .rwr-t{color:var(--text-sec)}
+.rwr.gone .rwr-exp{color:var(--crit)}
+.rwr-empty{text-align:center;padding:52px 20px;color:var(--text-ter);font-size:13.5px;line-height:20px}
+.rwr-empty .e{font-size:34px;display:block;margin-bottom:12px;opacity:.5}
 </style>
 </head>
 <body>
@@ -1300,14 +1336,21 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <!-- rewards · तीनों इनाम · इंस्टॉलेशन रिचार्ज या रिन्यूअल रिचार्ज -->
     <section class="screen" data-s="rewards">
       <div class="statusbar" data-sb></div>
-      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="appbar-title"><h1 class="t3">आपके 3 इनाम</h1></div></div>
+      <div class="appbar"><div class="appbar-row">
+        <div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h1 class="t3" style="margin-left:2px">इनाम</h1>
+        <div class="spacer"></div>
+        <div class="appbar-icon"><svg class="ab-lang" viewBox="0 0 24 24" fill="none"><rect x="1.5" y="2.5" width="15" height="15" rx="4" fill="#352d42"/><text x="9" y="13.6" font-family="Noto Sans, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">A</text><rect x="10" y="9" width="12.5" height="12.5" rx="3.5" fill="#352d42" stroke="#faf9fc" stroke-width="1.4"/><text x="16.2" y="18.6" font-family="Noto Sans Devanagari, Noto Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">अ</text></svg></div>
+      </div></div>
       <div class="content">
-        <p class="rwlede">एक इनाम अभी अपने <b>इंस्टॉलेशन रिचार्ज</b> पर लगाएँ — दिन उसी में जुड़ जाएँगे। बाकी दो आपके <b>रिन्यूअल रिचार्ज</b> के लिए रखे रहेंगे।</p>
-        <div id="rwList"></div>
-        <div class="rw-none" id="rwNone"><span>अभी कोई नहीं · तीनों रिन्यूअल के लिए रख लें</span><span class="rw-radio"></span></div>
-        <div class="rw-sum" id="rwSum"></div>
+        <div class="rwtabs" id="rwTabs">
+          <span class="rwtab on" data-t="new">नये</span>
+          <span class="rwtab" data-t="used">इस्तेमाल हुए</span>
+          <span class="rwtab" data-t="gone">बीते हुए</span>
+        </div>
+        <div class="rwl" id="rwList"></div>
       </div>
-      <div class="actions"><button class="cta" id="rwCta">लगाएँ और आगे बढ़ें</button></div>
+      <div class="actions"><button class="cta" id="rwCta">आगे बढ़ें</button></div>
     </section>
 
     <!-- 12 slot -->
@@ -1596,7 +1639,7 @@ const LM_TYPES=[{k:'मंदिर / मस्जिद / गुरुद्व
 const state={idx:0,plan:0,phone:'',date:'27 जुलाई',
   locAddr:'Rajiv Colony, Sector 33',serviceable:true,
   name:'',landmark:'Hanuman Mandir',voiceDone:false,timers:[],
-  offersGrabbed:false,rewardPick:1,celeDone:false};
+  offersGrabbed:false,rewardPick:1,rewardApplied:false,celeDone:false};
 const cur=()=>PLANS[state.plan];
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -1817,7 +1860,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
-const restart=()=>{Object.assign(state,{offersGrabbed:false,rewardPick:1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
+const restart=()=>{Object.assign(state,{offersGrabbed:false,rewardPick:1,rewardApplied:false,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
 $('#btnRestart').onclick=restart;
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='Escape'){closeSheets();return;}if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='r')restart();});
 
@@ -1958,6 +2001,7 @@ function countTo(card){
     if(p<1) requestAnimationFrame(frame);
   })(performance.now());
 }
+function initRewardTabs(){ $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); }); }
 function initOffers(){
   $$('#ofVer span').forEach(b=> b.onclick=()=>setOfferVer(b.dataset.v));
   const b=$('#offersCta'); if(!b) return;
@@ -2043,6 +2087,7 @@ function addRewardMsg(){
   celeAdd(n);
 }
 function applyReward(){
+  if(!state.rewardApplied) state.rewardPick = -1;   /* left the page without redeeming — nothing applied */
   const dot=$('#rwDot'); if(dot) dot.classList.remove('on');
   const base=PLANS[state.plan].days, tot=installDays();
   const msg = state.rewardPick>=0
@@ -2053,25 +2098,48 @@ function applyReward(){
 }
 
 /* ── rewards wallet ── */
+/* ── इनाम पेज · लाइव ऐप वाला पैटर्न: टैब + कार्ड, हर कार्ड का अपना रिडीम ── */
+const RW_TROPHY = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v5a5 5 0 01-10 0V4z" fill="#E8A200"/><path d="M7 5H4.5A3.5 3.5 0 008 9.4M17 5h2.5A3.5 3.5 0 0116 9.4" stroke="#E8A200" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="10.5" y="14" width="3" height="4" fill="#C98600"/><rect x="8" y="18" width="8" height="2.4" rx="1.2" fill="#C98600"/></svg>';
+const RW_CAL = c => `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="3" stroke="${c}" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3.5 10h17" stroke="${c}" stroke-width="1.8" stroke-linecap="round"/><path d="M9 15.5l2.2 2.2 4-4.2" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const RW_INFO = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#898296" stroke-width="1.7"/><path d="M12 11v5.5M12 7.6v.6" stroke="#898296" stroke-width="1.7" stroke-linecap="round"/></svg>';
+let rwTab = 'new';
+/* status per offer: 'new' → 'used' once applied. Nothing has expired in a fresh booking. */
+function rwStatus(i){ return state.rewardPick === i && state.rewardApplied ? 'used' : 'new'; }
+function rwCardHTML(o,i,st){
+  const cls = st === 'used' ? ' used' : st === 'gone' ? ' gone' : '';
+  const iconC = st === 'new' ? '#008043' : '#8b83a0';
+  const body = st === 'used'
+    ? `<div class="rwr-exp">${RW_INFO}<span>आज इस्तेमाल हुआ · नेट लगने वाले रिचार्ज पर</span></div>`
+    : st === 'gone'
+      ? `<div class="rwr-exp">${RW_INFO}<span>${activeTill(60)} तक उपलब्ध था</span></div>`
+      : `<div class="rwr-div"></div>
+         <button class="rwr-cta" data-rw="${i}">अभी रिडीम करें</button>
+         <div class="rwr-exp">${RW_INFO}<span>${activeTill(60)} तक उपलब्ध है</span></div>`;
+  const desc = st === 'new'
+    ? `${o.pay} दिन का रिचार्ज करने पर आपके प्लान में जुड़ जाएगा।`
+    : `आपके रिचार्ज प्लान में जोड़ दिया गया है।`;
+  return `<div class="rwr${cls}">
+    <div class="rwr-top"><span class="rwr-pill">${RW_TROPHY} रिचार्ज ऑफर</span><span class="rwr-ic">${RW_CAL(iconC)}</span></div>
+    <div class="rwr-t">${o.free} दिन का नेट</div>
+    <div class="rwr-d">${desc}</div>
+    ${body}
+  </div>`;
+}
+function rwEmpty(t){
+  const m = {new:'अभी कोई नया इनाम नहीं है।', used:'अभी तक कोई इनाम इस्तेमाल नहीं हुआ।', gone:'कोई इनाम बीता नहीं है।'}[t];
+  return `<div class="rwr-empty"><span class="e">🎁</span>${m}</div>`;
+}
 function renderRewards(){
-  const l=$('#rwList'); if(!l) return;
-  l.innerHTML=OFFERS.map((o,i)=>`<div class="rwcard ${state.rewardPick===i?'sel':''}" data-r="${i}">
-      <div class="rw-top"><div class="rw-gift">🎁</div>
-        <div><div class="rw-k">${o.pay} + <span class="fr">${o.free} दिन फ्री</span></div><div class="rw-d">${o.t}</div></div>
-        <span class="rw-radio"></span></div>
-      <div class="rw-where">${state.rewardPick===i
-        ? `<span class="tag now">अभी लगेगा</span><span class="w">इंस्टॉलेशन रिचार्ज पर · ${o.free} दिन जुड़ेंगे</span>`
-        : `<span class="tag later">रखा रहेगा</span><span class="w">रिन्यूअल रिचार्ज पर लगा सकते हैं</span>`}</div>
-    </div>`).join('');
-  $$('#rwList [data-r]').forEach(el=>el.onclick=()=>{ state.rewardPick=+el.dataset.r; renderRewards(); });
-  $('#rwNone').classList.toggle('sel', state.rewardPick<0);
-  $('#rwNone').onclick=()=>{ state.rewardPick=-1; renderRewards(); };
-  const base=PLANS[state.plan].days, tot=installDays();
-  $('#rwSum').innerHTML = state.rewardPick>=0
-    ? `<div class="l">आपका इंस्टॉलेशन रिचार्ज</div><div class="v"><s>${base} दिन</s><span>${tot} दिन का नेट</span></div><div class="n">₹${PLANS[state.plan].cost} में · ${OFFERS[state.rewardPick].k} ऑफर लगने के बाद</div>`
-    : `<div class="l">आपका इंस्टॉलेशन रिचार्ज</div><div class="v"><span>${base} दिन का नेट</span></div><div class="n">₹${PLANS[state.plan].cost} में · तीनों इनाम रिन्यूअल के लिए रखे हैं</div>`;
-  const c=$('#rwCta'); c.textContent = state.rewardPick>=0 ? `${OFFERS[state.rewardPick].free} दिन जोड़ें और आगे बढ़ें` : 'आगे बढ़ें';
-  c.onclick=applyReward;
+  const l = $('#rwList'); if(!l) return;
+  $$('#rwTabs .rwtab').forEach(t => t.classList.toggle('on', t.dataset.t === rwTab));
+  const rows = OFFERS.map((o,i)=>({o,i,st:rwStatus(i)})).filter(r => r.st === rwTab);
+  l.innerHTML = rows.length ? rows.map(r => rwCardHTML(r.o, r.i, r.st)).join('') : rwEmpty(rwTab);
+  $$('#rwList [data-rw]').forEach(b => b.onclick = ()=>{
+    state.rewardPick = +b.dataset.rw; state.rewardApplied = true;
+    rwTab = 'used'; renderRewards();
+    const c = $('#rwCta'); c.textContent = 'आगे बढ़ें';
+  });
+  const c = $('#rwCta'); c.onclick = applyReward;
 }
 
 function syncCostCta(){
@@ -2080,7 +2148,7 @@ function syncCostCta(){
   b.onclick=()=>goTo('offers');
 }
 
-buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers();
+buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs();
 const q=new URLSearchParams(location.search);const start=FLOW.findIndex(f=>f.id===q.get('screen'));
 go(start>=0?start:0);
 </script>
