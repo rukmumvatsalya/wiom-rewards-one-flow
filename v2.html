@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>v2 · ऑफर → ₹25 एडवांस → दिन चुनें · Wiom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   CA DESIGN SYSTEM TOKENS
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --bg-surface:#faf9fc; --bg-neutral-sec:#f1eff5;
+  --bg-positive-pri:#e1faed; --bg-positive-sec:#c9f0dd;
+  --bg-brand-focus:#d9008d; --bg-brand-cta:#ff66c9; --bg-brand-subtle:#ffe6f6;
+  --bg-info-pri:#eeeafc;
+  --purple:#6d17ce; --purple-soft:#f1e5ff; --purple-stroke:#d6b2ff;
+  --blue:#1a63e0; --blue-soft:#e7f0ff; --blue-stroke:#b6d0fb;
+  --text-pri:#161021; --text-sec:#665e75; --text-ter:#898296;
+  --text-positive:#008043; --text-brand:#d9008d;
+  --stroke-pri:#e8e4f0; --stroke-positive:#a5e5c6; --stroke-brand:#ffb3e4;
+  --icon-neutral:#352d42;
+  --r-card:16px; --r-pill:100px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+.t1{font-size:32px;line-height:44px;font-weight:800}
+.t2{font-size:24px;line-height:32px;font-weight:700}
+.t3{font-size:20px;line-height:28px;font-weight:600}
+.b1{font-size:16px;line-height:24px;font-weight:400}
+.b1m{font-size:16px;line-height:24px;font-weight:500}
+.b1b{font-size:16px;line-height:24px;font-weight:700}
+.b2{font-size:14px;line-height:20px;font-weight:400}
+.b3{font-size:12px;line-height:16px;font-weight:400}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Sans','Noto Sans Devanagari',system-ui,sans-serif;
+  background:#12101a;color:#e8e4f0;min-height:100vh;display:flex;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── harness rail ─────────────────────────────────────────── */
+.rail{width:246px;flex:0 0 246px;background:#191622;border-right:1px solid #2a2536;padding:20px 0;overflow-y:auto;height:100vh}
+.rail h1{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6f6885;padding:0 20px 4px}
+.rail .sub{font-size:11px;color:#4e4860;padding:0 20px 18px}
+.rail-group{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#4e4860;padding:16px 20px 6px}
+.rail-item{display:flex;align-items:center;gap:10px;padding:8px 20px;font-size:12.5px;color:#8f88a3;cursor:pointer;border-left:2px solid transparent;transition:.15s}
+.rail-item:hover{background:#201c2b;color:#d5d0e2}
+.rail-item.on{background:#241d33;color:#fff;border-left-color:var(--bg-brand-focus)}
+.rail-num{width:19px;height:19px;flex:0 0 19px;border-radius:50%;background:#2a2536;color:#7d7691;font-size:10px;font-weight:700;display:grid;place-items:center}
+.rail-item.on .rail-num{background:var(--bg-brand-focus);color:#fff}
+.rail-item.done .rail-num{background:#2f6a4c;color:#c9f0dd}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;gap:32px;padding:24px;height:100vh;overflow:hidden}
+.side{width:250px;flex:0 0 250px;display:flex;flex-direction:column;gap:16px}
+.stage-title{font-size:16px;font-weight:600;color:#efecf5}
+.stage-step{font-size:11px;color:#5d5673;margin-top:2px}
+.navbar{display:flex;gap:10px}
+.nbtn{background:#221e2e;border:1px solid #322c42;color:#cfc9de;border-radius:9px;padding:8px 14px;font:600 12.5px inherit;font-family:inherit;cursor:pointer;transition:.15s}
+.nbtn:hover{background:#2a2536;border-color:#4a4262}
+.nbtn.pri{background:var(--bg-brand-focus);border-color:var(--bg-brand-focus);color:#fff}
+.nbtn:disabled{opacity:.35;cursor:not-allowed}
+.hint{font-size:10.5px;color:#4e4860;line-height:1.7}
+kbd{background:#2a2536;border:1px solid #3a3450;border-radius:4px;padding:1px 5px;font-size:9.5px;color:#8f88a3}
+.note{background:#191622;border:1px solid #2a2536;border-radius:14px;padding:12px 14px;font-size:11px;line-height:1.65;color:#8f88a3}
+.note b{color:#cfc9de}
+
+/* ── phone shell ──────────────────────────────────────────── */
+.phone{
+  width:360px;height:720px;flex:0 0 360px;background:var(--bg-surface);
+  border-radius:26px;box-shadow:0 0 0 8px #232030,0 0 0 9px #383349,0 30px 70px rgba(0,0,0,.6);
+  position:relative;overflow:hidden;color:var(--text-pri);
+}
+.screen{position:absolute;inset:0;background:var(--bg-surface);display:none;flex-direction:column}
+.screen.active{display:flex}
+.screen.in{animation:slideIn .32s var(--ease)}
+.screen.back{animation:slideBack .32s var(--ease)}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes slideBack{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+
+.statusbar{height:24px;flex:0 0 24px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-size:11px;font-weight:600;color:#161021}
+.statusbar.light{color:#fff}
+.statusbar .ind{display:flex;align-items:center;gap:4px}
+.appbar{flex:0 0 auto}
+.appbar-row{display:flex;align-items:center;padding:4px}
+.appbar-icon{width:48px;height:48px;display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.appbar-icon:active{background:#efecf5}
+.spacer{flex:1}
+.appbar-title{padding:8px 16px 16px}
+.content{flex:1;overflow-y:auto;padding:0 16px 16px;scrollbar-width:none}
+.content::-webkit-scrollbar{display:none}
+.actions{flex:0 0 auto;padding:16px}
+.cta{
+  width:100%;background:var(--bg-brand-focus);color:#faf9fc;border:none;border-radius:var(--r-card);
+  padding:14px 16px;font:700 16px/24px 'Noto Sans','Noto Sans Devanagari',sans-serif;cursor:pointer;transition:.12s;
+}
+.cta:hover{background:#c2007e}.cta:active{transform:scale(.985)}
+.cta[disabled]{background:#eee9f2;color:#b3adc0;cursor:not-allowed}
+.linkrow{display:flex;align-items:center;justify-content:center;gap:4px;padding:12px;font-size:14px;cursor:pointer}
+.chev{color:var(--text-brand)}
+
+.card{background:#fff;border:1px solid var(--stroke-pri);border-radius:var(--r-card);padding:16px}
+.card.pos{background:var(--bg-positive-pri);border-color:var(--stroke-positive)}
+.sec{color:var(--text-sec)}.ter{color:var(--text-ter)}.pos{color:var(--text-positive)}.brandc{color:var(--text-brand)}
+.center{text-align:center}
+.row{display:flex;align-items:center;gap:12px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.divider{height:1px;background:var(--stroke-pri);margin:12px 0}
+.mt4{margin-top:4px}.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);font-size:13px;line-height:18px;font-weight:700}
+.pill.pos{background:var(--bg-positive-sec);color:var(--text-positive)}
+.pill.info{background:var(--purple-soft);color:var(--purple)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.screen.active .rv{animation:fadeUp .5s var(--ease) both}
+.rv.d1{animation-delay:.04s}.rv.d2{animation-delay:.12s}.rv.d3{animation-delay:.20s}.rv.d4{animation-delay:.28s}
+
+/* ── splash ───────────────────────────────────────────────── */
+.splash{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  background:linear-gradient(165deg,#d9008d 0%,#a3009f 45%,#6d17ce 100%)}
+.mark{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:.85}}
+.bar-track{width:120px;height:3px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden}
+.bar-fill{height:100%;width:40%;background:#fff;border-radius:3px;animation:sweep 1.1s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+.spinner{width:56px;height:56px;border-radius:50%;border:4px solid var(--bg-neutral-sec);border-top-color:var(--bg-brand-focus);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ═══════════════════════════════════════════════════════════
+   LANDING — focused hero ("रिचार्ज वाला घर का नेट"), refreshed UI
+   ═══════════════════════════════════════════════════════════ */
+.land{position:absolute;inset:0;display:flex;flex-direction:column;
+  background:radial-gradient(120% 60% at 50% 0%,#ffe6f6 0%,#faf9fc 52%)}
+.land-bar{flex:0 0 auto;display:flex;align-items:center;padding:6px 18px}
+.land-logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;color:var(--text-pri)}
+.land-lang{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--stroke-pri);
+  border-radius:var(--r-pill);padding:6px 12px;font-size:12.5px;font-weight:700;color:var(--text-sec)}
+.land-hero{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 24px;gap:14px;scrollbar-width:none}
+.land-hero::-webkit-scrollbar{display:none}
+.land-kick{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--stroke-brand);color:var(--text-brand);
+  padding:7px 14px;border-radius:var(--r-pill);font-size:12.5px;font-weight:700}
+.land-h{font-size:34px;line-height:40px;font-weight:800;letter-spacing:-.01em;color:var(--text-pri)}
+.land-h .u{color:var(--text-brand)}
+.land-sub{font-size:15px;line-height:22px;color:var(--text-sec);max-width:280px}
+.land-illu-card{position:relative;background:#fff;border:1px solid var(--stroke-pri);border-radius:26px;padding:22px 30px;
+  box-shadow:0 18px 40px rgba(109,23,206,.10)}
+.land-illu-card .halo{position:absolute;inset:0;border-radius:26px;background:radial-gradient(circle at 50% 40%,#ffe6f6,transparent 68%);z-index:0}
+.land-illu-card svg{position:relative;z-index:1}
+.land-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.gchip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--stroke-pri);
+  padding:8px 12px;border-radius:12px;font-size:12.5px;font-weight:600;color:var(--text-pri)}
+.gchip b{font-weight:800;color:var(--text-brand)}
+.land-foot{flex:0 0 auto;padding:10px 16px 16px}
+.land-entry{background:#fff;border:1px solid var(--stroke-pri);border-radius:18px;padding:14px 16px 16px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.le-label{font-size:14px;font-weight:700;color:var(--text-pri)}
+.land-entry .phonefield{margin-top:10px}
+.land-foot .cta{display:flex;align-items:center;justify-content:center;gap:8px}
+.land-login{text-align:center;font-size:13px;color:var(--text-sec);margin-top:12px}
+.land-login b{color:var(--text-brand);cursor:pointer}
+/* two entry options — full-screen variants (A inline · B two-CTA per Figma 80:1603) */
+.variant-a,.variant-b{flex:1;min-height:0;display:flex;flex-direction:column}
+.land.mode-a .variant-b{display:none}
+.land.mode-b .variant-a{display:none}
+.cta.ghost{background:#fff;color:var(--text-brand);border:1.5px solid var(--stroke-brand)}
+.cta.ghost:hover{background:var(--bg-brand-subtle)}
+/* Variant B — matches Figma node 80:1603 (blue calendar landing, two CTAs) */
+.fig-bar{flex:0 0 auto;display:flex;justify-content:flex-end;padding:6px 12px}
+.fig-lang{width:40px;height:40px;border-radius:12px;background:#e5f2ff;display:grid;place-items:center;color:#1461cc}
+.fig-hero{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 16px;scrollbar-width:none}
+.fig-hero::-webkit-scrollbar{display:none}
+.fig-h{font-size:24px;line-height:32px;font-weight:700;color:#161021}
+.fig-sub{font-size:16px;line-height:24px;color:var(--text-sec);margin-top:12px}
+.fig-illu{margin:34px 0 30px}
+.fig-pill{background:#e5f2ff;color:#1461cc;font-size:14px;line-height:20px;font-weight:700;padding:9px 22px;border-radius:var(--r-pill)}
+.fig-foot{flex:0 0 auto;padding:16px}
+.fig-login{text-align:center;font-size:14px;color:#161021;font-weight:600;margin-top:16px;cursor:pointer}
+.fig-login .cp{color:var(--bg-brand-focus);font-weight:800;margin-left:2px}
+.modetoggle{position:fixed;top:10px;left:10px;z-index:60;display:flex;gap:0;background:#191622;border:1px solid #322c42;
+  border-radius:10px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.modetoggle .mt-lbl{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6f6885;display:flex;align-items:center;padding:0 8px}
+.modetoggle button{background:transparent;border:none;color:#8f88a3;font:700 11px inherit;font-family:inherit;padding:6px 10px;border-radius:7px;cursor:pointer;transition:.12s;white-space:nowrap}
+.modetoggle button:hover{color:#d5d0e2}
+.modetoggle button.on{background:var(--bg-brand-focus);color:#fff}
+/* ── index screen (choose Option A / B) ── */
+.idx-title{font-size:24px;line-height:32px;font-weight:700;color:#161021}
+.idx-sub{font-size:14px;line-height:20px;color:var(--text-sec);margin-top:6px}
+.idx-opt{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--stroke-pri);border-radius:16px;padding:16px;cursor:pointer;transition:.15s}
+.idx-opt:hover{border-color:var(--stroke-brand)}
+.idx-opt:active{transform:scale(.99)}
+.idx-opt + .idx-opt{margin-top:14px}
+.idx-badge{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:18px;font-weight:800;color:#fff}
+.idx-badge.a{background:var(--bg-brand-focus)}
+.idx-badge.b{background:#1461cc}
+.idx-opt .om{flex:1;min-width:0}
+.idx-opt .ot{font-size:16px;font-weight:700;color:#161021}
+.idx-opt .os{font-size:12.5px;color:var(--text-sec);margin-top:2px;line-height:17px}
+.idx-opt .oc{color:var(--text-ter);font-size:20px}
+
+/* ── bottom sheet (shared) ────────────────────────────────── */
+.sheet-scrim{position:absolute;inset:0;z-index:30;background:rgba(22,16,33,.55);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.sheet-scrim.open{opacity:1;pointer-events:auto}
+.sheet{
+  position:absolute;left:0;right:0;bottom:0;z-index:31;background:#fff;border-radius:24px 24px 0 0;
+  padding:10px 20px 22px;transform:translateY(100%);visibility:hidden;
+  transition:transform .34s var(--ease),visibility 0s linear .34s;
+  max-height:90%;display:flex;flex-direction:column;box-shadow:0 -12px 40px rgba(0,0,0,.22);
+}
+.sheet.open{transform:none;visibility:visible;transition:transform .34s var(--ease),visibility 0s}
+.sheet-handle{width:40px;height:4px;border-radius:4px;background:#d7d3e0;margin:2px auto 14px}
+.sheet-title{font-size:21px;line-height:28px;font-weight:800}
+.sheet-sub{font-size:14px;line-height:20px;color:var(--text-sec);margin-top:5px}
+
+/* phone number field */
+.phonefield{display:flex;align-items:center;gap:10px;border:1.5px solid var(--stroke-pri);border-radius:14px;background:#fff;padding:4px 14px;margin-top:18px;transition:.15s}
+.phonefield:focus-within{border-color:var(--bg-brand-focus);box-shadow:0 0 0 3px #ffe6f6}
+.cc{display:flex;align-items:center;gap:7px;font-size:17px;font-weight:700;padding-right:12px;border-right:1px solid var(--stroke-pri)}
+.cc .flag{width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.06);display:block}
+.phonefield input{flex:1;border:none;outline:none;background:transparent;font:700 18px/26px 'Noto Sans',sans-serif;color:var(--text-pri);letter-spacing:.04em;padding:14px 0}
+.phonefield input::placeholder{color:#c3bdd0;font-weight:500;letter-spacing:normal}
+.secline{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-ter);margin-top:12px}
+.secline svg{flex:none;color:var(--text-positive)}
+.tiny-legal{font-size:11px;line-height:16px;color:var(--text-ter);text-align:center;margin-top:12px}
+.tiny-legal u{cursor:pointer}
+
+/* ── OTP ──────────────────────────────────────────────────── */
+.otp-wrap{display:flex;flex-direction:column;align-items:center;padding-top:12px}
+.otp-num{display:inline-flex;align-items:center;gap:8px;background:var(--bg-neutral-sec);border-radius:var(--r-pill);
+  padding:7px 14px;font-size:14px;font-weight:700;margin-top:12px}
+.otp-num .edit{color:var(--text-brand);font-weight:700;cursor:pointer}
+.newbadge{display:inline-flex;align-items:center;gap:6px;background:var(--bg-positive-pri);color:var(--text-positive);
+  border:1px solid var(--stroke-positive);border-radius:var(--r-pill);padding:6px 13px;font-size:12.5px;font-weight:700;margin-top:16px}
+.otp-boxes{display:flex;gap:12px;margin-top:26px}
+.otp-boxes input{width:52px;height:60px;text-align:center;font:800 26px 'Noto Sans',sans-serif;color:var(--text-pri);
+  border:1.5px solid var(--stroke-pri);border-radius:14px;background:#fff;outline:none;transition:.15s}
+.otp-boxes input:focus{border-color:var(--bg-brand-focus);box-shadow:0 0 0 3px #ffe6f6}
+.otp-boxes input.filled{border-color:var(--bg-brand-focus);background:#fff2fa}
+.otp-resend{font-size:13px;color:var(--text-sec);margin-top:24px}
+.otp-resend b{color:var(--text-brand)}
+.otp-hint{font-size:11.5px;color:var(--text-ter);margin-top:8px;background:var(--bg-neutral-sec);padding:6px 12px;border-radius:8px}
+
+/* ── location permission ──────────────────────────────────── */
+.perm-scrim{position:absolute;inset:0;background:#3c3c3c;display:grid;place-items:center;padding:20px}
+.perm{background:#f1f0f5;border-radius:26px;padding:22px 18px;width:100%;color:#1f1f1f;text-align:center;font-family:'Roboto','Noto Sans',sans-serif}
+.perm-opt{background:#d7e3fb;color:#0b57d0;border-radius:20px;padding:11px;margin-top:7px;font-size:13px;font-weight:500;cursor:pointer}
+.perm-opt:hover{background:#c6d7f8}
+.perm-map{width:92px;height:92px;border-radius:50%;border:2px solid #0b57d0;background:#eef1f6;display:grid;place-items:center;margin:0 auto}
+.perm-map.sq{border-radius:8px;border-color:#dadce0;background:#f5f3ee}
+
+.house-check{animation:breathe 1.5s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.4}50%{opacity:1}}
+.scene{width:100%;max-width:262px;margin:0 auto;display:block}
+
+/* ── serviceable ──────────────────────────────────────────── */
+.addrcard{background:var(--bg-neutral-sec);border-radius:16px;padding:15px 16px;width:100%}
+.addrcard .ar-top{display:flex;align-items:center;gap:8px}
+.addrcard .ar-name{font-size:16px;font-weight:700}
+.addrcard .ar-full{font-size:13px;line-height:19px;color:var(--text-sec);margin-top:6px}
+
+/* ── education ────────────────────────────────────────────── */
+.statgrid{display:flex;gap:12px;width:100%}
+.statcard{flex:1;background:#fff;border:1px solid var(--stroke-pri);border-radius:14px;padding:14px 8px;text-align:center}
+.statcard .v{font-size:20px;line-height:26px;font-weight:800;color:#1461cc}
+.statcard .l{font-size:12px;line-height:16px;color:var(--text-sec);margin-top:3px}
+.statwide{width:100%;background:#fff;border:1px solid var(--stroke-pri);border-radius:14px;padding:13px;text-align:center}
+.statwide .v{font-size:16px;line-height:22px;font-weight:800;color:#1461cc}
+.statwide .l{font-size:12px;line-height:16px;color:var(--text-sec);margin-top:2px}
+.daybox{background:#e5f2ff;border:none;border-radius:20px;padding:18px;text-align:center}
+.dayval{font-size:32px;line-height:40px;font-weight:800}
+.dayval span{font-size:18px;font-weight:500;margin-left:4px}
+.sliderwrap{position:relative;padding:14px 11px 0}
+.track{position:relative;height:6px;border-radius:6px;background:#cce5ff}
+.trackfill{position:absolute;left:0;top:0;height:100%;background:#1461cc;border-radius:6px;pointer-events:none}
+.track .tick{position:absolute;top:50%;width:5px;height:5px;border-radius:50%;background:#1461cc;opacity:.45;transform:translate(-50%,-50%)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;background:transparent;position:absolute;left:0;top:8px;height:22px;margin:0;cursor:pointer}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:6px solid #1461cc;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:6px solid #1461cc;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.ticklabels{display:flex;justify-content:space-between;margin-top:14px;padding:0 3px}
+.ticklabels span{font-size:11px;color:var(--text-ter);width:44px;text-align:center}
+.ticklabels span:first-child{text-align:left}.ticklabels span:last-child{text-align:right}
+.ticklabels span.on{color:#1461cc;font-weight:700}
+.ticklabels .tickfree{display:block;font-size:10px;line-height:14px;color:var(--text-positive);font-weight:700;margin-top:3px;font-style:normal}
+.costcard{background:#fff;border:1px solid var(--stroke-pri);border-radius:var(--r-card);overflow:hidden}
+.costcard .cc-head{background:var(--purple-soft);text-align:center;padding:11px 16px;font-size:13px;font-weight:700;color:var(--purple)}
+.costrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;font-size:15px}
+.costrow + .costrow{border-top:1px dashed var(--stroke-pri)}
+.costrow .amt{font-size:15px;font-weight:800;color:var(--text-positive);white-space:nowrap}
+.costrow .amt.incl{background:var(--bg-positive-pri);border-radius:var(--r-pill);padding:4px 12px;font-size:12px;font-weight:700}
+.costinfo{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;line-height:1.55;color:var(--text-sec);margin-top:14px}
+.costinfo svg{flex:none;color:var(--text-ter);margin-top:1px}
+
+/* ── slot ─────────────────────────────────────────────────── */
+.dates{display:flex;flex-direction:column;gap:10px}
+.datecell{display:flex;align-items:center;gap:12px;border:1px solid var(--stroke-pri);border-radius:12px;background:#fff;padding:14px 16px;cursor:pointer;transition:.15s}
+.datecell:hover{border-color:var(--stroke-brand)}
+.datecell.sel{border:1.5px solid var(--bg-brand-focus);background:#fff5fb}
+.datecell.off{background:var(--bg-neutral-sec);cursor:not-allowed;border-color:transparent}
+.datecell .dd{font-size:17px;line-height:24px;font-weight:600}
+.datecell .dw{font-size:12px;line-height:16px;color:var(--text-sec);margin-top:2px}
+.datecell.sel .dd{color:var(--text-brand)}
+.datecell.off .dd,.datecell.off .dw{color:#b3adc0}
+.daymark{width:20px;height:20px;flex:0 0 20px;border-radius:50%;border:2px solid #c9c4d4;display:grid;place-items:center;transition:.15s}
+.datecell.sel .daymark{border-color:var(--bg-brand-focus)}
+.datecell.sel .daymark::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--bg-brand-focus)}
+.datecell.off .daymark{border-color:#ddd8e6}
+.dayfull{font-size:11px;line-height:16px;font-weight:600;color:var(--text-ter);background:#e8e4f0;border-radius:100px;padding:3px 9px;margin-left:auto}
+
+/* ═══════════════════════════════════════════════════════════
+   PLAN LIST — V10 "रिचार्ज → नेट (तुलना)"
+   ═══════════════════════════════════════════════════════════ */
+.plan-intro{background:var(--bg-info-pri);border-radius:12px;padding:11px 13px;font-size:12.5px;line-height:18px;color:var(--text-sec);margin-bottom:14px}
+.plan-intro b{color:var(--text-pri)}
+.pk{border:1.5px solid var(--stroke-pri);border-radius:14px;background:#fff;padding:14px;cursor:pointer;transition:.15s;position:relative}
+.pk + .pk{margin-top:10px}
+.pk:hover{border-color:var(--stroke-brand)}
+.pk:active{transform:scale(.99)}
+.pk.two .main{display:flex;align-items:center;gap:8px}
+.two .col{display:flex;flex-direction:column}
+.two .k{font-size:10.5px;color:var(--text-ter);font-weight:600}
+.two .vv{font-size:16px;font-weight:800;line-height:20px}
+.two .arrow{color:var(--text-ter);font-size:18px;font-weight:700;margin:0 2px}
+.two .col.hl .vv{color:var(--text-positive)}
+.two .price{margin-left:auto;text-align:right}
+.two .price .pp{font-size:16px;font-weight:800;color:var(--text-brand);display:block}
+.two .price .go{font-size:11px;color:var(--text-ter);font-weight:600}
+.pk.hi{background:var(--bg-brand-subtle);border-color:var(--stroke-brand)}
+@keyframes pulsepink{0%,100%{background:var(--bg-brand-subtle);box-shadow:0 0 0 0 rgba(217,0,141,0)}
+  50%{background:#ffd6ef;box-shadow:0 0 0 4px rgba(217,0,141,.22)}}
+.pk.blink{animation:pulsepink .8s ease-in-out 3}
+.pk.hero{border-color:var(--stroke-positive);background:var(--bg-positive-pri)}
+.pk.hero .two .price .pp{color:var(--text-positive)}
+.pk .badge{display:inline-block;background:var(--bg-brand-focus);color:#fff;font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:var(--r-pill);margin-bottom:9px}
+.pk.hero .badge{background:var(--text-positive)}
+.pk .bon{font-size:12px;line-height:17px;color:var(--text-positive);font-weight:700;margin-top:9px;display:flex;align-items:center;gap:6px}
+.pk .bon b{font-weight:800}
+.plan-sep{display:flex;align-items:center;gap:10px;color:var(--text-ter);font-size:12px;font-weight:600;margin:14px 2px 12px}
+.plan-sep::before,.plan-sep::after{content:'';flex:1;height:1px;background:var(--stroke-pri)}
+.pk-note{font-size:11.5px;color:var(--text-ter);margin-top:14px;text-align:center;line-height:1.6}
+
+/* ═══════════════════════════════════════════════════════════
+   PLAN DETAIL — recharge = booking
+   ═══════════════════════════════════════════════════════════ */
+.rechero{border:1.5px solid var(--stroke-positive);border-radius:var(--r-card);overflow:hidden;text-align:center}
+.rechero.plain{border-color:var(--blue-stroke)}
+.rechero-top{background:var(--bg-positive-pri);padding:20px 16px}
+.rechero.plain .rechero-top{background:var(--blue-soft)}
+.rechero.plain .rechero-amt{color:var(--text-pri)}
+.rechero-freepill{display:inline-flex;align-items:center;gap:5px;background:var(--text-positive);color:#fff;font-size:11.5px;font-weight:800;padding:5px 12px;border-radius:var(--r-pill);margin-bottom:12px}
+.rechero-amt{font-size:28px;line-height:36px;font-weight:800;color:var(--text-pri);letter-spacing:-.02em}
+.rechero-cap{font-size:15px;line-height:22px;color:var(--text-sec);font-weight:500;margin-top:4px}
+.rechero-strike{font-size:13px;color:var(--text-ter);text-decoration:line-through;margin-left:8px;font-weight:500}
+.rechero-foot{background:var(--text-positive);color:#fff;font-size:15px;line-height:22px;font-weight:800;padding:14px 16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.rechero.plain .rechero-foot{background:var(--blue)}
+.offer-eq{display:flex;align-items:stretch;justify-content:center;gap:8px;margin-top:4px}
+.eq-chip{flex:1;max-width:120px;background:#fff;border:1.5px solid var(--stroke-positive);border-radius:12px;padding:10px 6px;text-align:center}
+.eq-chip .n{font-size:20px;line-height:24px;font-weight:800;color:var(--text-pri)}
+.eq-chip .t{font-size:12px;line-height:16px;font-weight:600;color:var(--text-sec);margin-top:2px}
+.eq-chip.free{background:var(--bg-positive-sec);border-color:var(--text-positive)}
+.eq-chip.free .n,.eq-chip.free .t{color:var(--text-positive)}
+.eq-plus{display:flex;align-items:center;font-size:24px;font-weight:800;color:var(--text-positive)}
+.offer-price{font-size:14px;line-height:20px;color:var(--text-sec);margin-top:12px}
+.offer-price b{color:var(--text-pri);font-size:18px;font-weight:800}
+.trust{background:#fff;border:1px solid var(--stroke-pri);border-radius:var(--r-card);padding:4px 16px;margin-top:16px}
+.trustrow{display:flex;gap:10px;align-items:flex-start;padding:11px 0}
+.trustrow + .trustrow{border-top:1px solid var(--stroke-pri)}
+.trustrow .ic{width:20px;height:20px;flex:0 0 20px;color:var(--text-positive);margin-top:2px}
+.trustrow .t{font-size:14px;line-height:20px;font-weight:500}
+.field{display:flex;align-items:center;gap:10px;border:1px solid var(--stroke-pri);border-radius:12px;background:#fff;padding:12px 14px}
+.field:focus-within{border-color:var(--bg-brand-focus)}
+.field input{flex:1;border:none;outline:none;background:transparent;font:400 16px/24px 'Noto Sans','Noto Sans Devanagari',sans-serif;color:var(--text-pri)}
+.field input::placeholder{color:#b3adc0}
+
+/* upsell push (28-day) */
+.upsell{position:relative;border-radius:var(--r-card);overflow:hidden;border:1.5px solid var(--stroke-brand);
+  background:linear-gradient(135deg,#fff2fa,#ffe6f6);padding:16px 14px 14px;margin-top:16px}
+.upsell-urgent{display:inline-flex;align-items:center;gap:6px;background:var(--bg-brand-focus);color:#fff;font-size:11px;font-weight:800;
+  letter-spacing:.02em;padding:5px 11px;border-radius:var(--r-pill)}
+.upsell-h{font-size:17px;line-height:23px;font-weight:800;margin-top:12px}
+.upsell-h b{color:var(--text-brand)}
+.upsell-sub{font-size:13px;line-height:19px;color:var(--text-sec);margin-top:6px}
+.upsell-compare{display:flex;gap:8px;margin-top:12px}
+.uc{flex:1;background:#fff;border:1px solid var(--stroke-pri);border-radius:12px;padding:10px;text-align:center}
+.uc.good{border-color:var(--text-positive);background:var(--bg-positive-pri)}
+.uc .ul{font-size:11px;font-weight:600;color:var(--text-sec)}
+.uc .up{font-size:17px;font-weight:800;margin-top:3px}
+.uc.good .up{color:var(--text-positive)}
+.uc .ud{font-size:11px;color:var(--text-ter);margin-top:2px}
+.uc.good .ud{color:var(--text-positive);font-weight:700}
+.upsell-btn{width:100%;margin-top:14px;background:var(--bg-brand-focus);color:#fff;border:none;border-radius:12px;
+  padding:12px 14px;font:800 15px/20px 'Noto Sans','Noto Sans Devanagari',sans-serif;cursor:pointer;transition:.12s;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.upsell-btn:active{transform:scale(.98)}
+.keep28{text-align:center;margin-top:10px;font-size:12.5px;color:var(--text-sec);text-decoration:underline;cursor:pointer}
+
+/* ── payment / processing / confirmed ─────────────────────── */
+.tickcircle{width:88px;height:88px;border-radius:50%;background:var(--bg-positive-pri);display:grid;place-items:center;margin:0 auto;animation:popIn .5s var(--ease) both}
+@keyframes popIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.nextstep{display:flex;gap:12px;align-items:flex-start;padding:12px 0}
+.nextstep + .nextstep{border-top:1px solid var(--stroke-pri)}
+.nextstep .n{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:var(--bg-brand-subtle);color:var(--text-brand);font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+.nextstep .t{font-size:14px;line-height:20px;font-weight:500}
+.nextstep .s{font-size:12px;line-height:17px;color:var(--text-sec);margin-top:2px}
+
+/* ── plan picker sheet rows (from detail "कम दिन") ────────── */
+.planrow{border:1.5px solid var(--stroke-pri);border-radius:12px;background:#fff;padding:13px 14px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:12px}
+.planrow + .planrow{margin-top:10px}
+.planrow:hover{border-color:var(--stroke-brand)}
+.planrow.sel{border-color:var(--bg-brand-focus);background:#fff2fa}
+.planrow.offer{border-color:var(--stroke-positive);background:var(--bg-positive-pri)}
+.planrow.offer.sel{border-color:var(--text-positive);background:#d5f3e3}
+.planmark{width:18px;height:18px;flex:0 0 18px;border-radius:50%;border:2px solid #c9c4d4;display:grid;place-items:center}
+.planrow.sel .planmark{border-color:var(--bg-brand-focus)}
+.planrow.sel .planmark::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--bg-brand-focus)}
+.planrow.offer .planmark{border-color:var(--text-positive)}
+.planrow.offer.sel .planmark::after{background:var(--text-positive)}
+.planrow .pd{flex:1;font-size:15px;font-weight:700}
+.planrow .pd small{font-size:12px;font-weight:400;color:var(--text-sec);margin-left:3px}
+.planrow .pbonus{font-size:11.5px;line-height:16px;color:var(--text-positive);font-weight:600;margin-top:2px}
+.planrow .pbonus b{font-weight:800}
+.planrow .pp{font-size:15px;font-weight:800;color:var(--text-brand);white-space:nowrap}
+.planrow.offer .pp{color:var(--text-positive)}
+.valbadge{display:inline-block;background:var(--text-positive);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:var(--r-pill);margin-left:6px;vertical-align:middle}
+.sheet-scroll{margin-top:16px;overflow-y:auto;scrollbar-width:none}
+.sheet-scroll::-webkit-scrollbar{display:none}
+
+/* ── mobile ───────────────────────────────────────────────── */
+@media(max-width:1120px){.rail{display:none}}
+@media(max-width:820px){
+  body{display:block;background:var(--bg-surface);min-height:100dvh}
+  .rail,.side,.modetoggle{display:none}
+  .stage{display:block;padding:0;gap:0;height:100dvh;overflow:hidden}
+  .phone{width:100%;height:100dvh;flex:none;border-radius:0;box-shadow:none}
+}
+/* ── post-install chat + reward wallet (ci-) ── */
+.ci-cbar{display:flex;align-items:center;gap:10px;padding:8px 14px 12px;background:#fff;border-bottom:1px solid var(--stroke-pri);flex:0 0 auto}
+.ci-av{width:40px;height:40px;border-radius:var(--r-pill);border:2px solid var(--text-brand);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ci-tt{flex:1}.ci-nm{font-size:14px;font-weight:600;color:var(--text-pri)}.ci-on{font-size:10px;color:var(--text-positive)}
+.ci-ic{cursor:pointer;display:flex;align-items:center}
+.conf-bar{display:flex;justify-content:flex-end;align-items:center;padding:4px 18px 0;flex:0 0 auto;position:relative;z-index:7}
+.conf-rwic{position:relative;width:42px;height:42px;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center;transform:scale(0);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.conf-rwic:active{filter:brightness(.96)}
+.conf-fly{position:fixed;width:42px;height:42px;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center;z-index:40;box-shadow:0 8px 22px rgba(217,0,141,.28)}
+.conf-fly svg{width:24px;height:24px}
+.conf-rwic.pop{animation:confIcPop .62s cubic-bezier(.34,1.6,.5,1) forwards}
+.conf-rwic svg{width:24px;height:24px}
+.conf-dot{position:absolute;top:-1px;right:-3px;min-width:18px;height:18px;padding:0 4px;border-radius:var(--r-pill);background:var(--text-positive);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;transform:scale(0)}
+.conf-rwic.pop .conf-dot{animation:confIcPop .5s cubic-bezier(.34,1.7,.5,1) .28s forwards}
+@keyframes confIcPop{0%{transform:scale(0)}62%{transform:scale(1.16)}100%{transform:scale(1)}}
+.conf-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
+.ci-hdr{position:relative;width:40px;height:40px;display:none;align-items:center;justify-content:center;cursor:pointer}
+.ci-hdr.show{display:inline-flex}
+.ci-hdr .dot{position:absolute;top:3px;right:1px;min-width:16px;height:16px;padding:0 3px;border-radius:var(--r-pill);background:var(--text-positive);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.ci-hdr.pulse{animation:cipulse 1.3s ease-out 3}
+@keyframes cipulse{0%{transform:scale(1)}30%{transform:scale(1.2)}60%{transform:scale(1)}}
+.ci-status{margin:10px 12px 4px;background:var(--bg-surface);border-radius:var(--r-card);box-shadow:0 4px 12px rgba(0,0,0,.12);padding:12px 14px;display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.ci-hw{width:38px;height:38px;border-radius:12px;background:var(--stroke-pri);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ci-home{font-size:12px;color:var(--text-sec)}.ci-stl{font-size:12px;color:var(--text-sec)}
+.ci-stv{font-size:16px;font-weight:700}.ci-stv.pending{color:#b85c00}.ci-stv.active{color:var(--text-positive)}
+.ci-thread{flex:1;overflow-y:auto;padding:10px 12px 14px;display:flex;flex-direction:column;gap:9px;scrollbar-width:none}
+.ci-thread::-webkit-scrollbar{display:none}
+.ci-day{align-self:center;background:#ebedf0;color:var(--text-sec);font-size:11px;font-weight:600;padding:4px 12px;border-radius:var(--r-pill)}
+.ci-hist{align-self:center;font-size:11px;color:var(--text-ter);margin:2px 0}
+.ci-row{display:flex}.ci-row.me{justify-content:flex-end}
+.ci-bub{max-width:82%;background:#eeeef1;border-radius:14px;padding:10px 12px 8px;font-size:14px;line-height:1.5;color:var(--text-pri)}
+.ci-bub.faded{opacity:.55}
+.ci-bub .tm{font-size:10.5px;color:var(--text-ter);text-align:right;margin-top:4px}
+.ci-bub .img{width:100%;border-radius:10px;margin-bottom:8px;display:block}
+.ci-bub.me{background:var(--bg-brand-focus);color:#fff}.ci-bub.me .tm{color:rgba(255,255,255,.8)}
+.ci-reward{max-width:88%;background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);border-radius:var(--r-card);padding:14px}
+.ci-reward .top{display:flex;gap:10px;align-items:flex-start}
+.ci-reward .t{font-size:14px;font-weight:700;color:var(--text-positive)}
+.ci-reward .s{font-size:12.5px;color:var(--text-sec);margin-top:2px;line-height:1.45}
+.ci-reward .btn{margin-top:12px;background:var(--text-positive);color:#fff;text-align:center;font-size:14px;font-weight:600;padding:12px;border-radius:12px;cursor:pointer}
+.ci-typing{display:inline-flex;gap:4px;background:#eeeef1;border-radius:14px;padding:12px 14px}
+.ci-typing i{width:7px;height:7px;border-radius:var(--r-pill);background:#b6b9bf;animation:ciblink 1.2s infinite}
+.ci-typing i:nth-child(2){animation-delay:.2s}.ci-typing i:nth-child(3){animation-delay:.4s}
+@keyframes ciblink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.ci-field{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border-top:1px solid var(--stroke-pri);flex:0 0 auto}
+.ci-inp{flex:1;background:#fff;border:1px solid var(--stroke-pri);border-radius:var(--r-pill);padding:12px 16px;font-size:15px;color:var(--text-ter)}
+.ci-snd{width:46px;height:46px;border-radius:var(--r-pill);background:#b6b9bf;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ci-filters{display:flex;gap:8px;padding:12px 0 4px}
+.ci-chip{font-size:12px;font-weight:600;padding:7px 12px;border-radius:var(--r-pill);border:1px solid var(--stroke-pri);background:var(--bg-surface);color:var(--text-sec)}
+.ci-chip.on{background:var(--text-pri);color:#fff;border-color:var(--text-pri)}
+.ci-rcard{background:var(--bg-surface);border:1px solid var(--stroke-pri);border-radius:var(--r-card);box-shadow:0 1px 3px rgba(0,0,0,.1);padding:14px;margin-top:12px}
+.ci-rcard.gone{background:#f5f6f7}
+.ci-rhead{display:flex;align-items:center;gap:12px}
+.ci-ric{width:44px;height:44px;border-radius:12px;background:var(--bg-positive-pri);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ci-rcard.gone .ci-ric{background:#ebedf0}
+.ci-rt{font-size:15px;font-weight:700}.ci-rd{font-size:12px;color:var(--text-sec);margin-top:1px}
+.ci-rdays{font-size:20px;font-weight:700;color:var(--text-positive)}.ci-rcard.gone .ci-rdays{color:var(--text-ter)}
+.ci-rstat{font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--r-pill)}
+.ci-rstat.ready{background:var(--bg-positive-pri);color:var(--text-positive)}.ci-rstat.used{background:var(--bg-brand-subtle);color:var(--text-brand)}
+.ci-sline{margin-top:12px;padding-top:12px;border-top:1px solid var(--stroke-pri);display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-sec)}
+.ci-claim{margin-top:12px;width:100%;background:var(--text-positive);color:#fff;text-align:center;font-size:15px;font-weight:600;padding:13px;border-radius:12px;cursor:pointer}
+.ci-howto{background:#f5f6f7;border-radius:12px;padding:14px;margin-top:14px}
+.ci-howto .h{font-size:13px;font-weight:600;margin-bottom:8px}
+.ci-howto ol{margin:0;padding-left:18px}.ci-howto li{font-size:12.5px;color:var(--text-sec);margin-bottom:5px}
+.ci-install{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center}
+.ci-celebrate{position:absolute;inset:0;z-index:30;overflow:hidden;display:flex;align-items:center;justify-content:center;opacity:0;background:radial-gradient(130% 92% at 50% 40%, rgba(255,229,246,.92), rgba(250,249,252,.93) 58%, rgba(250,249,252,.96));animation:celeFade .4s ease forwards;will-change:opacity}
+.ci-celebrate.out{animation:celeFadeOut .55s ease forwards}
+@keyframes celeFade{to{opacity:1}}
+@keyframes celeFadeOut{to{opacity:0}}
+.ci-confetti-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:32}
+.ci-cele-wrap{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:-5%}
+.ci-cele-rays{position:absolute;top:2px;left:50%;width:230px;height:230px;transform:translate(-50%,-50%) scale(.35);opacity:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(217,0,141,.16) 0deg 6deg,transparent 6deg 22deg);-webkit-mask:radial-gradient(circle,transparent 34%,#000 37%,#000 64%,transparent 70%);mask:radial-gradient(circle,transparent 34%,#000 37%,#000 64%,transparent 70%);animation:celeRays 1.05s cubic-bezier(.2,.8,.2,1) .06s forwards}
+@keyframes celeRays{34%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.32) rotate(26deg)}}
+.ci-cele-token{position:relative;width:108px;height:108px;border-radius:50%;background:var(--bg-brand-focus);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 36px rgba(217,0,141,.34);transform:scale(0);animation:celeToken .74s cubic-bezier(.34,1.56,.5,1) .08s forwards;will-change:transform}
+@keyframes celeToken{0%{transform:scale(0) rotate(-28deg)}58%{transform:scale(1.14) rotate(7deg)}78%{transform:scale(.95) rotate(-3deg)}100%{transform:scale(1) rotate(0)}}
+.ci-cele-token>svg{width:54px;height:54px;position:relative;z-index:2}
+.ci-cele-token .shine{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:1}
+.ci-cele-token .shine::before{content:"";position:absolute;top:-30%;left:-70%;width:44%;height:160%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:rotate(18deg);animation:celeShine 1.15s ease .55s}
+@keyframes celeShine{from{left:-70%}to{left:135%}}
+.ci-cele-text{font-size:20px;font-weight:800;color:var(--text-pri);margin-top:22px;opacity:0;animation:celeRise .55s cubic-bezier(.2,.8,.2,1) .32s forwards}
+.ci-cele-days{margin-top:8px;font-size:13px;font-weight:700;color:var(--text-positive);background:var(--bg-positive-pri);padding:5px 14px;border-radius:var(--r-pill);opacity:0;animation:celeRise .55s cubic-bezier(.2,.8,.2,1) .44s forwards}
+@keyframes celeRise{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+.ci-celebrate.out .ci-cele-text,.ci-celebrate.out .ci-cele-days,.ci-celebrate.out .ci-cele-rays{opacity:0!important;transition:opacity .28s}
+.ci-hdr .ci-hdr-ring{position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--text-brand);opacity:0;pointer-events:none}
+.ci-hdr.receive{animation:celeReceive .64s cubic-bezier(.34,1.56,.5,1)}
+@keyframes celeReceive{0%{transform:scale(.5)}55%{transform:scale(1.3)}100%{transform:scale(1)}}
+.ci-hdr.receive .ci-hdr-ring{animation:celeRing .64s ease-out}
+@keyframes celeRing{0%{opacity:.75;transform:scale(.5)}100%{opacity:0;transform:scale(1.95)}}
+.ci-hdr.receive .dot{animation:celeDotPop .45s cubic-bezier(.34,1.7,.5,1) .2s both}
+@keyframes celeDotPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.ci-cele-token,.ci-cele-rays,.ci-cele-text,.ci-cele-days{animation-duration:.01ms!important}}
+.ci-bs-back{position:absolute;inset:0;z-index:44;background:rgba(22,16,33,.45);display:flex;align-items:flex-end;opacity:0;animation:bsBack .3s ease forwards}
+@keyframes bsBack{to{opacity:1}}
+.ci-bs{width:100%;background:#fff;border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);animation:bsUp .4s cubic-bezier(.2,.85,.25,1) .04s forwards;max-height:88%;overflow-y:auto}
+@keyframes bsUp{to{transform:translateY(0)}}
+.ci-bs-grab{width:40px;height:4px;background:var(--stroke-pri);border-radius:100px;margin:0 auto 14px}
+.ci-bs h3{font-size:19px;font-weight:700;text-align:center;margin:0}
+.ci-bs .sub{font-size:13px;color:var(--text-sec);text-align:center;margin:6px 6px 14px;line-height:1.5}
+.ci-bs-reward{background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);border-radius:12px;padding:11px 13px;font-size:13px;font-weight:700;color:var(--text-positive);margin-bottom:14px;text-align:center}
+.ci-bs-plan{display:flex;align-items:center;gap:14px;padding:15px 14px;border:1.5px solid var(--stroke-pri);border-radius:14px;margin-bottom:10px;cursor:pointer;transition:border-color .12s,background .12s}
+.ci-bs-plan.sel{border-color:var(--bg-brand-focus);background:var(--bg-brand-subtle)}
+.ci-bs-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--stroke-pri);position:relative;flex:0 0 auto}
+.ci-bs-plan.sel .ci-bs-radio{border-color:var(--bg-brand-focus)}
+.ci-bs-plan.sel .ci-bs-radio::after{content:"";position:absolute;inset:3px;background:var(--bg-brand-focus);border-radius:50%}
+.ci-bs-mid{flex:1;min-width:0}
+.ci-bs-day{font-size:16px;font-weight:700;color:var(--text-pri)}
+.ci-bs-add{font-size:12.5px;font-weight:600;color:var(--text-sec);margin-top:3px}
+.ci-bs-add b{color:var(--text-positive);font-weight:700}
+.ci-bs-right{text-align:right;flex:0 0 auto}
+.ci-bs-price{font-size:16px;font-weight:700;color:var(--text-pri)}
+.ci-bs-net{font-size:12px;font-weight:700;color:var(--text-positive);margin-top:3px;white-space:nowrap}
+.ci-bs-note{display:flex;align-items:center;justify-content:center;gap:7px;text-align:center;font-size:12.5px;font-weight:600;color:var(--text-positive);background:var(--bg-positive-pri);border-radius:10px;padding:10px;margin:4px 0 14px}
+.ci-bs-cta{margin-top:6px;width:100%;background:var(--bg-brand-focus);color:#fff;border:none;font-size:16px;font-weight:700;padding:15px;border-radius:16px;cursor:pointer;font-family:inherit}
+.ci-hdr.nopending .dot{display:none}
+.rt-full{position:absolute;inset:0;z-index:50;overflow:hidden;background:linear-gradient(180deg,#FFE7F4 0%,#FFF4FA 44%,#FAF9FC 100%);display:flex;flex-direction:column;opacity:0;animation:rtFade .35s ease forwards}
+@keyframes rtFade{to{opacity:1}}
+.rt-inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+.rt-eyebrow{font-size:13px;font-weight:700;color:var(--text-positive);background:var(--bg-positive-pri);padding:6px 15px;border-radius:100px;opacity:0;animation:rtRise .5s ease .35s forwards}
+.rt-hero{font-size:33px;font-weight:700;color:var(--text-pri);line-height:1.16;letter-spacing:-.5px;margin:18px 0 0;opacity:0;animation:rtRise .6s cubic-bezier(.2,.8,.2,1) .45s forwards}
+.rt-hero .hl{color:var(--bg-brand-focus)}
+.rt-sub{font-size:15px;color:var(--text-sec);margin:14px 0 0;line-height:1.5;max-width:300px;opacity:0;animation:rtRise .55s ease .6s forwards}
+@keyframes rtRise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+.rt-cta{margin:0 20px calc(26px + env(safe-area-inset-bottom));background:var(--bg-brand-focus);color:#fff;border:none;font-size:17px;font-weight:700;padding:17px;border-radius:100px;cursor:pointer;font-family:inherit;position:relative;z-index:3;box-shadow:0 12px 28px rgba(217,0,141,.28);opacity:0;transform:translateY(22px);animation:rtRise .5s ease .8s forwards}
+.rt-cta:active{transform:scale(.985)}
+.fl{position:absolute;z-index:1;opacity:0;animation:flIn .5s ease forwards}
+@keyframes flIn{to{opacity:1}}
+.fl-in{animation:flFloat 3.6s ease-in-out infinite}
+@keyframes flFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.fl-chip{background:#fff;border:1.5px solid var(--stroke-positive);color:var(--text-positive);font-weight:700;font-size:13px;padding:8px 14px;border-radius:100px;box-shadow:0 8px 22px rgba(16,16,33,.12);white-space:nowrap}
+.fl-gift{width:58px;height:58px;border-radius:16px;background:var(--bg-brand-focus);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(217,0,141,.32)}
+.fl-gift svg{width:30px;height:30px}
+.fl-ic{filter:drop-shadow(0 9px 15px rgba(16,16,33,.18))}
+.rt-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.rt-ambient{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+@media (prefers-reduced-motion:reduce){.fl-in{animation:none}}
+  /* the reveal styles were written against the older token names - bridge them */
+  :root{
+    --pink:#D9008D;   --pink-dark:#B00072;  --pink-bg:#FDEBF7;   --pink-border:#D9008D;
+    --green:#008043;  --green-bg:#E6F4EC;   --green-border:#9AD3B4;
+    --amber:#B5730A;  --amber-bg:#FBF1DD;   --amber-border:#E9C983;
+    --ink:#161021;    --ink-2:#3A3346;
+    --muted:#767680;  --muted-2:#A0A0AA;    --line:#ECECEF;
+  }
+  /* रिचार्ज के विकल्प — accordion rows, verbatim from the reviewed build */
+  .opts-h{font-size:20px;font-weight:800;color:var(--ink);margin:2px 2px 0}
+  .opts-sub{font-size:12.5px;color:var(--muted);margin:5px 2px 13px}
+  .opts{display:flex;flex-direction:column;gap:10px;padding-bottom:2px}
+  .opt{border:1.5px solid #EAEAEE;border-radius:16px;background:#fff;overflow:hidden}
+  .oh{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none}
+  .oh::-webkit-details-marker{display:none}
+  .opt .d{font-size:16px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .opt .d small{font-size:12px;font-weight:500;color:var(--muted)}
+  .opt .price{font-size:16px;font-weight:800;color:var(--pink);display:none}
+  .opt .chev2{color:var(--muted-2);font-size:12px}
+  .opt[open]{border-color:var(--pink-border);background:var(--pink-bg)}
+  .opt[open] .chev2{display:none}.opt[open] .price{display:inline}
+  .obody{padding:0 16px 15px;font-size:12.5px;color:var(--ink-2)}
+  .cta.off{background:#E9E9EE;color:#A09AA7;box-shadow:none;pointer-events:none}
+  .rp-empty{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:var(--text-sec);font-size:13.5px;padding:38px 20px;line-height:1.55}
+  .rp-empty .ic{font-size:30px;opacity:.55}
+
+  /* ===== surprise full-screen modal ===== */
+  .sp{position:absolute;inset:0;z-index:26;display:flex;flex-direction:column;overflow:hidden;
+    background:radial-gradient(120% 80% at 50% 18%,#FFE9F6 0%,#FBF3FB 46%,#F3EEF7 100%);opacity:0;animation:spIn .32s ease forwards}
+  .sp.closing{animation:spOut .4s ease forwards}
+  @keyframes spIn{to{opacity:1}}@keyframes spOut{to{opacity:0}}
+  .sp-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.85);border:1px solid var(--stroke-pri);
+    display:flex;align-items:center;justify-content:center;font-size:18px;color:#5a5266;cursor:pointer;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .sp-x:active{transform:scale(.92)}
+  .sp-cap{padding:52px 26px 0;text-align:center;flex:0 0 auto;min-height:70px}
+  .sp-cap .l1{font-size:19px;font-weight:800;color:var(--ink);line-height:1.35;transition:opacity .35s;letter-spacing:-.01em}
+  .sp-cap .l2{font-size:12.5px;color:var(--muted);margin-top:5px;transition:opacity .35s}
+
+  /* stage */
+  .sp-stage{flex:1;position:relative;overflow:hidden}
+  .sp-ground{position:absolute;left:0;right:0;bottom:96px;height:2px;background:linear-gradient(90deg,transparent,rgba(217,0,141,.14) 18%,rgba(217,0,141,.14) 82%,transparent)}
+  .sp-shadow{position:absolute;bottom:88px;left:50%;width:120px;height:16px;border-radius:50%;background:rgba(20,16,33,.12);transform:translateX(-50%) scale(.4);filter:blur(1px);opacity:0}
+
+  /* dog */
+  .dog-unit{position:absolute;bottom:86px;left:50%;width:206px;margin-left:-103px;transform:translateX(-300px);will-change:transform}
+  .dog-unit.walkin{transition:transform 1.5s cubic-bezier(.28,.62,.4,1)}
+  .dog-unit.walkin.here{transform:translateX(0)}
+  .dog-unit.leave{transition:transform 1.3s cubic-bezier(.5,0,.7,1),opacity 1.15s ease}
+  .dog-unit.leave.gone{transform:translateX(320px) scale(.9);opacity:0}
+  .dog-bob{animation:dogTrot .46s ease-in-out infinite}
+  .dog-unit.arrived .dog-bob{animation:dogIdle 2.6s ease-in-out infinite}
+  @keyframes dogTrot{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+  @keyframes dogIdle{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+  .dog-svg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 14px rgba(20,16,33,.14))}
+  .dog-svg .leg{transform-box:fill-box}
+  .dog-svg .leg-a{animation:legA .46s ease-in-out infinite}
+  .dog-svg .leg-b{animation:legB .46s ease-in-out infinite}
+  @keyframes legA{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes legB{0%,100%{transform:translateY(-5px)}50%{transform:translateY(0)}}
+  .dog-unit.arrived .dog-svg .leg-a,.dog-unit.arrived .dog-svg .leg-b{animation-play-state:paused}
+  .dog-head{transform-box:fill-box;transform-origin:center}
+  .dog-unit.bark .dog-head{animation:dogBark .3s ease 2}
+  @keyframes dogBark{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px) scale(1.03)}}
+
+  /* held gift (in paws) */
+  .held-gift{position:absolute;left:50%;bottom:88px;width:52px;height:52px;margin-left:-26px;z-index:3;transform:translateY(0);will-change:transform}
+  .held-gift svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 8px rgba(217,0,141,.28))}
+  .held-gift.drop{transition:transform .55s cubic-bezier(.5,0,.7,1)}
+  .held-gift.drop.down{transform:translateY(46px) rotate(-8deg)}
+
+  /* speech bubble */
+  .sp-woff{position:absolute;left:50%;bottom:196px;transform:translateX(28px) scale(0);transform-origin:bottom left;
+    background:#fff;border:2px solid var(--pink);border-radius:16px;padding:7px 14px;font-size:16px;font-weight:800;color:var(--pink);z-index:5;box-shadow:0 6px 16px rgba(217,0,141,.2)}
+  .sp-woff::after{content:"";position:absolute;bottom:-8px;left:16px;width:12px;height:12px;background:#fff;border-right:2px solid var(--pink);border-bottom:2px solid var(--pink);transform:rotate(45deg)}
+  .sp-woff.show{animation:woffPop .5s cubic-bezier(.34,1.6,.5,1) forwards}
+  @keyframes woffPop{0%{transform:translateX(28px) scale(0)}60%{transform:translateX(28px) scale(1.18)}100%{transform:translateX(28px) scale(1)}}
+  .sp-woff.hide{opacity:0;transition:opacity .25s}
+
+  /* dropped gift on ground */
+  .ground-gift{position:absolute;left:50%;bottom:88px;width:74px;height:74px;margin-left:-37px;z-index:4;opacity:0;transform:translateY(0) scale(.6)}
+  .ground-gift.land{animation:giftLand .5s cubic-bezier(.34,1.5,.5,1) forwards}
+  @keyframes giftLand{0%{opacity:0;transform:translateY(-30px) scale(.6)}70%{opacity:1;transform:translateY(0) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  .ground-gift.wobble{animation:giftWobble .5s ease-in-out 2}
+  @keyframes giftWobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+  .ground-gift .g-lid{position:absolute;top:-2px;left:0;right:0;transform-origin:center bottom;transition:transform .5s cubic-bezier(.34,1.4,.5,1),opacity .5s}
+  .ground-gift.open .g-lid{transform:translateY(-70px) rotate(-24deg);opacity:0}
+  .ground-gift .g-body{position:absolute;bottom:0;left:0;right:0}
+  .ground-gift.open .g-body{animation:giftPuff .4s ease}
+  @keyframes giftPuff{50%{transform:scale(1.08,.92)}}
+  .ground-gift svg{width:100%;display:block}
+
+  /* rays + reward pop */
+  .sp-rays{position:absolute;left:50%;bottom:118px;width:220px;height:220px;margin-left:-110px;transform:translateY(0) scale(.3);opacity:0;z-index:3;
+    background:repeating-conic-gradient(from 0deg,rgba(217,0,141,.18) 0deg 6deg,transparent 6deg 22deg);
+    -webkit-mask:radial-gradient(circle,transparent 30%,#000 34%,#000 60%,transparent 66%);mask:radial-gradient(circle,transparent 30%,#000 34%,#000 60%,transparent 66%)}
+  .sp-rays.go{animation:spRays 1s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes spRays{40%{opacity:1}100%{opacity:.55;transform:translateY(0) scale(1.18) rotate(22deg)}}
+  .sp-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:7}
+
+  .sp-reveal{position:absolute;left:0;right:0;bottom:0;padding:0 22px 26px;display:flex;flex-direction:column;align-items:center;z-index:8;opacity:0;transform:translateY(20px)}
+  .sp-reveal.show{animation:spRise .5s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes spRise{to{opacity:1;transform:translateY(0)}}
+  .sp-token{width:92px;height:92px;border-radius:50%;background:var(--bg-brand-focus);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 32px rgba(217,0,141,.32);position:relative;transform:scale(0)}
+  .sp-token.pop{animation:spTok .66s cubic-bezier(.34,1.56,.5,1) forwards}
+  @keyframes spTok{0%{transform:scale(0) rotate(-20deg)}60%{transform:scale(1.14) rotate(6deg)}100%{transform:scale(1) rotate(0)}}
+  .sp-token svg{width:46px;height:46px}
+  .sp-token .sh{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+  .sp-token .sh::before{content:"";position:absolute;top:-30%;left:-70%;width:42%;height:160%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:rotate(18deg);animation:celeShine 1.2s ease .5s}
+  .sp-big{font-size:26px;font-weight:800;color:var(--pink);margin-top:16px;letter-spacing:-.01em;text-align:center;line-height:1.2}
+  .sp-sub{font-size:13px;color:var(--ink-2);margin-top:7px;text-align:center}
+  .sp-cta{margin-top:18px;width:100%;background:var(--pink);color:#fff;text-align:center;padding:15px;border-radius:13px;font-size:16px;font-weight:800;cursor:pointer;border:none;font-family:inherit}
+  .sp-cta:active{background:var(--pink-dark)}
+
+  /* plan quick-run bar */
+  .demoBar{max-width:560px;width:100%;display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:-4px}
+  .demoLbl{font-size:12px;font-weight:800;color:var(--muted)}
+  .planBtn{border:1.5px solid #E4E4EA;background:#fff;color:var(--ink-2);border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
+  .planBtn:active{transform:scale(.97)}
+  .planBtn.hero{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 5px 14px rgba(0,128,67,.2)}
+
+  .demoBtn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border:none;border-radius:999px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 16px rgba(0,128,67,.22)}
+  .demoBtn:active{transform:scale(.97)}
+
+  /* reveal-style switcher */
+  .styleBar{max-width:520px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:12px;font-weight:800;color:var(--muted)}
+  .styleBtn{border:1.5px solid #E4E4EA;background:#fff;color:var(--ink-2);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
+  .styleBtn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  /* scratch card reveal (Beem style) */
+  .sp.scratch{background:#FCF6FB}
+  .sp.scratch .sp-cap .l1{color:var(--pink);font-size:25px;letter-spacing:-.02em}
+  .sp.scratch .sp-cap .l2{font-size:13px;color:var(--text-sec)}
+  .scratch-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;gap:20px}
+  .scratch-card{position:relative;width:230px;height:230px;border-radius:26px;overflow:hidden;box-shadow:0 20px 46px -12px rgba(217,0,141,.32)}
+  .scratch-base{position:absolute;inset:0;background:linear-gradient(180deg,#FFFFFF,#FFF3FA);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center}
+  .scratch-base .sp-token{width:62px;height:62px;box-shadow:0 10px 24px -6px rgba(217,0,141,.4);transform:none}
+  .scratch-base .sp-token svg{width:32px;height:32px}
+  .sc-big{font-size:24px;font-weight:800;color:var(--pink);letter-spacing:-.02em;line-height:1.12}
+  .scratch-foil{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
+  .scratch-foil:active{cursor:grabbing}
+  .scratch-card.done{animation:scPop .5s cubic-bezier(.34,1.4,.5,1)}
+  @keyframes scPop{0%{transform:scale(1)}45%{transform:scale(1.05)}100%{transform:scale(1)}}
+  .scratch-card.done .scratch-foil{opacity:0;transition:opacity .4s;pointer-events:none}
+  .sc-head{text-align:center}
+  .sc-head .h{font-size:26px;font-weight:800;color:var(--pink);letter-spacing:-.02em}
+  .sc-head .s{font-size:13px;color:var(--text-sec);margin-top:4px}
+  .sc-hint{font-size:15px;font-weight:800;color:var(--ink);text-align:center;line-height:1.4}
+  .sc-note{font-size:12.5px;color:var(--muted);text-align:center;line-height:1.5;max-width:250px;margin-top:-10px}
+  .scratch-cta-wrap{padding:16px 26px 28px;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+  .scratch-cta-wrap .sp-cta{max-width:300px}
+
+  /* gift box → success coupon (Swiggy style) */
+  .sp.giftbox{background:#FCF6FB}
+  .gb-stage{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 24px;overflow-y:auto}
+  .gb-box{position:relative;width:150px;height:150px;cursor:pointer;z-index:2;animation:gbShake 1.7s ease-in-out infinite;filter:drop-shadow(0 14px 20px rgba(217,0,141,.2))}
+  @keyframes gbShake{0%,86%,100%{transform:rotate(0)}90%{transform:rotate(-6deg)}94%{transform:rotate(6deg)}}
+  .gb-box .gb-body{position:absolute;bottom:0;left:14px;right:14px}
+  .gb-box .gb-lid{position:absolute;top:6px;left:0;right:0;transform-origin:center bottom;transition:transform .5s cubic-bezier(.34,1.4,.5,1),opacity .5s}
+  .gb-box svg{width:100%;display:block}
+  .gb-box.open{animation:none}
+  .gb-box.open .gb-lid{transform:translateY(-96px) rotate(-22deg);opacity:0}
+  .gb-hint{position:absolute;top:calc(50% + 96px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:13px;font-weight:800;color:var(--muted);z-index:2}
+  .gc{width:100%;max-width:300px;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transform:translateY(18px)}
+  .gc.show{animation:spRise .5s cubic-bezier(.2,.8,.2,1) forwards}
+  .gc-seal{width:60px;height:60px;filter:drop-shadow(0 6px 12px rgba(0,161,90,.28))}
+  .gc-title{font-size:22px;font-weight:800;color:var(--ink);margin-top:14px;letter-spacing:-.02em}
+  .gc-sub{font-size:13px;color:var(--text-sec);margin-top:5px;line-height:1.45}
+  .gc-illus{position:relative;margin:16px 0 8px;display:flex;align-items:center;justify-content:center}
+  .gc-illus::before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(217,0,141,.12),transparent 62%);z-index:0}
+  .gc-illus .sp-token{position:relative;z-index:1;width:120px;height:112px;background:none;box-shadow:none;border-radius:0;transform:none}
+  .gc-illus .sp-token svg{width:120px;height:112px}
+  .gc-coupon{position:relative;width:100%;background:#fff;border:1px solid #F1E7F2;border-radius:18px;padding:18px;box-shadow:0 14px 30px -10px rgba(20,16,33,.14)}
+  .gc-row{display:flex;align-items:center;justify-content:center;gap:12px}
+  .gc-brand{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;color:var(--ink)}
+  .gc-logo{width:26px;height:26px;border-radius:8px;background:var(--pink);display:flex;align-items:center;justify-content:center;flex:none}
+  .gc-logo svg{width:17px;height:17px}
+  .gc-arrow{color:#CDBBD1;font-weight:800;font-size:16px}
+  .gc-amt{font-size:18px;font-weight:800;color:var(--pink);letter-spacing:-.02em}
+  .gc-perf{position:relative;border-top:2px dashed #ECDDEE;margin:16px -4px}
+  .gc-perf::before,.gc-perf::after{content:"";position:absolute;top:-11px;width:22px;height:22px;border-radius:50%;background:#FCF6FB}
+  .gc-perf::before{left:-25px}.gc-perf::after{right:-25px}
+  .gc-status{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;color:var(--green)}
+  .gc-status svg{width:15px;height:15px;flex:none}
+  .gc-foot{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5;padding:0 8px}
+
+  /* kite reveal */
+  .sp.kitesp{background:radial-gradient(120% 82% at 50% 12%,#E9F3FF 0%,#F1ECFA 52%,#FBF3FB 100%)}
+  .kite-stage{flex:1;position:relative;overflow:hidden}
+  .kite{position:absolute;width:56px;height:106px;margin-left:-28px;transform:translateY(160%);opacity:0;will-change:transform,opacity;z-index:2}
+  .kite.up{animation:kiteRise 1s cubic-bezier(.2,.82,.3,1) forwards}
+  @keyframes kiteRise{0%{transform:translateY(160%);opacity:0}55%{opacity:1}100%{transform:translateY(0);opacity:1}}
+  .kite .kwrap{transform-origin:top center;animation:kiteSway 3.2s ease-in-out infinite}
+  @keyframes kiteSway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+  .kite svg{width:100%;display:block;filter:drop-shadow(0 6px 10px rgba(20,16,33,.16))}
+  .kite-greet{position:absolute;left:0;right:0;top:244px;text-align:center;opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease;padding:0 30px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .kite-greet.show{opacity:1;transform:translateY(0)}
+  .kite-greet .kg1{font-family:"Tiro Devanagari Hindi","Noto Sans Devanagari",serif;font-size:12.5px;font-weight:400;color:#E0770A;letter-spacing:.06em}
+  .kite-greet .kg2{font-family:"Yatra One","Noto Sans Devanagari",cursive;font-size:19px;color:#12813C;line-height:1.25;letter-spacing:.01em}
+  .kite-greet .kg2 .fl{-webkit-text-fill-color:initial}
+  .ci-bub .ci-bcta{margin-top:10px;border-top:1px solid rgba(20,16,33,.1);padding-top:11px;text-align:center;color:var(--text-brand,#d9008d);font-weight:800;font-size:14.5px;cursor:pointer}
+  .ci-rauto{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:11px;font-weight:800;padding:5px 11px;border-radius:12px;background:#FFF4DA;color:#B26A00;border:1px solid #F2D9A6;line-height:1.3}
+  .ci-rpend{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:11px;font-weight:800;padding:5px 11px;border-radius:12px;background:#FDEFF8;color:#d9008d;border:1px solid #F7CDE8;line-height:1.3}
+  /* 14 + 14 offer hero (recharge detail) */
+  .offhero{margin-top:8px;border:1.5px solid var(--stroke-positive);border-radius:16px;overflow:hidden;background:var(--bg-positive-pri)}
+  .offhero-body{padding:16px 16px 18px;display:flex;flex-direction:column;align-items:center;gap:13px}
+  .offhero-pill{background:var(--text-positive);color:#fff;border-radius:999px;padding:8px 18px;font-size:14px;font-weight:800}
+  .offhero-sum{display:flex;align-items:stretch;gap:11px;width:100%}
+  .offhero-box{flex:1;background:#fff;border:1.5px solid transparent;border-radius:12px;padding:12px 8px;text-align:center}
+  .offhero-box .n{font-size:20px;font-weight:800;color:var(--text-pri,#352d42);line-height:1.2}
+  .offhero-box .l{font-size:12.5px;color:var(--text-sec);margin-top:3px}
+  .offhero-box.free{border-color:var(--stroke-positive)}
+  .offhero-box.free .n,.offhero-box.free .l{color:var(--text-positive)}
+  .offhero-plus{align-self:center;font-size:19px;font-weight:800;color:var(--text-sec)}
+  .offhero-price{font-size:17px;color:var(--text-pri,#352d42)}.offhero-price b{font-weight:800}
+  .offhero-foot{background:var(--text-positive);color:#fff;text-align:center;padding:13px 14px;font-size:14.5px;font-weight:800}
+  /* offer badge + 14→28 doubling card (plan page) */
+  .badge{font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;vertical-align:middle}
+  .b-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+  .badge.shine{position:relative;overflow:hidden}
+  .badge.shine::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:badgeShine 3s ease-in-out infinite}
+  @keyframes badgeShine{0%{left:-60%}55%,100%{left:135%}}
+  @media (prefers-reduced-motion:reduce){.badge.shine::after{animation:none;display:none}}
+  .v6wrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;border:1px solid #F1DCE5;border-radius:13px;padding:12px 14px}
+  .v6row{display:flex;align-items:center;gap:12px}
+  .v6-old{position:relative;font-size:24px;font-weight:800;color:var(--muted-2)}
+  .v6-old::after{content:"";position:absolute;left:-4px;right:-4px;top:46%;height:3px;background:var(--ink);border-radius:2px;transform:scaleX(0);transform-origin:left}
+  .opt[open] .v6-old::after{animation:v6strike .45s .2s forwards ease-out}
+  @keyframes v6strike{to{transform:scaleX(1)}}
+  .v6-arrow{width:34px;height:34px;border-radius:50%;background:var(--green-bg);border:1px solid var(--green-border);color:var(--green);display:inline-flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;opacity:0;align-self:center}
+  .v6-new{font-size:27px;font-weight:800;color:var(--green);letter-spacing:-.01em;opacity:0}
+  .opt[open] .v6-arrow,.opt[open] .v6-new{animation:v6pop .4s .55s forwards ease-out}
+  @keyframes v6pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+  .v6note{font-size:12px;color:var(--muted);text-align:center;line-height:1.45}.v6note b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){
+    .v6-old::after{transform:scaleX(1)}.v6-arrow,.v6-new{opacity:1}
+    .opt[open] .v6-old::after,.opt[open] .v6-arrow,.opt[open] .v6-new{animation:none}
+  }
+  /* reveal-style switcher + plan quick-run, in the side panel */
+  .lab{font-size:11px;font-weight:800;color:#8a8496;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 6px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip2{border:1.5px solid #3a3546;background:transparent;color:#d8d3e0;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit}
+  .chip2.on{background:#fff;border-color:#fff;color:#1a1620}
+  .chip2.hero{border-color:#2f9e6b;color:#8fe0ba}
+  .chip2.hero.on{background:#2f9e6b;border-color:#2f9e6b;color:#fff}
+
+  /* ═══════════════════════════════════════════════════════════
+     v2 · ज़ीरो-चार्ज · ऑफर · भुगतान · दिन
+     ═══════════════════════════════════════════════════════════ */
+  .eduhead{text-align:center;margin-top:4px}
+  .eduhead h2{font-size:23px;line-height:31px;font-weight:800;letter-spacing:-.2px}
+  .eduhead p{font-size:14px;line-height:21px;color:var(--text-sec);margin-top:8px}
+  .bluehl{color:#1461cc}
+
+  /* ── ज़ीरो-चार्ज कार्ड ── */
+  .zc{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;overflow:hidden}
+  .zc-head{background:var(--purple-soft);color:var(--purple);text-align:center;font-size:13.5px;font-weight:700;padding:11px 12px}
+  .zc-rows{padding:2px 16px 14px}
+  .zc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px dashed #e4dfee}
+  .zc-row .k{font-size:14.5px;line-height:20px;color:var(--text-pri)}
+  .zc-row .v{font-size:15px;font-weight:700;color:var(--text-positive)}
+  .zc-row.total{border-bottom:none;border-top:1.5px solid var(--stroke-pri);margin-top:2px;padding-top:15px}
+  .zc-row.total .k{font-size:16px;font-weight:800}
+  .zc-row.total .v{font-size:18px;font-weight:800}
+  .zc-note{display:flex;gap:8px;align-items:flex-start;margin-top:14px;padding:0 2px;font-size:12.5px;line-height:18px;color:var(--text-sec)}
+  .zc-note svg{flex:none;margin-top:1px}
+
+  /* ── prices bottom sheet ── */
+  .psheet-scrim{position:absolute;inset:0;z-index:45;background:rgba(22,16,33,.45);display:flex;align-items:flex-end;animation:shFade .2s ease both}
+  @keyframes shFade{from{opacity:0}to{opacity:1}}
+  .psheet{width:100%;background:#fff;border-radius:22px 22px 0 0;padding:14px 16px 20px;animation:shUp .32s var(--ease) both}
+  @keyframes shUp{from{transform:translateY(100%)}to{transform:none}}
+  .psheet-grab{width:38px;height:4px;border-radius:2px;background:#e2ddec;margin:0 auto 14px}
+  .psheet h3{font-size:18px;line-height:25px;font-weight:700}
+  .psheet .sub{font-size:12.5px;line-height:18px;color:var(--text-sec);margin-top:4px}
+  .prow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 2px;border-bottom:1px dashed #e4dfee}
+  .prow:last-of-type{border-bottom:none}
+  .prow .d{font-size:15px;font-weight:600}
+  .prow .pd{font-size:11.5px;color:var(--text-ter);margin-left:6px;font-weight:400}
+  .prow .p{font-size:16px;font-weight:800}
+
+  /* ── ऑफर स्क्रीन ── */
+  .of-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
+  .of-eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);color:var(--text-positive);font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:100px}
+  .of-list{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+  .ofc{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;padding:14px 16px;opacity:0;transform:translateY(16px) scale(.97)}
+  .ofc.show{animation:ofIn .52s var(--ease) forwards}
+  @keyframes ofIn{to{opacity:1;transform:none}}
+  .ofc .n{font-size:20px;line-height:26px;font-weight:800;letter-spacing:-.2px}
+  .ofc .l{font-size:11.5px;line-height:15px;color:var(--text-ter);margin-top:2px}
+  .ofc .free{margin-left:auto;background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);color:var(--text-positive);border-radius:100px;padding:8px 14px;font-size:14.5px;font-weight:800;white-space:nowrap}
+  .of-sep{border:none;border-top:1.5px dashed #ddd6e8;margin:20px 0 0;opacity:0}
+  .of-foot{margin-top:14px;display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:19px;color:var(--text-sec);opacity:0}
+  .of-sep.show,.of-foot.show{animation:fadeUp .5s var(--ease) forwards}
+  .of-foot b{color:var(--text-pri);font-weight:700}
+  .cta-sub{font-size:11.5px;line-height:16.5px;color:var(--text-ter);text-align:center;margin-top:10px;padding:0 4px}
+
+  /* ── पेमेंट पेज रीडायरेक्ट ── */
+  .pr{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:#fff}
+  .pr-mark{animation:pulse 1.5s ease-in-out infinite}
+  .pr-txt{font-size:15px;line-height:22px;color:var(--text-sec);text-align:center;padding:0 40px}
+
+  /* ── UPI ऐप चुनें (PG) ── */
+  .pg-bar{flex:0 0 auto;background:var(--bg-brand-focus);color:#fff;display:flex;align-items:center;gap:16px;padding:14px 16px;font-size:15px;font-weight:600}
+  .pg-sum{padding:13px 16px;border-bottom:8px solid #f1eff5}
+  .pg-sum .t{font-size:13.5px;font-weight:700}
+  .pg-sum .d{font-size:10.5px;line-height:14px;color:var(--text-ter);margin-top:4px}
+  .pg-sum .a{font-size:15px;font-weight:800}
+  .pg-h{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--text-ter);padding:15px 16px 9px;text-transform:uppercase}
+  .pg-apps{display:flex;gap:8px;padding:0 16px 14px}
+  .pg-app{flex:1;text-align:center;cursor:pointer}
+  .pg-ic{width:44px;height:44px;margin:0 auto;border-radius:12px;border:1px solid var(--stroke-pri);background:#fff;display:grid;place-items:center;font-size:16px;font-weight:800}
+  .pg-app:active .pg-ic{background:#f6f3fa}
+  .pg-app .nm{font-size:9px;line-height:12px;color:var(--text-sec);margin-top:6px}
+  .pg-link{color:var(--text-brand);font-size:12.5px;font-weight:600;padding:0 16px 15px;cursor:pointer}
+  .pg-w{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--stroke-pri);cursor:pointer;font-size:14px}
+  .pg-w .wic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800;flex:none}
+  .pg-w .r{margin-left:auto;width:18px;height:18px;border-radius:50%;border:1.6px solid #c8c2d4;flex:none}
+
+  /* ── UPI intent ── */
+  .ui{flex:1;display:flex;flex-direction:column;background:#f1eff5;padding:10px}
+  .ui-card{flex:1;background:#fff;border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .ui-logo{width:52px;height:52px;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center;margin-top:6px}
+  .ui-vpa{font-size:12.5px;color:var(--text-ter);margin-top:8px}
+  .ui-lbl{font-size:12.5px;color:var(--text-sec);margin-top:24px}
+  .ui-amt{font-size:34px;line-height:44px;font-weight:800;letter-spacing:-.5px}
+  .ui-words{font-size:11px;color:var(--text-ter);margin-top:2px}
+  .ui-chip{margin-top:14px;background:#f1eff5;color:var(--text-sec);font-size:12px;font-weight:600;padding:7px 16px;border-radius:100px}
+  .ui-src{width:100%;margin-top:auto;display:flex;align-items:center;gap:10px;text-align:left;border-top:1px solid var(--stroke-pri);padding-top:14px}
+  .ui-src .bk{width:30px;height:30px;border-radius:50%;background:#1461cc;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800;flex:none}
+  .ui-src .l1{font-size:10.5px;color:var(--text-ter)}
+  .ui-src .l2{font-size:13px;font-weight:600}
+  .ui-src .l3{font-size:11px;color:#0aa1e0;font-weight:600;margin-top:1px}
+  .ui-pay{width:100%;margin-top:12px;background:#0aa1e0;color:#fff;border:none;border-radius:10px;padding:14px;font:700 15px/22px inherit;font-family:inherit;cursor:pointer}
+  .ui-pay:active{transform:scale(.99)}
+
+  /* ── UPI PIN ── */
+  .up{flex:1;display:flex;flex-direction:column;background:#e9e7ee}
+  .up-cancel{padding:12px 16px;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:#555;cursor:pointer}
+  .up-bank{background:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2ddec}
+  .up-bank .b1x{font-size:12px;color:#555}
+  .up-bank .b2x{font-size:13px;font-weight:700;letter-spacing:.04em}
+  .up-to{background:#fff;padding:10px 16px;border-bottom:1px solid #e2ddec}
+  .up-to .r{display:flex;justify-content:space-between;font-size:12.5px;padding:2px 0}
+  .up-to .r b{font-weight:700}
+  .up-body{background:#fff;flex:1;display:flex;flex-direction:column;align-items:center;padding:26px 16px 0}
+  .up-t{font-size:12.5px;letter-spacing:.05em;color:#555;font-weight:600}
+  .up-dots{display:flex;gap:15px;margin:22px 0 auto}
+  .up-dot{width:15px;height:15px;border-radius:50%;border:1.6px solid #999}
+  .up-dot.on{background:#444;border-color:#444}
+  .up-warn{width:100%;background:#fff8e1;border:1px solid #f0d68a;border-radius:6px;padding:9px 11px;display:flex;gap:8px;font-size:10.5px;line-height:15px;color:#6b5a20;margin-bottom:12px}
+  .up-keys{flex:0 0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#cfcbd6;border-top:1px solid #cfcbd6}
+  .up-key{background:#fff;padding:12px;text-align:center;font-size:20px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .up-key:active{background:#eee}
+  .up-key.act{font-size:12px;font-weight:700;letter-spacing:.05em;display:grid;place-items:center}
+
+  /* ── बुकिंग कन्फर्म ── */
+  .bk-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
+  /* ── दिन कन्फर्म ── */
+  .slotdone{display:none}
+
+  /* ═══ मोबाइल व्यू — रेल/साइड पैनल हटाकर फ़ोन पूरा स्क्रीन ═══ */
+  @media (max-width:900px){
+    html,body{height:100%;overflow:hidden}
+    body{background:var(--bg-surface);display:block}
+    .rail,.side{display:none}
+    .stage{padding:0;gap:0;height:100dvh;display:block}
+    .phone{
+      width:100%;height:100dvh;flex:none;border-radius:0;box-shadow:none;
+      max-width:none;
+    }
+    .mnav{display:flex}
+  }
+  /* floating prev/next for mobile */
+  .mnav{display:none;position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:80;gap:8px}
+  .mnav button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(22,16,33,.42);color:#fff;font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px)}
+  .mnav button:active{background:rgba(22,16,33,.62)}
+</style>
+</head>
+<body>
+
+<aside class="rail">
+  <h1>Wiom · Journey v2</h1>
+  <div class="sub">ऑफर → ₹25 एडवांस → दिन चुनें · v2</div>
+  <div id="railList"></div>
+</aside>
+
+<main class="stage">
+  <div class="phone" id="phone">
+
+    <!-- 1 · SPLASH -->
+    <section class="screen" data-s="splash">
+      <div class="splash">
+        <div class="mark">
+          <svg width="132" height="50" viewBox="0 0 120 46" fill="none">
+            <path d="M8 30c0-9 6-15 13-15s11 5 13 11c2 6 6 11 13 11s13-6 13-15" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <path d="M60 22c0 9 6 15 13 15s11-5 13-11c2-6 6-11 13-11s13 6 13 15" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+          </svg>
+          <div class="center" style="letter-spacing:.22em;font-size:19px;font-weight:800;margin-top:12px;color:#fff">व्योम</div>
+        </div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+      </div>
+    </section>
+
+    <!-- 1b · INDEX — choose Option A / Option B -->
+    <!-- 1 · LANDING -->
+
+    <section class="screen" data-s="landing">
+      <div class="land mode-a">
+        <div class="statusbar" data-sb></div>
+
+        <!-- ══ Variant A · inline number entry ══ -->
+        <div class="variant-a">
+          <div class="fig-bar">
+            <span class="fig-lang">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 5h9M8 3v2M6 5c0 5 3.5 8 6 9M11 5c0 4-4 8-8 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20l4-9 4 9M14.5 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="fig-hero">
+            <h1 class="fig-h rv d1">रिचार्ज वाला घर का नेट</h1>
+            <p class="fig-sub rv d1">जब चाहिए, तब रिचार्ज।</p>
+            <div class="fig-illu rv d2" style="margin:26px 0 22px">
+              <svg width="164" height="164" viewBox="0 0 200 200" fill="none">
+                <ellipse cx="100" cy="184" rx="90" ry="13" fill="#e5f2ff"/>
+                <g>
+                  <rect x="46" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="82" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="118" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="146" y="14" width="8" height="30" rx="4" fill="#1461cc"/>
+                  <circle cx="50" cy="18" r="9" fill="#cce5ff"/><circle cx="86" cy="18" r="9" fill="#cce5ff"/><circle cx="122" cy="18" r="9" fill="#cce5ff"/><circle cx="150" cy="18" r="9" fill="#cce5ff"/>
+                  <circle cx="50" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="86" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="122" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="150" cy="18" r="4.5" fill="#eaf4ff"/>
+                </g>
+                <rect x="20" y="32" width="160" height="150" rx="16" fill="#1461cc"/>
+                <rect x="34" y="66" width="132" height="102" rx="8" fill="#fff"/>
+                <g stroke="#cce5ff" stroke-width="2">
+                  <line x1="67" y1="70" x2="67" y2="164"/><line x1="100" y1="70" x2="100" y2="164"/><line x1="133" y1="70" x2="133" y2="164"/>
+                  <line x1="38" y1="100" x2="162" y2="100"/><line x1="38" y1="134" x2="162" y2="134"/>
+                </g>
+                <circle cx="50" cy="83" r="5.5" fill="#b2d9ff"/>
+                <path d="M78 84l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M111 79l10 10M121 79l-10 10" stroke="#161021" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="149" cy="83" r="5.5" fill="#b2d9ff"/>
+                <path d="M45 113l10 10M55 113l-10 10" stroke="#161021" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M78 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M111 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M144 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="50" y="157" font-size="20" fill="#008043" text-anchor="middle" font-family="Noto Sans" font-weight="800">₹</text>
+                <circle cx="83" cy="151" r="5.5" fill="#b2d9ff"/><circle cx="116" cy="151" r="5.5" fill="#b2d9ff"/>
+                <circle cx="176" cy="24" r="14" fill="#faf9fc" stroke="#d7d3e0" stroke-width="1.5"/>
+                <circle cx="176" cy="24" r="8.5" fill="none" stroke="#9aa3b2" stroke-width="1.2"/>
+                <path d="M176 19.5v4.8l3 1.8" stroke="#8a94a6" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fig-pill rv d3">₹23/दिन से शुरू</div>
+          </div>
+          <div class="fig-foot">
+            <div class="le-label" style="text-align:center;margin-bottom:10px">शुरू करने के लिए अपना नंबर डालें</div>
+            <div class="phonefield" style="margin-top:0">
+              <span class="cc">
+                <span class="flag"><svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#ff9933"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><rect y="10.67" width="24" height="5.33" fill="#138808"/><circle cx="12" cy="8" r="1.7" fill="none" stroke="#008" stroke-width=".5"/></svg></span>
+                +91
+              </span>
+              <input id="inPhone" inputmode="numeric" maxlength="10" placeholder="मोबाइल नंबर">
+            </div>
+            <button class="cta" id="phoneCta" style="display:none;margin-top:18px">OTP भेजें</button>
+          </div>
+        </div>
+
+        <!-- ══ Variant B · two-CTA landing — Figma 80:1603 ══ -->
+        <div class="variant-b">
+          <div class="fig-bar">
+            <span class="fig-lang">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 5h9M8 3v2M6 5c0 5 3.5 8 6 9M11 5c0 4-4 8-8 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20l4-9 4 9M14.5 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+          <div class="fig-hero">
+            <h1 class="fig-h rv d1">रिचार्ज वाला घर का नेट</h1>
+            <p class="fig-sub rv d1">जब चाहिए, तब रिचार्ज।</p>
+            <div class="fig-illu rv d2">
+              <svg width="196" height="196" viewBox="0 0 200 200" fill="none">
+                <ellipse cx="100" cy="184" rx="90" ry="13" fill="#e5f2ff"/>
+                <g>
+                  <rect x="46" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="82" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="118" y="14" width="8" height="30" rx="4" fill="#1461cc"/><rect x="146" y="14" width="8" height="30" rx="4" fill="#1461cc"/>
+                  <circle cx="50" cy="18" r="9" fill="#cce5ff"/><circle cx="86" cy="18" r="9" fill="#cce5ff"/><circle cx="122" cy="18" r="9" fill="#cce5ff"/><circle cx="150" cy="18" r="9" fill="#cce5ff"/>
+                  <circle cx="50" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="86" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="122" cy="18" r="4.5" fill="#eaf4ff"/><circle cx="150" cy="18" r="4.5" fill="#eaf4ff"/>
+                </g>
+                <rect x="20" y="32" width="160" height="150" rx="16" fill="#1461cc"/>
+                <rect x="34" y="66" width="132" height="102" rx="8" fill="#fff"/>
+                <g stroke="#cce5ff" stroke-width="2">
+                  <line x1="67" y1="70" x2="67" y2="164"/><line x1="100" y1="70" x2="100" y2="164"/><line x1="133" y1="70" x2="133" y2="164"/>
+                  <line x1="38" y1="100" x2="162" y2="100"/><line x1="38" y1="134" x2="162" y2="134"/>
+                </g>
+                <circle cx="50" cy="83" r="5.5" fill="#b2d9ff"/>
+                <path d="M78 84l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M111 79l10 10M121 79l-10 10" stroke="#161021" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="149" cy="83" r="5.5" fill="#b2d9ff"/>
+                <path d="M45 113l10 10M55 113l-10 10" stroke="#161021" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M78 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M111 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M144 118l3.5 3.5 7-8" stroke="#1461cc" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="50" y="157" font-size="20" fill="#008043" text-anchor="middle" font-family="Noto Sans" font-weight="800">₹</text>
+                <circle cx="83" cy="151" r="5.5" fill="#b2d9ff"/><circle cx="116" cy="151" r="5.5" fill="#b2d9ff"/>
+                <circle cx="176" cy="24" r="14" fill="#faf9fc" stroke="#d7d3e0" stroke-width="1.5"/>
+                <circle cx="176" cy="24" r="8.5" fill="none" stroke="#9aa3b2" stroke-width="1.2"/>
+                <path d="M176 19.5v4.8l3 1.8" stroke="#8a94a6" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fig-pill rv d3">₹23/दिन से शुरू</div>
+          </div>
+          <div class="fig-foot">
+            <button class="cta" id="startB">नया कनेक्शन लें</button>
+            <div class="fig-login" id="loginB">पहले से व्योम लगा हुआ है<span class="cp">›</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2b · PHONE — dedicated number screen (entry Option B) -->
+    <section class="screen" data-s="phone">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row">
+        <div class="appbar-icon" id="phoneBack"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="spacer"></div>
+        <span class="fig-lang" style="width:38px;height:38px;margin-right:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h9M8 3v2M6 5c0 5 3.5 8 6 9M11 5c0 4-4 8-8 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20l4-9 4 9M14.5 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div></div>
+      <div class="content">
+        <h1 class="t2 rv d1" style="margin-top:4px">अपना नंबर डालें</h1>
+        <p class="b1 sec mt8 rv d1">इसी नंबर पर OTP आएगा — 2 मिनट में नेट बुक।</p>
+        <div class="phonefield rv d2" style="margin-top:24px">
+          <span class="cc">
+            <span class="flag"><svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#ff9933"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><rect y="10.67" width="24" height="5.33" fill="#138808"/><circle cx="12" cy="8" r="1.7" fill="none" stroke="#008" stroke-width=".5"/></svg></span>
+            +91
+          </span>
+          <input id="inPhone2" inputmode="numeric" maxlength="10" placeholder="मोबाइल नंबर">
+        </div>
+        <div class="secline rv d2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+          आपका नंबर सुरक्षित है — किसी और को नहीं दिखेगा
+        </div>
+      </div>
+      <div class="actions">
+        <button class="cta" id="phoneCta2" style="display:none">OTP भेजें</button>
+        <div class="tiny-legal">आगे बढ़ने पर आप <u>नियम और शर्तों</u> से सहमत होते हैं</div>
+      </div>
+    </section>
+
+    <!-- 3 · OTP -->
+    <section class="screen" data-s="otp">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-otp-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="content">
+        <div class="otp-wrap">
+          <h2 class="t2 center">OTP डालें</h2>
+          <div class="otp-num"><span id="otpNum">+91 98765 43210</span> पर भेजा · <span class="edit" data-otp-back>बदलें</span></div>
+          <div class="newbadge" id="newBadge">🎉 नया नंबर — व्योम में आपका स्वागत है</div>
+          <div class="otp-boxes" id="otpBoxes">
+            <input inputmode="numeric" maxlength="1">
+            <input inputmode="numeric" maxlength="1">
+            <input inputmode="numeric" maxlength="1">
+            <input inputmode="numeric" maxlength="1">
+          </div>
+          <div class="otp-resend" id="otpResend">OTP दुबारा भेजें — <b id="resendT">00:18</b></div>
+          <div class="otp-hint">डेमो: कोई भी 4 अंक डालें — अपने-आप वेरिफ़ाई होगा</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · LOCATION PERMISSION -->
+    <section class="screen" data-s="permission">
+      <div class="perm-scrim">
+        <div class="perm">
+          <svg width="22" height="22" viewBox="0 0 24 24" style="margin:0 auto"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" fill="none" stroke="#0b57d0" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#0b57d0"/></svg>
+          <div style="font-size:16px;line-height:23px;font-weight:500;margin-top:12px">Allow <b>Wiom</b> to access this device's precise location?</div>
+          <div style="display:flex;gap:16px;margin:16px 0 4px;justify-content:center">
+            <div><div class="perm-map"><svg width="58" height="58" viewBox="0 0 60 60"><g stroke="#c9cdd4" stroke-width="1"><path d="M0 15h60M0 30h60M0 45h60M15 0v60M30 0v60M45 0v60"/></g><path d="M30 20a6 6 0 00-6 6c0 4.5 6 11 6 11s6-6.5 6-11a6 6 0 00-6-6z" fill="#0b57d0"/><circle cx="30" cy="26" r="2.2" fill="#fff"/></svg></div><div style="font-size:11px;font-weight:600;margin-top:7px">Precise</div></div>
+            <div><div class="perm-map sq"><svg width="70" height="58" viewBox="0 0 72 60"><g stroke="#f4b400" stroke-width="1.6" fill="none"><path d="M4 12c10 4 18 0 26 8s14 6 24 2"/><path d="M10 46c8-6 16-2 22-10s16-4 26-2"/><path d="M22 2v56M48 4v52"/></g><circle cx="26" cy="30" r="4" fill="#ea4335" opacity=".7"/><circle cx="44" cy="40" r="4" fill="#0b57d0" opacity=".7"/></svg></div><div style="font-size:11px;font-weight:600;margin-top:7px">Approximate</div></div>
+          </div>
+          <div class="perm-opt" data-go="checking">Allow only while using the app</div>
+          <div class="perm-opt" data-go="checking">Only this time</div>
+          <div class="perm-opt" style="background:#e9e7ee;color:#444" data-back>Don't allow</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · CHECKING -->
+    <section class="screen" data-s="checking">
+      <div class="statusbar" data-sb></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding-bottom:80px">
+        <svg width="90" height="90" viewBox="0 0 90 90" fill="none" class="house-check">
+          <path d="M14 42L45 16l31 26" stroke="#352d42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/>
+          <path d="M22 40v30h46V40" stroke="#352d42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/>
+          <rect x="38" y="52" width="14" height="18" stroke="#352d42" stroke-width="2.5" stroke-dasharray="4 4"/>
+        </svg>
+        <p class="b1">आपकी जगह पर नेट चेक कर रहे हैं…</p>
+        <div class="bar-track" style="background:var(--stroke-pri)"><div class="bar-fill" style="background:var(--bg-brand-focus)"></div></div>
+      </div>
+    </section>
+
+    <!-- 6 · SERVICEABLE -->
+    <section class="screen" data-s="serviceable">
+      <div class="statusbar" data-sb></div>
+      <div class="content" style="display:flex;flex-direction:column;align-items:center;padding-top:24px">
+        <svg class="rv d1" width="112" height="104" viewBox="0 0 112 104" fill="none">
+          <path d="M18 50L56 20l38 30" stroke="#161021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 47v40h56V47" stroke="#161021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="47" y="64" width="18" height="23" rx="9" stroke="#161021" stroke-width="2.5"/>
+          <path d="M56 20V4" stroke="#161021" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M57 4h22l-6 8 6 8H57z" fill="#008043" stroke="#161021" stroke-width="2"/>
+        </svg>
+        <div class="pill pos rv d1" style="margin-top:18px">✓ आपके इलाके में सर्विस उपलब्ध है</div>
+        <div class="addrcard rv d2" style="margin-top:20px">
+          <div class="ar-top">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#665e75" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#665e75"/></svg>
+            <span class="ar-name">Rajiv Colony</span>
+          </div>
+          <div class="ar-full">Gali No. 2, Rajiv Colony, Sector 33, Gurugram, Haryana 122001</div>
+        </div>
+        <h2 class="t2 center rv d2" style="margin-top:20px">यहाँ घर का नेट लग सकता है</h2>
+        <div class="center rv d3" style="margin-top:14px"><span class="linkrow" style="color:var(--text-brand);font-weight:600">किसी और जगह के लिए चेक करें <span class="chev">›</span></span></div>
+      </div>
+      <div class="actions"><button class="cta" id="svcCta">आगे बढ़ें ›</button></div>
+    </section>
+
+    <!-- 7 · EDUCATION 1 -->
+    <section class="screen" data-s="edu1">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="content">
+        <div class="eduhead rv d1">
+          <h2>घर में एक नेट बॉक्स लगता है</h2>
+          <p>उसी से घर के सभी लोग नेट चलाते हैं।</p>
+        </div>
+        <svg class="scene rv d2" viewBox="0 0 300 178" fill="none" style="margin-top:16px">
+          <circle cx="150" cy="60" r="50" stroke="#cce5ff" stroke-width="2"/>
+          <circle cx="150" cy="60" r="74" stroke="#e5f2ff" stroke-width="2"/>
+          <path d="M150 84C132 104 92 108 54 124" stroke="#b2d9ff" stroke-width="2" stroke-dasharray="3 4"/>
+          <path d="M150 84L150 118" stroke="#b2d9ff" stroke-width="2" stroke-dasharray="3 4"/>
+          <path d="M150 84C168 104 208 108 246 124" stroke="#b2d9ff" stroke-width="2" stroke-dasharray="3 4"/>
+          <g fill="#1461cc"><rect x="139" y="40" width="6.5" height="11" rx="1.8"/><rect x="147.5" y="33" width="6.5" height="18" rx="1.8"/><rect x="156" y="26" width="6.5" height="25" rx="1.8"/></g>
+          <rect x="125" y="60" width="50" height="17" rx="6" fill="#1461cc"/>
+          <rect x="129" y="55" width="42" height="11" rx="5.5" fill="#8fbdf2"/>
+          <rect x="34" y="122" width="40" height="25" rx="2" fill="#fff" stroke="#161021" stroke-width="2"/>
+          <rect x="28" y="148" width="52" height="4" rx="2" fill="#161021"/>
+          <rect x="140" y="118" width="20" height="34" rx="3.5" fill="#fff" stroke="#161021" stroke-width="2"/>
+          <rect x="222" y="120" width="50" height="30" rx="2" fill="#fff" stroke="#161021" stroke-width="2"/>
+          <g font-size="9.5" fill="#898296" text-anchor="middle" font-family="Noto Sans"><text x="54" y="166">लैपटॉप</text><text x="150" y="166">मोबाईल</text><text x="247" y="166">टीवी</text></g>
+        </svg>
+        <div class="statwide rv d3" style="margin-top:18px"><div class="v" style="color:var(--text-pri)">पूरा घर</div><div class="l">मोबाइल, TV, लैपटॉप — एक साथ</div></div>
+        <div class="statgrid rv d3" style="margin-top:12px">
+          <div class="statcard"><div class="v">जितना चाहो</div><div class="l">उतना चलाओ</div></div>
+          <div class="statcard"><div class="v">80–100</div><div class="l">Mbps स्पीड</div></div>
+        </div>
+      </div>
+      <div class="actions"><button class="cta" data-go="edu2">और रिचार्ज कितने दिन का होता है?</button></div>
+    </section>
+
+    <!-- 8 · EDUCATION 2 -->
+    <section class="screen" data-s="edu2">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="content">
+        <div class="eduhead rv d1">
+          <h2>जितने दिन चाहें, उतना रिचार्ज</h2>
+          <p>कोई महीने का बंधन नहीं।<br>बिल्कुल मोबाइल रिचार्ज जैसा।</p>
+        </div>
+        <div class="daybox rv d2" style="margin-top:26px;margin-bottom:20px">
+          <div class="dayval"><b id="dayNum">1</b><span>दिन</span></div>
+        </div>
+        <div class="sliderwrap rv d2">
+          <div class="track" id="track"><i class="trackfill" id="trackFill" style="width:0%"></i></div>
+          <input type="range" id="daySlider" min="0" max="4" step="1" value="0" aria-label="कितने दिन">
+        </div>
+        <div class="ticklabels rv d2" id="tickLabels"></div>
+        <div class="row rv d3" style="justify-content:center;margin-top:26px;gap:8px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex:none"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="#008043" stroke-width="1.8"/><path d="M10 18.5h4" stroke="#008043" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="b2 sec">रिचार्ज इसी ऐप से — कभी भी, 2 मिनट में</span>
+        </div>
+        <div class="divider" style="margin:20px 0 4px;border-top:1.5px dashed #ddd6e8;background:none;height:0"></div>
+        <div class="linkrow rv d4" id="priceLink" style="color:var(--text-brand);font-weight:700">रिचार्ज कितने का होता है? <span class="chev">›</span></div>
+      </div>
+      <div class="actions"><button class="cta" data-go="nocharge">शुरुआत में कितना खर्चा होता है?</button></div>
+    </section>
+
+    <!-- 8b · कोई और खर्चा नहीं -->
+    <section class="screen" data-s="nocharge">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="content">
+        <div class="eduhead rv d1">
+          <h2>केवल <span class="bluehl">रिचार्ज</span> करना होता है</h2>
+          <p>बाकी कोई खर्चा नहीं — न पहले, न बाद में</p>
+        </div>
+        <div class="zc rv d2" style="margin-top:22px">
+          <div class="zc-head">यह सब कुछ नहीं देना</div>
+          <div class="zc-rows">
+            <div class="zc-row"><span class="k">जमा राशि (डिपॉज़िट)</span><span class="v">₹0</span></div>
+            <div class="zc-row"><span class="k">नेट लगवाने का चार्ज</span><span class="v">₹0</span></div>
+            <div class="zc-row"><span class="k">GST अलग से</span><span class="v">₹0</span></div>
+            <div class="zc-row"><span class="k">छुपा चार्ज</span><span class="v">₹0</span></div>
+            <div class="zc-row total"><span class="k">कुल अतिरिक्त</span><span class="v">₹0</span></div>
+          </div>
+        </div>
+        <div class="zc-note rv d3">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#898296" stroke-width="1.7"/><path d="M12 11v6M12 7.6v.01" stroke="#898296" stroke-width="1.9" stroke-linecap="round"/></svg>
+          <span>नेट बॉक्स व्योम का होता है — बाद में बस वापस कर दें।</span>
+        </div>
+      </div>
+      <div class="actions"><button class="cta" data-go="offers">ऑफर देखें</button></div>
+    </section>
+
+    <!-- 8c · तीन ऑफर -->
+    <section class="screen" data-s="offers">
+      <div class="statusbar" data-sb></div>
+      <canvas class="of-confetti" id="ofConfetti"></canvas>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="content">
+        <div class="center"><span class="of-eyebrow rv d1">🎁 आपके लिए खास</span></div>
+        <div class="eduhead rv d1" style="margin-top:14px">
+          <h2>तीन ऑफर खुल गए</h2>
+          <p>जो रिचार्ज करेंगे, उतने ही दिन मुफ़्त।</p>
+        </div>
+        <div class="of-list" id="ofList">
+          <div class="ofc" data-i="0"><div><div class="n">2 दिन</div><div class="l">का रिचार्ज</div></div><span class="free">+2 दिन मुफ़्त</span></div>
+          <div class="ofc" data-i="1"><div><div class="n">7 दिन</div><div class="l">का रिचार्ज</div></div><span class="free">+7 दिन मुफ़्त</span></div>
+          <div class="ofc" data-i="2"><div><div class="n">14 दिन</div><div class="l">का रिचार्ज</div></div><span class="free">+14 दिन मुफ़्त</span></div>
+        </div>
+        <hr class="of-sep" id="ofSep">
+        <div class="of-foot" id="ofFoot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:2px"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span>ये तीनों ऑफर आपके <b>इनाम पेज</b> में जुड़ जाएंगे।</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="cta" data-go="payredirect">₹25 एडवांस देकर बुकिंग कन्फर्म करें</button>
+        <div class="cta-sub">बाकी पैसे आप जो प्लान चुनेंगे, उसके हिसाब से नेट लगने के समय दे सकते हैं।</div>
+      </div>
+    </section>
+
+    <!-- 8d · पेमेंट पेज पर ले जा रहे हैं -->
+    <section class="screen" data-s="payredirect">
+      <div class="statusbar" data-sb></div>
+      <div class="pr">
+        <div class="pr-mark">
+          <svg width="86" height="34" viewBox="0 0 120 46" fill="none">
+            <path d="M8 30c0-9 6-15 13-15s11 5 13 11c2 6 6 11 13 11s13-6 13-15" stroke="#d9008d" stroke-width="4" stroke-linecap="round"/>
+            <path d="M60 22c0 9 6 15 13 15s11-5 13-11c2-6 6-11 13-11s13 6 13 15" stroke="#d9008d" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+          </svg>
+        </div>
+        <div class="pr-txt">आपको पेमेंट पेज पे ले जा रहे हैं…</div>
+      </div>
+    </section>
+
+    <!-- 8e · UPI ऐप चुनें -->
+    <section class="screen" data-s="upiapps">
+      <div class="statusbar" data-sb></div>
+      <div class="pg-bar">
+        <span data-back style="cursor:pointer;display:flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        भुगतान के तरीके
+      </div>
+      <div class="content" style="padding:0">
+        <div class="pg-sum">
+          <div class="between"><span class="t">व्योम — बुकिंग एडवांस</span><span class="a" id="pgAmt">₹25</span></div>
+          <div class="d">बुकिंग कन्फर्म करने के लिए एडवांस · बाकी नेट लगने के समय</div>
+        </div>
+        <div class="pg-h">UPI</div>
+        <div class="pg-apps" id="pgApps">
+          <div class="pg-app" data-go="upiintent"><div class="pg-ic" style="color:#1a73e8">G</div><div class="nm">GPay</div></div>
+          <div class="pg-app" data-go="upiintent"><div class="pg-ic" style="color:#5f259f">Pe</div><div class="nm">PhonePe</div></div>
+          <div class="pg-app" data-go="upiintent"><div class="pg-ic" style="color:#ff9900">a</div><div class="nm">Amazon</div></div>
+          <div class="pg-app" data-go="upiintent"><div class="pg-ic" style="color:#97144d">Ax</div><div class="nm">Axis Mobile</div></div>
+          <div class="pg-app" data-go="upiintent"><div class="pg-ic" style="color:#00695c">Cb</div><div class="nm">Canara Bank</div></div>
+        </div>
+        <div class="pg-link" data-go="upiintent">Other UPI Options</div>
+        <div class="pg-h" style="padding-top:6px">वॉलेट</div>
+        <div class="pg-w" data-go="upiintent"><span class="wic" style="background:#e40000">A</span>Airtel Money<span class="r"></span></div>
+        <div class="pg-w" data-go="upiintent"><span class="wic" style="background:#f37021">F</span>Freecharge<span class="r"></span></div>
+        <div class="pg-w" data-go="upiintent"><span class="wic" style="background:#0a5ab4">J</span>JioMoney<span class="r"></span></div>
+        <div class="pg-w" data-go="upiintent"><span class="wic" style="background:#1a4ea2">M</span>Mobikwik<span class="r"></span></div>
+        <div class="pg-w" data-go="upiintent"><span class="wic" style="background:#c9d400;color:#333">O</span>Ola Money<span class="r"></span></div>
+      </div>
+    </section>
+
+    <!-- 8f · UPI ऐप में भुगतान -->
+    <section class="screen" data-s="upiintent">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="ui">
+        <div class="ui-card">
+          <div class="ui-logo"><svg width="30" height="14" viewBox="0 0 120 46" fill="none"><path d="M8 30c0-9 6-15 13-15s11 5 13 11c2 6 6 11 13 11s13-6 13-15" stroke="#d9008d" stroke-width="5" stroke-linecap="round"/></svg></div>
+          <div class="b1b" style="margin-top:8px">Wiom</div>
+          <div class="ui-vpa">wiom@okbkid</div>
+          <div class="ui-lbl">You are Paying</div>
+          <div class="ui-amt" id="uiAmt">₹25</div>
+          <div class="ui-words" id="uiWords">Rupees Twenty Five Only</div>
+          <div class="ui-chip">Pay for merchant</div>
+          <div class="ui-src">
+            <span class="bk">SBI</span>
+            <div><div class="l1">Pay from</div><div class="l2">State Bank Of India · 1232</div><div class="l3">Set UPI PIN</div></div>
+          </div>
+          <button class="ui-pay" data-go="upipin" id="uiPay">Pay ₹25</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8g · UPI PIN -->
+    <section class="screen" data-s="upipin">
+      <div class="statusbar" data-sb></div>
+      <div class="up">
+        <div class="up-cancel" data-back>CANCEL</div>
+        <div class="up-bank">
+          <div><div class="b1x">State Bank of India</div><div class="b2x">XXXX1232</div></div>
+          <div style="font-size:13px;font-weight:800;color:#0b6ab5;letter-spacing:.04em">UPI</div>
+        </div>
+        <div class="up-to">
+          <div class="r"><span>To:</span><b>Wiom</b></div>
+          <div class="r"><span>Sending:</span><b id="upAmt">₹25.00</b></div>
+        </div>
+        <div class="up-body">
+          <div class="up-t">ENTER 6-DIGIT UPI PIN</div>
+          <div class="up-dots" id="upDots"><i class="up-dot"></i><i class="up-dot"></i><i class="up-dot"></i><i class="up-dot"></i><i class="up-dot"></i><i class="up-dot"></i></div>
+          <div class="up-warn">
+            <span>⚠️</span><span>You are SENDING <b id="upWarnAmt">₹25.00</b> from your account to WIOM</span>
+          </div>
+        </div>
+        <div class="up-keys" id="upKeys">
+          <div class="up-key" data-k="1">1</div><div class="up-key" data-k="2">2</div><div class="up-key" data-k="3">3</div>
+          <div class="up-key" data-k="4">4</div><div class="up-key" data-k="5">5</div><div class="up-key" data-k="6">6</div>
+          <div class="up-key" data-k="7">7</div><div class="up-key" data-k="8">8</div><div class="up-key" data-k="9">9</div>
+          <div class="up-key act" data-k="del">⌫</div><div class="up-key" data-k="0">0</div><div class="up-key act" data-k="ok">SUBMIT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8h · बुकिंग कन्फर्म -->
+    <section class="screen" data-s="booked">
+      <div class="statusbar" data-sb></div>
+      <canvas class="bk-confetti" id="bkConfetti"></canvas>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="tickcircle"><svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2 class="t2 center mt16 rv d1">बुकिंग कन्फर्म हो गई!</h2>
+        <p class="b1 sec center mt4 rv d1" id="bkSub">₹25 एडवांस मिल गया।</p>
+        <div class="card pos mt20 rv d2"><div class="row" style="align-items:flex-start"><span>🎁</span><span class="b2 pos" style="font-weight:600">तीनों ऑफर आपके इनाम पेज में जुड़ गए</span></div></div>
+        <p class="b2 sec center mt20 rv d3">अब नेट लगवाने का दिन चुन लें।</p>
+      </div>
+      <div class="actions"><button class="cta" data-go="slot">दिन चुनें ›</button></div>
+    </section>
+
+    <!-- 9 · SLOT -->
+    <section class="screen" data-s="slot">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-title"><h1 class="t3">नेट लगवाने का दिन चुनें</h1></div>
+      </div>
+      <div class="content">
+        <div class="b2 sec rv d1">इसी दिन टेक्नीशियन आकर आपका नेट बॉक्स लगा देगा।</div>
+        <div class="b2 rv d1" style="font-weight:700;margin-top:16px">जुलाई, 2026</div>
+        <div class="dates mt12 rv d2" id="dateRow">
+          <div class="datecell" data-date="आज · 27 जुलाई"><span class="daymark"></span><div><div class="dd">आज</div><div class="dw">27 जुलाई · सोमवार</div></div></div>
+          <div class="datecell off"><span class="daymark"></span><div><div class="dd">कल</div><div class="dw">28 जुलाई · मंगलवार</div></div><span class="dayfull">स्लॉट भरा है</span></div>
+          <div class="datecell" data-date="परसों · 29 जुलाई"><span class="daymark"></span><div><div class="dd">परसों</div><div class="dw">29 जुलाई · बुधवार</div></div></div>
+          <div class="datecell" data-date="तरसों · 30 जुलाई"><span class="daymark"></span><div><div class="dd">तरसों</div><div class="dw">30 जुलाई · गुरुवार</div></div></div>
+        </div>
+        <div class="card pos mt16 slotdone" id="slotDone"><div class="row"><span>✅</span><span class="b2 pos" style="font-weight:600" id="slotDoneT">दिन कन्फर्म हो गया</span></div></div>
+      </div>
+      <div class="actions"><button class="cta" id="slotCta">यह दिन कन्फर्म करें</button></div>
+    </section>
+
+    <!-- 10 · PLANS (V10 रिचार्ज → नेट तुलना) -->
+    <section class="screen" data-s="plans">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        </div>
+      <div class="content">
+        <h2 class="opts-h">रिचार्ज के विकल्प</h2>
+        <div class="opts-sub">80 से 100 Mbps, डेटा की कोई लिमिट नहीं।</div>
+        <div class="opts" id="planList"></div>
+      </div>
+      <div class="actions"><button class="cta off" id="planCta">रिचार्ज चुनें</button></div>
+    </section>
+
+    <!-- 11 · DETAIL (recharge = booking) -->
+    <section class="screen" data-s="detail">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-title"><h1 class="t3">रिचार्ज करें — यही आपकी बुकिंग है</h1></div>
+      </div>
+      <div class="content" id="detailContent"></div>
+      <div class="actions"><button class="cta" id="detailCta" data-go="paymethod">₹23 का रिचार्ज करें</button></div>
+    </section>
+
+    <!-- 12 · PAYMENT METHOD -->
+    <section class="screen" data-s="paymethod">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 के भुगतान का तरीका चुनें</h1></div>
+      </div>
+      <div class="content">
+        <div class="addrcard rv d1" style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:2px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg>
+          <div class="ar-full" style="margin-top:0;flex:1">Rajiv Colony, Gali No. 2, Rajiv Colony, Sector 33, Gurugram, H…</div>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;cursor:pointer"><path d="M4 20h4l10-10-4-4L4 16v4z" stroke="#665e75" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" stroke="#665e75" stroke-width="1.7"/></svg>
+        </div>
+        <div class="card rv d2 mt16" style="cursor:pointer;border:1.5px solid var(--stroke-brand)" data-go="upiapps">
+          <div class="row" style="align-items:flex-start">
+            <div style="width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="#d9008d" stroke-width="1.8"/><path d="M10 6h4M9 11h6M9 14h6" stroke="#d9008d" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <div><div class="b1m brandc">UPI / ऑनलाइन भुगतान</div><div class="b2 sec mt4">UPI, क्रेडिट/डेबिट कार्ड और अन्य तरीके</div></div>
+          </div>
+        </div>
+        <div class="linkrow">मेरे पास UPI/कार्ड नहीं है? <span class="chev">›</span></div>
+      </div>
+    </section>
+
+    <!-- 13 · PROCESSING -->
+    <section class="screen" data-s="processing">
+      <div class="statusbar" data-sb></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
+        <div class="spinner"></div>
+        <div class="center"><div class="b1m">धैर्य रखें</div><div class="b1 sec mt4" id="procAmt">₹23 भुगतान की स्थिति जाँची जा रही है</div></div>
+      </div>
+      <div class="b3 ter center" style="padding:16px">भुगतान पूरा होने तक इस स्क्रीन को बंद न करें</div>
+    </section>
+
+    <!-- 14 · CONFIRMED -->
+    <section class="screen" data-s="confirmed">
+      <div class="statusbar" data-sb></div>
+      <div class="conf-bar"><div class="conf-rwic" id="confRwIc"><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#d9008d" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#d9008d" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#d9008d" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="conf-dot" id="confDot">1</span></div></div>
+      <canvas class="conf-confetti" id="confConfetti"></canvas>
+      <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="tickcircle" style="margin-top:0"><svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2 class="t2 center mt16 rv d1">बुकिंग हो गई!</h2>
+        <p class="b1 sec center mt4 rv d1" id="confSub">₹23 का रिचार्ज सफल हुआ।</p>
+        <div class="card pos mt20 rv d2"><div class="row"><span>🎁</span><span class="b2 pos" style="font-weight:600" id="confReward">इनाम आपके अकाउंट में जुड़ गया</span></div></div>
+        <p class="b2 sec center mt20 rv d3">अब बस टेक्नीशियन के लिए आपका पता चाहिए।</p>
+      </div>
+      <div class="actions"><button class="cta" data-go="address">पता भरें ›</button></div>
+    </section>
+
+    <!-- 15 · ADDRESS -->
+    <section class="screen" data-s="address">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-title"><h1 class="t3">आपका पता</h1></div>
+      </div>
+      <div class="content">
+        <p class="b2 sec">टेक्नीशियन को यहीं आना है — पूरा पता भरें ताकि नेट सही जगह लगे।</p>
+        <div class="card mt16" style="background:var(--bg-brand-subtle);border:none">
+          <div class="row"><span>📍</span><span class="b2" style="font-weight:600">राजीव कॉलोनी, सेक्टर 33, फरीदाबाद</span></div>
+          <div class="b3 ter mt4">आपकी लोकेशन से मिला — बाकी नीचे भरें</div>
+        </div>
+        <div class="field mt16">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7" stroke="#665e75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v10h12V10" stroke="#665e75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input id="addr1" placeholder="मकान / फ्लैट नंबर, गली">
+        </div>
+        <div class="field mt12">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="10" r="3" stroke="#665e75" stroke-width="1.8"/><path d="M12 21c5-5 7-8 7-11a7 7 0 10-14 0c0 3 2 6 7 11z" stroke="#665e75" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <input id="addr2" placeholder="लैंडमार्क (जैसे — पानी की टंकी के पास)">
+        </div>
+        <div class="card pos mt16" id="addrDone" style="display:none"><div class="row"><span>✅</span><span class="b2 pos" style="font-weight:600">पता सेव हो गया — अगला कदम: इंस्टॉलेशन</span></div></div>
+      </div>
+      <div class="actions"><button class="cta" id="addrCta">पता सेव करें</button></div>
+    </section>
+
+    <!-- 16 · INSTALLING -->
+    <section class="screen" data-s="installing">
+      <div class="statusbar" data-sb></div>
+      <div class="ci-install">
+        <div class="spinner"></div>
+        <div class="t3">इंस्टॉलेशन हो रहा है…</div>
+        <div class="b2 sec">टेक्नीशियन आपका नेट बॉक्स चालू कर रहा है।</div>
+      </div>
+    </section>
+
+    <!-- 17 · CHAT (net active + reward) -->
+    <section class="screen" data-s="chat">
+      <div class="statusbar" data-sb></div>
+      <div class="ci-cbar">
+        <div class="ci-av"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13c2-5 6-5 9 0s7 5 9 0" stroke="#d9008d" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+        <div class="ci-tt"><div class="ci-nm">व्योम</div><div class="ci-on">ऑनलाइन</div></div>
+        <div class="ci-hdr" id="ciHdr"><span class="ci-hdr-ring"></span><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#d9008d" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#d9008d" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#d9008d" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="dot">1</span></div>
+        <span class="ci-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a10 10 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke="#352d42" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <span class="ci-ic" style="margin-left:4px"><svg width="22" height="22" viewBox="0 0 24 24" fill="#352d42"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></span>
+      </div>
+      <div class="ci-status">
+        <div class="ci-hw"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6 8 6" stroke="#665e75" stroke-width="1.7" stroke-linecap="round"/><path d="M6 10v9h12v-9" stroke="#665e75" stroke-width="1.5"/><path d="M9.5 15a3.5 3.5 0 0 1 5 0M12 17.6v.01" stroke="#665e75" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <div><div class="ci-home">घर का नेट: रमेश</div><div><span class="ci-stl">स्थिति: </span><span class="ci-stv active" id="ciStv">नेट चालू है</span></div></div>
+      </div>
+      <div class="ci-thread" id="ciThread"></div>
+      <div class="ci-field"><div class="ci-inp">यहाँ पूछें....</div><div class="ci-snd"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M3 11l18-7-7 18-3-7z"/></svg></div></div>
+    </section>
+
+    <!-- 18 · REWARDS WALLET -->
+    <section class="screen" data-s="rewards">
+      <div class="statusbar" data-sb></div>
+      <div class="appbar">
+        <div class="appbar-row"><div class="appbar-icon" id="rwBack"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+        <div class="appbar-title"><h1 class="t3">मेरे इनाम</h1></div>
+      </div>
+      <div class="content">
+        <div class="ci-filters" id="rFilters"><span class="ci-chip on" data-f="all">सभी</span><span class="ci-chip" data-f="available">उपलब्ध</span><span class="ci-chip" data-f="used">इस्तेमाल हो गए</span></div>
+        <div id="ciRlist"></div>
+      </div>
+    </section>
+
+  </div><!-- /phone -->
+
+  <div class="mnav">
+    <button id="mPrev" aria-label="पीछे">‹</button>
+    <button id="mNext" aria-label="आगे">›</button>
+  </div>
+
+  <aside class="side">
+    <div><div class="stage-title" id="stageTitle">Splash</div><div class="stage-step" id="stageStep">1 / 14</div></div>
+    <div class="navbar">
+      <button class="nbtn" id="btnPrev">‹ पीछे</button>
+      <button class="nbtn" id="btnRestart">↻ Restart</button>
+      <button class="nbtn pri" id="btnNext">आगे ›</button>
+    </div>
+    <div class="note">
+      <b>v2 · ऑफर पहले, प्लान बाद में.</b> लैंडिंग → OTP → सर्विसबिलिटी → <b>3 शिक्षा स्क्रीन</b> (नेट बॉक्स · रिचार्ज मॉडल · कोई और खर्चा नहीं) → <b>ऑफर देखें</b> (कॉन्फ़ेटी + 3 कार्ड) → <b>₹25 एडवांस</b> → पेमेंट → बुकिंग कन्फर्म → <b>दिन चुनें</b>।<br><br>
+      यहाँ प्लान नहीं चुना जाता — सिर्फ़ <b>₹25 एडवांस</b> से बुकिंग कन्फर्म होती है, बाकी पैसे नेट लगने के समय। तीनों ऑफर (2→+2 · 7→+7 · 14→+14) इनाम पेज में जुड़ जाते हैं।
+    </div>
+    <div class="hint"><kbd>←</kbd> <kbd>→</kbd> screens · <kbd>R</kbd> restart</div>
+  </aside>
+</main>
+
+<script>
+/* ═══ status bar ═══ */
+const STATUSBAR = `<span>4:35</span><span class="ind">
+  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 20l-9-9a6.4 6.4 0 019 0 6.4 6.4 0 019 0l-9 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="17" r="1.4" fill="currentColor"/></svg>
+  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M3 20h4v-6H3v6zm6 0h4V9H9v11zm6 0h4V3h-4v17z" fill="currentColor"/></svg>
+  <svg width="11" height="14" viewBox="0 0 16 24"><rect x="3" y="4" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="6" y="2" width="4" height="2" rx="1" fill="currentColor"/><rect x="5" y="12" width="6" height="8" rx="1" fill="currentColor"/></svg>
+  <span>50%</span></span>`;
+document.querySelectorAll('[data-sb]').forEach(el => el.innerHTML = STATUSBAR);
+
+/* ═══ flow ═══ */
+const FLOW = [
+  {id:'splash',      name:'Splash · Loading',      group:'Entry'},
+  {id:'landing',     name:'रिचार्ज वाला घर का नेट',  group:'Entry'},
+  {id:'otp',         name:'OTP वेरिफ़िकेशन',        group:'Entry'},
+  {id:'permission',  name:'Location permission',   group:'सर्विस'},
+  {id:'checking',    name:'नेट चेक कर रहे हैं',      group:'सर्विस'},
+  {id:'serviceable', name:'सर्विस है + जगह',        group:'सर्विस'},
+  {id:'edu1',        name:'नेट बॉक्स क्या है',       group:'शिक्षा'},
+  {id:'edu2',        name:'रिचार्ज मॉडल',           group:'शिक्षा'},
+  {id:'nocharge',    name:'कोई और खर्चा नहीं',      group:'शिक्षा'},
+  {id:'offers',      name:'तीन ऑफर 🎉',            group:'ऑफर'},
+  {id:'payredirect', name:'पेमेंट पेज पर…',         group:'भुगतान'},
+  {id:'paymethod',   name:'भुगतान का तरीका',        group:'भुगतान'},
+  {id:'upiapps',     name:'UPI ऐप चुनें',           group:'भुगतान'},
+  {id:'upiintent',   name:'UPI ऐप में भुगतान',      group:'भुगतान'},
+  {id:'upipin',      name:'UPI PIN',               group:'भुगतान'},
+  {id:'processing',  name:'भुगतान जाँच',           group:'भुगतान'},
+  {id:'booked',      name:'बुकिंग कन्फर्म',        group:'भुगतान'},
+  {id:'slot',        name:'दिन चुनें',              group:'बुकिंग'},
+];
+/* ₹25 — booking advance. The plan (and its remaining amount) is chosen later. */
+const ADVANCE = 25;
+
+/* ═══ plans ═══
+   Welcome Offer: every plan grants free bonus days, BANKED — redeemed later,
+   after installation, when the customer's net is running low. `welcome` = those
+   free days (not added to the paid net; held separately, like the live model). */
+/* kind:'offer'  = announced up front, auto-applies when the plan ends (14 दिन only)
+   kind:'surprise'= never advertised, revealed after नेट सेटअप, redeemed by hand   */
+const PLANS = [
+  {days:1,  cost:23,  span:'24 घंटे', bonus:0, kind:'surprise', reward:1,  welcome:1},
+  {days:2,  cost:45,  span:'48 घंटे', bonus:0, kind:'surprise', reward:2,  welcome:2},
+  {days:7,  cost:155, span:'1 हफ्ता', bonus:0, kind:'surprise', reward:5,  welcome:5},
+  {days:14, cost:305, span:'2 हफ्ते', bonus:0, kind:'offer',    reward:14, welcome:14},
+  {days:28, cost:565, span:'4 हफ्ते', bonus:0, kind:'surprise', reward:7,  welcome:7},
+];
+const isOffer = p => (p||cur()).kind==='offer';
+const OFFER_IDX = PLANS.findIndex(p => p.bonus > 0);
+const netDays = p => p.days + p.bonus;
+const perDay  = p => Math.round(p.cost / netDays(p));
+
+const state = { idx:0, plan:0, phone:'', date:'27 जुलाई', highlightSmall:false, entryMode:'A', loginIntent:'new', rewardMode:'recharge', timers:[] };
+const cur = () => PLANS[state.plan];
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const screenEl = id => $(`.screen[data-s="${id}"]`);
+const TICK = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+/* ═══ rail ═══ */
+function buildRail(){
+  let html='', last='';
+  FLOW.forEach((s,i)=>{
+    if(s.group!==last){ html+=`<div class="rail-group">${s.group}</div>`; last=s.group; }
+    html+=`<div class="rail-item" data-i="${i}"><span class="rail-num">${i+1}</span><span>${s.name}</span></div>`;
+  });
+  $('#railList').innerHTML = html;
+  $$('.rail-item').forEach(el => el.onclick = ()=> go(+el.dataset.i));
+}
+function syncRail(){
+  $$('.rail-item').forEach(el=>{
+    const i=+el.dataset.i;
+    el.classList.toggle('on', i===state.idx);
+    el.classList.toggle('done', i<state.idx);
+  });
+  $('.rail-item.on')?.scrollIntoView({block:'nearest'});
+}
+
+/* ═══ navigation ═══ */
+const clearTimers = ()=>{ state.timers.forEach(clearTimeout); state.timers=[]; };
+const later = (fn,ms)=> state.timers.push(setTimeout(fn,ms));
+function go(i, back=false){
+  if(i<0 || i>=FLOW.length) return;
+  clearTimers(); closeSheets();
+  $('.screen.active')?.classList.remove('active','in','back');
+  state.idx = i;
+  const s = FLOW[i], sc = screenEl(s.id);
+  sc.classList.add('active', back?'back':'in');
+  sc.querySelector('.content')?.scrollTo(0,0);
+  $('#stageTitle').textContent = s.name;
+  $('#stageStep').textContent = `${i+1} / ${FLOW.length}`;
+  $('#btnPrev').disabled = i===0;
+  $('#btnNext').disabled = i===FLOW.length-1;
+  syncRail(); onEnter(s.id);
+}
+const goTo = (id, back=false) => go(FLOW.findIndex(f=>f.id===id), back);
+const next = ()=> go(state.idx+1);
+const prev = ()=> go(state.idx-1, true);
+
+function onEnter(id){
+  switch(id){
+    case 'splash':     later(()=>goTo('landing'), 1800); break;
+    case 'landing':    applyEntryMode(); break;
+    case 'phone':      $('#inPhone2').focus(); break;
+    case 'otp':        enterOtp(); break;
+    case 'checking':   later(()=>goTo('serviceable'), 2000); break;
+    case 'offers':     enterOffers(); break;
+    case 'payredirect':later(()=>goTo('paymethod'), 1700); break;
+    case 'paymethod':  syncAmounts(); break;
+    case 'upipin':     resetPin(); break;
+    case 'processing': syncAmounts(); later(()=>goTo('booked'), 2200); break;
+    case 'booked':     enterBooked(); break;
+    case 'slot':       resetSlot(); break;
+  }
+}
+
+/* ═══ phone-number entry — two options ═══
+   A: inline field on the landing (#inPhone / #phoneCta)
+   B: two CTAs on the landing → dedicated number screen (#inPhone2 / #phoneCta2) */
+function bindPhoneField(inSel, ctaSel){
+  const inp = $(inSel), cta = $(ctaSel); if(!inp || !cta) return;
+  const sync = ()=> cta.style.display = inp.value.length === 10 ? '' : 'none';
+  inp.oninput = e => { e.target.value = e.target.value.replace(/\D/g,''); sync(); };
+  cta.onclick = ()=>{ if(inp.value.length !== 10) return; state.phone = inp.value; goTo('otp'); };
+  sync();
+}
+function initPhone(){
+  bindPhoneField('#inPhone',  '#phoneCta');    /* Option A — inline */
+  bindPhoneField('#inPhone2', '#phoneCta2');   /* Option B — dedicated screen */
+  $$('[data-opt]').forEach(el => el.onclick = ()=>{ state.entryMode = el.dataset.opt; goTo('landing'); });  /* index → variant */
+  $('#startB').onclick   = ()=>{ state.loginIntent='new';      goTo('phone'); };   /* नया कनेक्शन */
+  $('#loginB').onclick   = ()=>{ state.loginIntent='existing'; goTo('phone'); };   /* पहले से व्योम है */
+  $('#phoneBack').onclick = ()=> goTo('landing', true);
+  $$('.modetoggle button').forEach(b => b.onclick = ()=>{
+    state.entryMode = b.dataset.mode; applyEntryMode(); goTo('landing');
+  });
+}
+function applyEntryMode(){
+  const land = $('.screen[data-s="landing"] .land');
+  if(land){ land.classList.toggle('mode-a', state.entryMode==='A'); land.classList.toggle('mode-b', state.entryMode==='B'); }
+  $$('.modetoggle button').forEach(b => b.classList.toggle('on', b.dataset.mode===state.entryMode));
+  const inp = $('#inPhone'); if(inp) $('#phoneCta').style.display = inp.value.length===10 ? '' : 'none';
+  if(state.entryMode==='A') state.loginIntent = 'new';   /* inline entry = new signup */
+}
+/* OTP / number-screen back respects which entry option is active */
+const otpBack = ()=> goTo(state.entryMode==='A' ? 'landing' : 'phone', true);
+
+/* ═══ OTP ═══ */
+function fmtPhone(p){ return p ? p.replace(/(\d{5})(\d{5})/, '$1 $2') : '98765 43210'; }
+function enterOtp(){
+  $('#otpNum').textContent = '+91 ' + fmtPhone(state.phone);
+  $('#newBadge').textContent = state.loginIntent==='existing'
+    ? '👋 वापस स्वागत है — लॉगिन करने के लिए OTP डालें'
+    : '🎉 नया नंबर — व्योम में आपका स्वागत है';
+  const boxes = $$('#otpBoxes input');
+  boxes.forEach(b=>{ b.value=''; b.classList.remove('filled'); });
+  boxes[0].focus();
+  startResend();
+}
+let resendTimer;
+function startResend(){
+  clearInterval(resendTimer);
+  let t = 18; const el = $('#resendT'), wrap = $('#otpResend');
+  const tick = ()=>{
+    if(t<=0){ clearInterval(resendTimer); wrap.innerHTML = '<b style="cursor:pointer">OTP दुबारा भेजें</b>'; return; }
+    el.textContent = '00:' + String(t).padStart(2,'0'); t--;
+  };
+  tick(); resendTimer = setInterval(tick, 1000);
+}
+function initOtp(){
+  $$('[data-otp-back]').forEach(el => el.onclick = otpBack);
+  const boxes = $$('#otpBoxes input');
+  boxes.forEach((b,i)=>{
+    b.oninput = e=>{
+      e.target.value = e.target.value.replace(/\D/g,'').slice(0,1);
+      b.classList.toggle('filled', !!e.target.value);
+      if(e.target.value && i<3) boxes[i+1].focus();
+      if(boxes.every(x=>x.value)){ later(verifyOtp, 350); }
+    };
+    b.onkeydown = e=>{ if(e.key==='Backspace' && !b.value && i>0) boxes[i-1].focus(); };
+  });
+}
+function verifyOtp(){ clearInterval(resendTimer); goTo('permission'); }
+
+/* ═══ edu2 slider ═══ */
+function initSlider(){
+  const slider = $('#daySlider'), track = $('#track'), labels = $('#tickLabels');
+  PLANS.forEach((_,i)=>{
+    const dot = document.createElement('i'); dot.className='tick';
+    dot.style.left = (i/(PLANS.length-1))*100 + '%'; track.appendChild(dot);
+  });
+  labels.innerHTML = PLANS.map(p=>`<span>${p.days} दिन</span>`).join('');
+  const render = ()=>{
+    const v = +slider.value;
+    $('#dayNum').textContent = PLANS[v].days;
+    $$('#tickLabels span').forEach((s,i)=> s.classList.toggle('on', i===v));
+    $('#trackFill').style.width = (v/(PLANS.length-1)*100) + '%';
+  };
+  slider.oninput = render; render();
+}
+
+/* ═══ slot ═══ */
+function initSlot(){
+  const cells = $$('#dateRow .datecell[data-date]');
+  cells.forEach(cell => cell.onclick = ()=>{
+    $$('#dateRow .datecell').forEach(c=>c.classList.remove('sel'));
+    cell.classList.add('sel'); state.date = cell.dataset.date.split(' · ')[1] || cell.dataset.date;
+    if($('#slotDone').style.display === 'block') resetSlot(true);
+  });
+  cells[0].click();
+  $('#slotCta').onclick = ()=>{
+    const done = $('#slotDone');
+    if(done.style.display === 'block') return;
+    $('#slotDoneT').textContent = `${state.date} — दिन कन्फर्म हो गया`;
+    done.style.display = 'block';
+    $('#slotCta').textContent = 'हो गया ✓';
+    $('#slotCta').classList.add('off');
+  };
+}
+function resetSlot(keepSel){
+  const done = $('#slotDone'); if(!done) return;
+  done.style.display = 'none';
+  const c = $('#slotCta'); c.textContent = 'यह दिन कन्फर्म करें'; c.classList.remove('off');
+}
+
+/* ═══ PLAN LIST — V10 रिचार्ज → नेट (तुलना) ═══ */
+function planRowV10(i){
+  const p = PLANS[i];
+  /* Welcome Offer applies to EVERY plan — free days, banked, redeemed later. */
+  const badge = isOffer(p) ? ' <span class="badge b-green shine">ऑफर</span>' : '';
+  const body  = isOffer(p)
+    ? `<div class="v6wrap"><div class="v6row"><span class="v6-old">${p.days} दिन</span><span class="v6-arrow">→</span><span class="v6-new">${p.days + p.reward} दिन</span></div><div class="v6note">${p.days} दिन के रिचार्ज पे नेट चलाए <b>${p.days + p.reward} दिन</b></div></div>`
+    : `पूरे ${p.days} दिन नेट · बिना लिमिट।`;
+  return `<details class="opt" data-plan="${i}">
+    <summary class="oh">
+      <span class="d">${p.days} दिन <small>(${p.span})</small>${badge}</span>
+      <span class="chev2">▾</span>
+      <span class="price">₹${p.cost}</span>
+    </summary>
+    <div class="obody">${body}</div>
+  </details>`;
+}
+function renderPlanList(){
+  const list = $('#planList'), cta = $('#planCta');
+  list.innerHTML = [0,1,2,3,4].map(planRowV10).join('');   /* fresh render — nothing pre-selected */
+  const reset = ()=>{ cta.classList.add('off'); cta.textContent = 'रिचार्ज चुनें'; };
+  reset();
+  list.querySelectorAll('.opt').forEach(d => d.addEventListener('toggle', ()=>{
+    if(d.open){
+      list.querySelectorAll('.opt').forEach(o => { if(o !== d) o.open = false; });   /* one at a time */
+      state.plan = +d.dataset.plan;
+      cta.classList.remove('off');
+      cta.textContent = `₹${PLANS[state.plan].cost} का रिचार्ज चुनें`;
+    } else if(!list.querySelector('.opt[open]')) reset();
+  }));
+  cta.onclick = ()=>{ if(!cta.classList.contains('off')) goTo('detail'); };
+}
+
+/* ═══ PLAN DETAIL — recharge = booking ═══ */
+function trustHTML(p){
+  const d = netDays(p);
+  const start = isOffer(p) ? `आपका ${p.days} + ${p.reward} दिन का रिचार्ज नेट लगने के बाद ही शुरू होगा — पहले नहीं`
+             : d===1 ? 'आपका दिन नेट लगने के बाद शुरू होगा — पहले नहीं'
+                     : `आपके ${d} दिन नेट लगने के बाद शुरू होंगे — पहले नहीं`;
+  return `<div class="trust rv d2">
+    <div class="trustrow"><span class="ic">${TICK}</span><div class="t">नेट नहीं लगा तो पूरा पैसा वापस</div></div>
+    <div class="trustrow"><span class="ic">${TICK}</span><div class="t">${start}</div></div>
+    <div class="trustrow"><span class="ic">${TICK}</span><div class="t">बॉक्स व्योम का, जमा राशि ₹0 — और कुछ नहीं देना</div></div>
+  </div>`;
+}
+function heroOffer(p){
+  return `<div class="rechero rv d1" style="margin-top:8px">
+    <div class="rechero-top">
+      <div class="rechero-freepill">🎁 आपके लिए खास ऑफ़र</div>
+      <div class="offer-eq">
+        <div class="eq-chip"><div class="n">14 दिन</div><div class="t">रिचार्ज</div></div>
+        <div class="eq-plus">+</div>
+        <div class="eq-chip free"><div class="n">14 दिन</div><div class="t">फ्री 🎁</div></div>
+      </div>
+      <div class="offer-price">सिर्फ <b>₹${p.cost}</b> में</div>
+    </div>
+    <div class="rechero-foot">${TICK} पूरे 28 दिन नेट चलेगा</div>
+  </div>`;
+}
+/* the 14-day plan is the one with an announced bonus - show it as 14 paid + 14 free */
+function heroOffer(p){
+  return `<div class="offhero rv d1">
+    <div class="offhero-body">
+      <div class="offhero-pill">🎁 आपके लिए खास ऑफ़र</div>
+      <div class="offhero-sum">
+        <div class="offhero-box"><div class="n">${p.days} दिन</div><div class="l">रिचार्ज</div></div>
+        <div class="offhero-plus">+</div>
+        <div class="offhero-box free"><div class="n">${p.reward} दिन</div><div class="l">फ्री 🎁</div></div>
+      </div>
+      <div class="offhero-price">सिर्फ <b>₹${p.cost}</b> में</div>
+    </div>
+    <div class="offhero-foot">इसी रिचार्ज से नेट लगेगा भी, और चलेगा भी</div>
+  </div>`;
+}
+function heroPlain(p){
+  return `<div class="rechero plain rv d1" style="margin-top:8px">
+    <div class="rechero-top">
+      <div class="rechero-amt">${p.days} दिन का नेट</div>
+      <div class="rechero-cap">सिर्फ ₹${p.cost} में</div>
+    </div>
+    <div class="rechero-foot">इसी रिचार्ज से नेट लगेगा भी, और चलेगा भी</div>
+  </div>`;
+}
+function renderDetail(){
+  const p = cur(), el = $('#detailContent');
+  /* Welcome Offer on every plan — free days, banked, redeemed later after install. */
+  el.innerHTML = (isOffer(p) ? heroOffer(p) : heroPlain(p)) + trustHTML(p) +
+    (isOffer(p) ? '<div class="linkrow" id="morePlans">ज़्यादा दिन का रिचार्ज करना है? <span class="chev">›</span></div>' : '');
+  const mp = $('#morePlans'); if(mp) mp.onclick = ()=> goTo('plans', true);
+  $('#detailCta').textContent = `₹${p.cost} का रिचार्ज करें`;
+}
+
+/* no bottom sheet for plan selection — the plan list screen is the picker */
+const closeSheets = ()=>{ document.querySelectorAll('.psheet-scrim').forEach(e=>e.remove()); };
+
+/* ═══ amounts / confirm ═══ */
+function syncAmounts(){
+  $('#pmTitle').textContent = `₹${ADVANCE} के भुगतान का तरीका चुनें`;
+  $('#procAmt').textContent = `₹${ADVANCE} के भुगतान की स्थिति जाँची जा रही है`;
+}
+function syncConfirmed(){
+  const p = cur();
+  $('#confSub').textContent = `₹${p.cost} का रिचार्ज सफल हुआ।`;
+  const rwCard = $('#confReward').closest('.card');
+  if(!isOffer(p)){
+    /* a surprise must not be announced at booking - it appears after नेट सेटअप */
+    rwCard.style.display='none'; $('#confRwIc').style.display='none';
+    return;
+  }
+  rwCard.style.display=''; $('#confRwIc').style.display='';
+  $('#confReward').textContent = `+${p.reward} दिन मुफ़्त आपके इनाम में जुड़ गए — प्लान खत्म होते ही अपने आप लगेंगे`;
+  addReward({tag:'offer', kind:'offer', title:'बोनस इनाम', source:'14 दिन के प्लान पर · व्योम की तरफ़ से', days:p.reward});
+  const dot=$('#confDot'); if(dot) dot.textContent = p.welcome;
+  const ic=$('#confRwIc');
+  if(confShown){ if(ic) ic.classList.add('pop'); return; }   /* returning from wallet — icon already banked, don't recelebrate */
+  confShown = true;
+  if(ic) ic.classList.remove('pop');   /* header icon stays hidden until the reward flies in */
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const cv=$('#confConfetti');
+  if(cv && !reduce){ later(()=>{ const r=cv.getBoundingClientRect(); if(r.width) burstConfetti(cv, r.width/2, r.height*0.42); }, 340); }
+  if(reduce){ if(ic) ic.classList.add('pop'); return; }
+  later(confirmedRewardFly, 820);
+}
+const CONF_GIFT = '<svg width="25" height="25" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#d9008d" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#d9008d" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#d9008d" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+function confirmedRewardFly(){
+  const scr = document.querySelector('.screen[data-s="confirmed"]');
+  const ic  = $('#confRwIc');
+  const card = $('#confReward') ? $('#confReward').closest('.card') : null;
+  if(!scr || !ic || !card || !scr.classList.contains('active')){ if(ic) ic.classList.add('pop'); return; }
+  const cr = card.getBoundingClientRect();
+  const token = ciNode(`<div class="conf-fly">${CONF_GIFT}</div>`);
+  scr.appendChild(token);
+  token.style.left = (cr.left + 18) + 'px';
+  token.style.top  = (cr.top + cr.height/2 - 21) + 'px';
+  flyToHeader(token, ic, ()=>{ ic.classList.add('pop'); }, false, scr);
+}
+function initAddrCapture(){
+  const cta = $('#addrCta'); if(!cta) return;
+  cta.onclick = ()=>{
+    if(cta.dataset.saved){ goTo('installing'); return; }
+    const a = $('#addr1').value.trim(); if(!a){ $('#addr1').focus(); return; }
+    $('#addrDone').style.display = '';
+    cta.textContent = 'इंस्टॉलेशन शुरू करें ›';
+    cta.dataset.saved = '1';
+  };
+}
+
+/* ═══ post-install chat + reward wallet ═══ */
+const CI_HERO='data:image/svg+xml;utf8,'+encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">'+
+  '<rect width="600" height="300" fill="#FFE6F6"/>'+
+  '<circle cx="300" cy="158" r="96" fill="#FFFFFF"/>'+
+  '<g stroke="#D9008D" stroke-width="11" fill="none" stroke-linecap="round">'+
+  '<path d="M252 172a68 68 0 0 1 96 0"/><path d="M272 194a40 40 0 0 1 56 0"/></g>'+
+  '<circle cx="300" cy="214" r="11" fill="#D9008D"/>'+
+  '<g fill="#008043"><circle cx="120" cy="70" r="8"/><circle cx="480" cy="90" r="10"/><circle cx="150" cy="238" r="9"/><circle cx="470" cy="240" r="7"/></g>'+
+  '<g fill="#FFB3E4"><circle cx="86" cy="150" r="7"/><circle cx="524" cy="164" r="8"/></g></svg>');
+const CI_VALIDITY = '24 सितंबर 2026';
+const ciGift = c => `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="${c}" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="${c}" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+const ciCheck = c => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="${c}" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="${c}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+let chatBuilt = false, confShown = false;
+/* मेरे इनाम holds a LIST - modelled on the सीधे रिडीम flow, not a single card */
+const rewards = [];
+let ridSeq = 0, rFilter = 'all';
+const availRewards = () => rewards.filter(r => r.status === 'available');
+const usedRewards  = () => rewards.filter(r => r.status === 'used');
+function addReward(o){
+  if(rewards.some(r => r.tag === o.tag)) return null;   /* never bank the same reward twice */
+  o.id = ++ridSeq; o.status = 'available'; rewards.push(o);
+  syncHdrDot(); renderCiRewards(); return o;
+}
+function clearRewards(){ rewards.length = 0; ridSeq = 0; rFilter = 'all'; syncFilterChips(); syncHdrDot(); renderCiRewards(); }
+function syncHdrDot(){
+  const h = $('#ciHdr'); if(!h) return;
+  const n = availRewards().length, dot = h.querySelector('.dot');
+  if(dot) dot.textContent = n;
+  h.classList.toggle('show', rewards.length > 0);
+  h.classList.toggle('nopending', n === 0);
+}
+const ciDays = () => { const a = availRewards()[0] || rewards[0]; return a ? a.days : cur().reward; };
+
+function ciNode(h){ const d=document.createElement('div'); d.innerHTML=h.trim(); return d.firstChild; }
+function ciAdd(n){ const t=$('#ciThread'); t.appendChild(n); later(()=>{ t.scrollTop=t.scrollHeight; }, 20); return n; }
+function ciBub(html,time,cls){ cls=cls||''; return ciNode(`<div class="ci-row ${cls.includes('me')?'me':''}"><div class="ci-bub ${cls}">${html}${time?`<div class="tm">${time}</div>`:''}</div></div>`); }
+function ciTyping(cb,ms){ const t=ciAdd(ciNode('<div class="ci-row"><div class="ci-typing"><i></i><i></i><i></i></div></div>')); later(()=>{ t.remove(); cb(); }, ms||1100); }
+
+const GIFT_WHITE = '<svg viewBox="0 0 24 24" fill="none"><rect x="3.4" y="8.4" width="17.2" height="4" rx="1" stroke="#fff" stroke-width="1.7"/><path d="M5 12.4v7.6h14v-7.6M12 8.4v11.6" stroke="#fff" stroke-width="1.7"/><path d="M12 8.4C11 5.5 9.6 5 8.6 5.6 7.4 6.4 8.1 8.4 12 8.4zM12 8.4c1-2.9 2.4-3.4 3.4-2.8C16.6 6.4 15.9 8.4 12 8.4z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+const easeInOutCubic = p => p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
+
+function burstConfetti(canvas, ox, oy){
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio||1, 2);
+  canvas.width = rect.width*dpr; canvas.height = rect.height*dpr; ctx.scale(dpr,dpr);
+  const W = rect.width, H = rect.height;
+  const cols = ['#D9008D','#008043','#EF9F27','#FFB2E4','#1461CC','#7F77DD','#FFD166','#F0997B'];
+  const parts = [];
+  for(let i=0;i<120;i++){
+    const ang = Math.random()*Math.PI*2, spd = 3.4+Math.random()*7.6;
+    parts.push({ x:ox, y:oy, vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd-(3+Math.random()*3.5),
+      g:0.16+Math.random()*0.12, drag:0.985+Math.random()*0.01, size:5+Math.random()*6,
+      col:cols[(Math.random()*cols.length)|0], rot:Math.random()*Math.PI*2, vr:(Math.random()-.5)*0.34,
+      shape: Math.random()<0.55?'r':'c', life:0, ttl:66+Math.random()*46, sway:Math.random()*Math.PI*2 });
+  }
+  let f=0;
+  function tick(){
+    if(!document.body.contains(canvas)) return;
+    ctx.clearRect(0,0,W,H);
+    let alive=0;
+    for(const p of parts){
+      if(p.life>p.ttl) continue;
+      p.life++; p.vy+=p.g; p.vx*=p.drag; p.sway+=0.1;
+      p.x+=p.vx + Math.sin(p.sway)*0.4; p.y+=p.vy; p.rot+=p.vr;
+      const a = Math.max(0, 1 - Math.max(0,(p.life-p.ttl*0.6))/(p.ttl*0.4));
+      if(p.y < H+24){ alive++;
+        ctx.save(); ctx.globalAlpha=a; ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.col;
+        if(p.shape==='r') ctx.fillRect(-p.size/2,-p.size/3,p.size,p.size*0.62);
+        else { ctx.beginPath(); ctx.arc(0,0,p.size*0.45,0,6.3); ctx.fill(); }
+        ctx.restore();
+      }
+    }
+    f++;
+    if(f<220 && alive>0) requestAnimationFrame(tick); else canvas.remove();
+  }
+  requestAnimationFrame(tick);
+}
+
+function flyToHeader(token, hdr, done, reduce, scrEl){
+  const screen = scrEl || document.querySelector('.screen[data-s="chat"]');
+  const t = token.getBoundingClientRect(), h = hdr.getBoundingClientRect();
+  const sx=t.left+t.width/2, sy=t.top+t.height/2, ex=h.left+h.width/2, ey=h.top+h.height/2;
+  const endScale = (h.width*0.94)/t.width;
+  token.style.animation='none'; token.style.margin='0'; token.style.zIndex='40';
+  token.style.position='fixed'; token.style.left=t.left+'px'; token.style.top=t.top+'px';
+  screen.appendChild(token);   /* survive overlay fade */
+  const finish = ()=>{ token.remove(); done(); };
+  if(reduce){ token.style.transition='transform .3s ease, opacity .3s'; requestAnimationFrame(()=>{ token.style.transform=`translate(${ex-sx}px,${ey-sy}px) scale(${endScale})`; token.style.opacity='0'; }); later(finish,300); return; }
+  const cx=(sx+ex)/2+(ex>=sx?24:-24), cy=Math.min(sy,ey)-72, dur=700; let start=null;
+  function frame(ts){
+    if(!document.body.contains(token)){ done(); return; }
+    if(start===null) start=ts;
+    const p=Math.min(1,(ts-start)/dur), e=easeInOutCubic(p);
+    const x=(1-e)*(1-e)*sx+2*(1-e)*e*cx+e*e*ex, y=(1-e)*(1-e)*sy+2*(1-e)*e*cy+e*e*ey;
+    token.style.transform=`translate(${x-sx}px, ${y-sy}px) scale(${1+(endScale-1)*e})`;
+    if(p>0.82) token.style.opacity=String(Math.max(0,1-(p-0.82)/0.18));
+    if(p<1) requestAnimationFrame(frame); else finish();
+  }
+  requestAnimationFrame(frame);
+}
+
+function playCelebration(days, cb){
+  if(typeof days === 'function'){ cb = days; days = ciDays(); }
+  const screen = document.querySelector('.screen[data-s="chat"]');
+  const hdr = $('#ciHdr');
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  hdr.classList.add('show'); hdr.style.visibility = '';   /* header is persistent — reward flies into it */
+  const ov = ciNode(`<div class="ci-celebrate"><div class="ci-cele-wrap"><div class="ci-cele-rays"></div><div class="ci-cele-token"><span class="shine"></span>${GIFT_WHITE}</div><div class="ci-cele-text">इनाम जुड़ गया!</div><div class="ci-cele-days">${days} मुफ़्त दिन आपके इनाम में</div></div></div>`);
+  screen.appendChild(ov);
+  const token = ov.querySelector('.ci-cele-token');
+  if(!reduce){
+    const canvas = document.createElement('canvas'); canvas.className='ci-confetti-canvas'; screen.appendChild(canvas);
+    const tr = token.getBoundingClientRect(), sr = screen.getBoundingClientRect();
+    later(()=> burstConfetti(canvas, tr.left+tr.width/2-sr.left, tr.top+tr.height/2-sr.top), 220);
+  }
+  later(()=>{
+    ov.classList.add('out');
+    flyToHeader(token, hdr, ()=>{
+      ov.remove();
+      hdr.classList.remove('receive'); void hdr.offsetWidth; hdr.classList.add('receive');
+      cb && cb();
+    }, reduce);
+  }, reduce ? 900 : 1550);
+}
+function enterChat(){
+  if(chatBuilt) return;
+  chatBuilt = true;
+  /* reaching chat directly (side-panel jump) still banks the 14-day bonus that booking would have */
+  if(isOffer(cur())) addReward({tag:'offer', kind:'offer', title:'बोनस इनाम', source:'14 दिन के प्लान पर · व्योम की तरफ़ से', days:cur().reward});
+  const stv=$('#ciStv'); stv.textContent='नेट चालू है'; stv.className='ci-stv active';
+  const _h=$('#ciHdr'); _h.classList.remove('receive'); _h.style.visibility='';
+  syncHdrDot();   /* icon and count follow the list - hidden until something is banked */
+  document.querySelector('.screen[data-s="chat"]').querySelectorAll('.ci-celebrate, .ci-confetti-canvas, .ci-cele-token, .ci-bs-back').forEach(e=>e.remove());
+  const th=$('#ciThread'); th.innerHTML='';
+  th.appendChild(ciNode('<div class="ci-day">आज</div>'));
+  th.appendChild(ciNode('<div class="ci-hist">— पिछली बातचीत —</div>'));
+  ciAdd(ciBub('आपकी बुकिंग हो गई ✅ टेक्नीशियन आज आया — नेट बॉक्स लग गया।','10:02 AM','faded'));
+  ciTyping(()=>{
+    ciAdd(ciBub(`<img class="img" src="${CI_HERO}" alt=""><b>आपका नेट चालू हो गया है।</b><br>आपका नेट <b>${CI_VALIDITY}</b> तक बिना रुकावट चलता रहेगा।`,'10:15 AM'));
+    ciTyping(()=>{
+      ciAdd(ciBub('ये चार अंकों का हैप्पी कोड: <b>1244</b> — इंजीनियर से शेयर करें।','10:15 AM'));
+      if(isOffer(cur())){
+        later(()=>{ playCelebration(()=> ciTyping(()=> ciAdd(ciRewardPrompt()), 600)); }, 700);
+      } else {
+        /* surprise: nothing was promised, so the chat only points at it */
+        ciTyping(()=> ciAdd(surpriseCard(cur().reward)), 900);
+      }
+    }, 1300);
+  }, 1200);
+}
+function ciRewardPrompt(){
+  const n=ciBub(`<b>इनाम मिला 🎉</b> <b>+${ciDays()} दिन मुफ़्त नेट</b> आपके "मेरे इनाम" में जुड़ गया है।<br>आपका मौजूदा प्लान खत्म होते ही यह अपने आप लग जाएगा।`,'10:15 AM');
+  const bub=n.querySelector('.ci-bub');
+  const link=document.createElement('div'); link.className='ci-bcta'; link.textContent='मेरे इनाम देखें';
+  link.onclick=()=>openRewards('chat'); bub.appendChild(link);
+  return n;
+}
+/* ── surprise: revealed, claimed, then redeemed by hand ── */
+function surpriseCard(freeDays){
+  const n=ciBub('व्योम की तरफ़ से आपके लिए एक इनाम आया है। देखने के लिए नीचे “इनाम देखें” पर क्लिक करें।','10:15 AM');
+  const bub=n.querySelector('.ci-bub');
+  const link=document.createElement('div'); link.className='ci-bcta'; link.textContent='इनाम देखें';
+  link.onclick=()=>openReveal(freeDays); bub.appendChild(link);
+  return n;
+}
+function setSurpriseReward(freeDays){
+  const meta={scratch:'स्क्रैच कार्ड से जीता · व्योम',gift:'तोहफ़े में मिला · व्योम की तरफ़ से',kite:'पतंग इनाम · व्योम की तरफ़ से'}[window.__revealStyle]||'व्योम की तरफ़ से';
+  addReward({tag:'surprise', kind:'surprise', title:'सरप्राइज़ इनाम', source:meta, days:freeDays});
+}
+function addRewardChatMsg(freeDays){
+  const th=$('#ciThread'); if(!th || th.querySelector('.ci-reward-confirm')) return;
+  const typ=ciAdd(ciNode('<div class="ci-row"><div class="ci-typing"><i></i><i></i><i></i></div></div>'));
+  later(()=>{
+    if(!th.contains(typ)) return; typ.remove();
+    if(th.querySelector('.ci-reward-confirm')) return;
+    const row=ciBub(`आपका इनाम <b>+${freeDays} दिन मुफ़्त नेट</b> "मेरे इनाम" में जुड़ गया है। जब इस्तेमाल करना हो, वहाँ जाकर रिडीम कर लें।`,'10:16 AM');
+    const bub=row.querySelector('.ci-bub'); bub.classList.add('ci-reward-confirm');
+    const link=document.createElement('div'); link.className='ci-bcta'; link.textContent='मेरे इनाम देखें';
+    link.onclick=()=>openRewards('chat'); bub.appendChild(link);
+    ciAdd(row);
+  }, 900);
+}
+function openRewards(from){ state.rewardReturn = (typeof from === 'string') ? from : null; renderCiRewards(); goTo('rewards'); }
+function closeRewards(){ const t = state.rewardReturn; state.rewardReturn = null; if(t) goTo(t, true); else prev(); }
+const HI_MONTHS=['जनवरी','फ़रवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर'];
+const fmtHi = d => `${d.getDate()} ${HI_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+/* net currently runs to 24 सितंबर 2026 - a redeemed reward pushes that out */
+const netEndAfter = extra => { const d=new Date(2026,8,24); d.setDate(d.getDate()+extra); return fmtHi(d); };
+
+function rewardCardHTML(o){
+  const gone = o.status === 'used', auto = o.kind === 'offer';
+  const stat = gone ? '<span class="ci-rstat used">इस्तेमाल हो गया</span>'
+             : auto ? '<span class="ci-rstat ready">अपने आप लगेगा</span>'
+                    : '<span class="ci-rstat ready">रिडीम के लिए तैयार</span>';
+  const sline = gone ? `<div class="ci-sline">${ciCheck('#d9008d')} नेट में जुड़ गया — नेट अब ${o.till} तक</div>`
+              : auto ? `<div class="ci-sline">${ciCheck('#B5730A')} आपका मौजूदा प्लान खत्म होते ही अपने आप लगेगा</div>`
+                     : `<div class="ci-sline">${ciCheck('#008043')} जब चाहें रिडीम करें</div>`;
+  /* only a surprise is redeemed by hand - the 14-day bonus applies itself */
+  const action = (gone || auto) ? '' : `<button class="ci-claim" data-rid="${o.id}">अभी रिडीम करें — ${o.days} दिन जोड़ें</button>`;
+  return `<div class="ci-rcard ${gone?'gone':''}"><div class="ci-rhead"><div class="ci-ric">${ciGift(gone?'#898296':'#008043')}</div><div style="flex:1"><div class="ci-rt">${o.title}</div><div class="ci-rd">${o.source}</div></div><div style="text-align:right"><div class="ci-rdays">${o.days} दिन</div>${stat}</div></div>${sline}${action}</div>`;
+}
+function rewardHowto(o){
+  return o.kind === 'offer'
+    ? '<div class="ci-howto"><div class="h">कैसे काम करता है</div><ol><li>कुछ करना नहीं है — ये दिन आपके इनाम में सुरक्षित हैं।</li><li>आपका मौजूदा प्लान खत्म होते ही ये अपने आप लग जाएँगे।</li></ol></div>'
+    : '<div class="ci-howto"><div class="h">कैसे काम करता है</div><ol><li>रिडीम करते ही दिन आपके नेट में जुड़ जाएँगे।</li><li>रिचार्ज की कोई ज़रूरत नहीं — नेट चालू रहेगा।</li></ol></div>';
+}
+function syncFilterChips(){ $$('#rFilters .ci-chip').forEach(c => c.classList.toggle('on', c.dataset.f === rFilter)); }
+function setRFilter(f){ rFilter = f; syncFilterChips(); renderCiRewards(); }
+function renderCiRewards(){
+  const list = $('#ciRlist'); if(!list) return;
+  const avail = availRewards(), used = usedRewards();
+  const show = rFilter === 'available' ? avail : rFilter === 'used' ? used : [...avail, ...used];
+  if(!show.length){
+    const msg = rFilter === 'used'      ? 'अभी तक कोई इनाम इस्तेमाल नहीं हुआ'
+              : rFilter === 'available' ? 'अभी कोई इनाम उपलब्ध नहीं'
+                                        : 'अभी कोई इनाम नहीं<br>नेट सेटअप पूरा होते ही आपका इनाम यहाँ दिखेगा';
+    list.innerHTML = `<div class="rp-empty"><span class="ic">🎁</span><div>${msg}</div></div>`;
+    return;
+  }
+  let html = show.map(rewardCardHTML).join('');
+  /* teach once, on the first un-redeemed screen only */
+  if(rFilter !== 'used' && avail.length === 1 && used.length === 0) html += rewardHowto(avail[0]);
+  list.innerHTML = html;
+  list.querySelectorAll('[data-rid]').forEach(b => b.onclick = () => doDirectRedeem(+b.dataset.rid));
+}
+function doDirectRedeem(id){
+  const r = rewards.find(x => x.id === id);
+  if(!r || r.status !== 'available' || r.kind === 'offer') return;
+  const till = netEndAfter(r.days);
+  r.status = 'used'; r.till = till;
+  syncHdrDot(); renderCiRewards();
+  later(()=>{
+    goTo('chat', true);
+    ciAdd(ciBub('इनाम रिडीम करें','10:18 AM','me'));
+    ciTyping(()=>{
+      later(()=> playCelebration(r.days, ()=> ciTyping(()=>
+        ciAdd(ciBub(`हो गया! 🎉 <b>+${r.days} दिन मुफ़्त नेट</b> आपके नेट में जुड़ गए।<br>अब आपका नेट <b>${till}</b> तक चलेगा।`,'10:18 AM')), 500)), 300);
+    }, 900);
+  }, 850);
+}
+/* ═══ serviceable → reward tease modal ═══ */
+function ambientConfetti(canvas){
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio||1, 2);
+  canvas.width = rect.width*dpr; canvas.height = rect.height*dpr; ctx.scale(dpr,dpr);
+  const W = rect.width, H = rect.height;
+  const cols = ['#D9008D','#008043','#EF9F27','#FFB2E4','#1461CC','#7F77DD','#FFD166'];
+  const parts = [];
+  for(let i=0;i<26;i++){
+    parts.push({ x:Math.random()*W, y:Math.random()*H, vy:0.24+Math.random()*0.38, size:5+Math.random()*6,
+      col:cols[(Math.random()*cols.length)|0], rot:Math.random()*Math.PI*2, vr:(Math.random()-.5)*0.02,
+      sway:Math.random()*Math.PI*2, ss:0.009+Math.random()*0.014, sa:0.3+Math.random()*0.55,
+      shape:Math.random()<0.5?'r':'c', alpha:0.14+Math.random()*0.16 });
+  }
+  function tick(){
+    if(!document.body.contains(canvas)) return;
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.sway+=p.ss; p.y+=p.vy; p.x+=Math.sin(p.sway)*p.sa; p.rot+=p.vr;
+      if(p.y>H+12){ p.y=-12; p.x=Math.random()*W; }
+      ctx.save(); ctx.globalAlpha=p.alpha; ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.col;
+      if(p.shape==='r') ctx.fillRect(-p.size/2,-p.size/3,p.size,p.size*0.6);
+      else { ctx.beginPath(); ctx.arc(0,0,p.size*0.45,0,6.3); ctx.fill(); }
+      ctx.restore();
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+function openRewardTease(){
+  const scr = document.querySelector('.screen[data-s="serviceable"]');
+  if(!scr || scr.querySelector('.rt-full')) return;
+  const COIN = `<svg class="fl-ic" width="54" height="54" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="#D9820A"/><circle cx="27" cy="27" r="20.5" fill="#FFC94D"/><path d="M15 21a12 12 0 0 1 9-6.5" stroke="#FFE6A6" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M27 15.5l3.2 6.4 7.1 1-5.1 5 1.2 7.1L27 37.6l-6.4 3.4 1.2-7.1-5.1-5 7.1-1z" fill="#fff"/></svg>`;
+  const TROPHY = `<svg class="fl-ic" width="52" height="54" viewBox="0 0 52 54"><rect x="21" y="35" width="10" height="7" rx="1.5" fill="#C9760A"/><rect x="15" y="42" width="22" height="5.5" rx="2.5" fill="#E8920F"/><path d="M15 11h22v7a11 11 0 0 1-22 0z" fill="#FFC94D"/><path d="M15 12H9.5a5.5 5.5 0 0 0 6 6.5M37 12h5.5a5.5 5.5 0 0 1-6 6.5" stroke="#E8920F" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M26 15.5l1.7 3.4 3.8.5-2.7 2.7.6 3.8L26 24.3l-3.4 1.6.6-3.8-2.7-2.7 3.8-.5z" fill="#fff"/></svg>`;
+  const MEDAL = `<svg class="fl-ic" width="50" height="54" viewBox="0 0 50 54"><path d="M17 5l8 13M33 5l-8 13" stroke="#D4537E" stroke-width="6" stroke-linecap="round"/><circle cx="25" cy="34" r="15" fill="#EF9F27"/><circle cx="25" cy="34" r="11" fill="#FFC94D"/><path d="M25 27l2 4.2 4.6.6-3.3 3.3.8 4.6L25 38.4l-4.1 2.1.8-4.6-3.3-3.3 4.6-.6z" fill="#fff"/></svg>`;
+  const SPARK = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#85B7EB"><path d="M12 2l1.6 7.4L21 12l-7.4 1.6L12 22l-1.6-8.4L3 12l7.4-1.6z"/></svg>`;
+  const GIFT = `<div class="fl-gift">${GIFT_WHITE}</div>`;
+  const chip = t=>`<div class="fl-chip">🎁 ${t}</div>`;
+  const fl = (pos,rot,delay,dur,inner)=>`<div class="fl" style="${pos};transform:rotate(${rot}deg);animation-delay:${delay}s"><div class="fl-in" style="animation-duration:${dur}s;animation-delay:${delay}s">${inner}</div></div>`;
+  const floats = [
+    fl('top:5%;left:5%',-8,.14,3.4,COIN),
+    fl('top:4%;right:8%',11,.26,3.9,GIFT),
+    fl('top:16%;left:2%',-13,.36,3.5,chip('14 → 28')),
+    fl('top:14%;right:4%',9,.46,4.2,chip('+14 दिन')),
+    fl('top:26%;left:10%',0,.5,4.0,SPARK),
+    fl('top:25%;right:9%',-4,.3,3.7,TROPHY),
+    fl('bottom:27%;left:4%',6,.34,3.8,MEDAL),
+    fl('bottom:24%;right:6%',-9,.44,4.0,chip('+14 दिन')),
+    fl('bottom:18%;left:15%',5,.52,4.3,chip('मुफ़्त नेट')),
+    fl('bottom:29%;right:16%',-6,.24,3.6,chip('14 → 28')),
+    fl('bottom:12%;right:13%',8,.4,3.9,chip('+14 दिन')),
+    fl('bottom:14%;left:24%',0,.56,4.1,SPARK)
+  ].join('');
+  const m = ciNode(`<div class="rt-full">${floats}<div class="rt-inner">
+    <div class="rt-eyebrow">🎁 आपके लिए खास ऑफ़र</div>
+    <h1 class="rt-hero"><span class="hl">14 दिन का रिचार्ज</span><br>नेट चलेगा 28 दिन</h1>
+    <p class="rt-sub">14 दिन के प्लान पर 14 दिन का नेट मुफ़्त — आपके इनाम में जुड़ जाएगा।</p>
+  </div><button class="rt-cta">देखें कैसे चलता है</button></div>`);
+  scr.appendChild(m);
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce){
+    const amb = document.createElement('canvas'); amb.className='rt-ambient'; m.insertBefore(amb, m.firstChild); ambientConfetti(amb);
+    const sr = scr.getBoundingClientRect();
+    const fire = ()=>{ const c=document.createElement('canvas'); c.className='rt-confetti'; m.appendChild(c); burstConfetti(c, sr.width/2, sr.height*0.15); };
+    later(fire, 320); later(fire, 1500);
+  }
+  m.querySelector('.rt-cta').onclick = ()=>{ m.remove(); goTo('edu1'); };
+}
+
+
+/* ═══ v2 · रिचार्ज कितने का होता है — bottom sheet ═══ */
+function openPriceSheet(){
+  const scr = screenEl('edu2');
+  if(!scr || scr.querySelector('.psheet-scrim')) return;
+  const rows = PLANS.map(p => `<div class="prow"><span class="d">${p.days} दिन<span class="pd">${p.span}</span></span><span class="p">₹${p.cost}</span></div>`).join('');
+  const sh = ciNode(`<div class="psheet-scrim"><div class="psheet">
+    <div class="psheet-grab"></div>
+    <h3>रिचार्ज कितने का होता है?</h3>
+    <div class="sub">जितने दिन का रिचार्ज, उतना ही पैसा। कोई महीने का बंधन नहीं।</div>
+    <div style="margin-top:12px">${rows}</div>
+    <button class="cta" style="margin-top:16px">समझ गया</button>
+  </div></div>`);
+  scr.appendChild(sh);
+  sh.onclick = e => { if(e.target === sh || e.target.classList.contains('cta')) sh.remove(); };
+}
+
+/* ═══ v2 · तीन ऑफर — कॉन्फ़ेटी + एक-एक कार्ड ═══ */
+let offersShown = false;
+function enterOffers(){
+  const cards = $$('#ofList .ofc'), sep = $('#ofSep'), foot = $('#ofFoot');
+  cards.forEach(c => c.classList.remove('show'));
+  sep.classList.remove('show'); foot.classList.remove('show');
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){ cards.forEach(c=>c.classList.add('show')); sep.classList.add('show'); foot.classList.add('show'); return; }
+  const cv = $('#ofConfetti');
+  if(cv){ later(()=>{ const r = cv.getBoundingClientRect(); if(r.width) burstConfetti(cv, r.width/2, r.height*0.30); }, 220); }
+  cards.forEach((c,i)=> later(()=> c.classList.add('show'), 480 + i*380));
+  later(()=>{ sep.classList.add('show'); foot.classList.add('show'); }, 480 + cards.length*380 + 120);
+  offersShown = true;
+}
+
+/* ═══ v2 · UPI PIN ═══ */
+let pinLen = 0;
+function resetPin(){ pinLen = 0; paintPin(); }
+function paintPin(){ $$('#upDots .up-dot').forEach((d,i)=> d.classList.toggle('on', i < pinLen)); }
+function initPin(){
+  const keys = $$('#upKeys .up-key'); if(!keys.length) return;
+  keys.forEach(k => k.onclick = ()=>{
+    const v = k.dataset.k;
+    if(v === 'del'){ pinLen = Math.max(0, pinLen-1); paintPin(); return; }
+    if(v === 'ok'){ if(pinLen === 6) goTo('processing'); return; }
+    if(pinLen < 6){ pinLen++; paintPin(); }
+    if(pinLen === 6) later(()=> goTo('processing'), 420);
+  });
+}
+
+/* ═══ v2 · बुकिंग कन्फर्म ═══ */
+function enterBooked(){
+  $('#bkSub').textContent = `₹${ADVANCE} एडवांस मिल गया।`;
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const cv = $('#bkConfetti');
+  if(cv && !reduce) later(()=>{ const r = cv.getBoundingClientRect(); if(r.width) burstConfetti(cv, r.width/2, r.height*0.40); }, 320);
+}
+
+/* ═══ wiring ═══ */
+$$('[data-go]').forEach(el => el.addEventListener('click', e=>{
+  if(el.disabled) return; e.stopPropagation(); goTo(el.dataset.go);
+}));
+function runPlan(i){
+  state.plan = i; chatBuilt = false; confShown = false;
+  clearRewards();
+  document.querySelectorAll('.sp,.sp-canvas,.conf-fly,.ci-celebrate,.ci-confetti-canvas').forEach(e=>e.remove());
+  const th=$('#ciThread'); if(th) th.innerHTML='';
+  const h=$('#ciHdr'); if(h) h.classList.remove('show','nopending','receive');
+  $$('#planChips .chip2').forEach(c=> c.classList.toggle('on', +c.dataset.plan===i));
+  goTo('chat');
+}
+$$('#planChips .chip2').forEach(el => el.onclick = ()=> runPlan(+el.dataset.plan));
+$$('#rFilters .ci-chip').forEach(el => el.onclick = ()=> setRFilter(el.dataset.f));
+renderCiRewards(); syncHdrDot();
+$$('[data-back]').forEach(el => el.addEventListener('click', prev));
+$('#btnNext').onclick = next;
+$('#btnPrev').onclick = prev;
+const _mp = $('#mPrev'); if(_mp) _mp.onclick = prev;
+const _mn = $('#mNext'); if(_mn) _mn.onclick = next;
+const restart = ()=>{ offersShown=false; pinLen=0; paintPin(); resetSlot(); state.plan = 0; state.phone=''; chatBuilt=false; confShown=false; clearRewards(); document.querySelectorAll('.sp,.sp-canvas,.conf-fly,.ci-celebrate,.ci-confetti-canvas').forEach(e=>e.remove()); const _h=$('#ciHdr'); if(_h)_h.classList.remove('show','nopending','receive'); go(0); };
+$('#btnRestart').onclick = restart;
+const _rc = $('#restartCta'); if(_rc) _rc.onclick = restart;
+document.addEventListener('keydown', e=>{
+  if(e.target.tagName === 'INPUT') return;
+  if(e.key === 'Escape'){ closeSheets(); return; }
+  if(e.key === 'ArrowRight') next();
+  if(e.key === 'ArrowLeft')  prev();
+  if(e.key.toLowerCase() === 'r') restart();
+});
+
+/* ═══ boot ═══ */
+buildRail(); initPhone(); initOtp(); initSlider(); initSlot(); initAddrCapture(); initPin();
+const _pl = $('#priceLink'); if(_pl) _pl.onclick = openPriceSheet;
+const _ciHdr = $('#ciHdr'); if(_ciHdr) _ciHdr.onclick = ()=>openRewards('chat');
+const _confRw = $('#confRwIc'); if(_confRw) _confRw.onclick = ()=>openRewards('confirmed');
+const _rwBack = $('#rwBack'); if(_rwBack) _rwBack.onclick = closeRewards;
+const _svc = $('#svcCta'); if(_svc) _svc.onclick = ()=> goTo('edu1');
+const q = new URLSearchParams(location.search);
+const start = FLOW.findIndex(f=>f.id===q.get('screen'));
+go(start>=0 ? start : 0);
+  /* ============ reward-experience variations ============ */
+  window.__revealStyle='scratch';
+  document.querySelectorAll('.styleBtn').forEach(function(b){ b.onclick=function(){ window.__revealStyle=b.dataset.style; document.querySelectorAll('.styleBtn').forEach(function(x){x.classList.toggle('on',x===b);}); openReveal(cur().reward||5); }; });
+  function openReveal(freeDays){ var s=window.__revealStyle;
+    if(s==='scratch') return openScratch(freeDays);
+    if(s==='gift') return openGiftBox(freeDays);
+    if(s==='kite') return openKite(freeDays);
+    return openScratch(freeDays);
+  }
+  function spReduce(){ return matchMedia('(prefers-reduced-motion:reduce)').matches; }
+  function spClear(){ var s=document.querySelector('.screen[data-s="chat"]'); s.querySelectorAll('.sp,.sp-canvas,.conf-fly').forEach(function(e){e.remove();});
+    Array.prototype.slice.call(s.children).forEach(function(c){ if(c.classList&&c.classList.contains('sp-token')) c.remove(); }); }
+  function spBurst(ov, el){ if(spReduce())return; var canvas=document.createElement('canvas'); canvas.className='sp-canvas'; ov.appendChild(canvas);
+    var sr=ov.getBoundingClientRect(), er=el.getBoundingClientRect(); burstConfetti(canvas, er.left+er.width/2-sr.left, er.top+er.height/2-sr.top); }
+  function spCap(ov, a, b){ ov.querySelector('.sp-cap .l1').textContent=a; ov.querySelector('.sp-cap .l2').textContent=b; }
+  function spClaim(ov, freeDays){ var reduce=spReduce(); var hdr=$('#ciHdr'); hdr.classList.add('show');
+    var token=ov.querySelector('.sp-token'); ov.classList.add('closing'); var fin=false;
+    function done(){ if(fin)return; fin=true; if(token&&token.parentNode)token.remove(); if(ov.parentNode)ov.remove();
+      hdr.classList.remove('receive'); void hdr.offsetWidth; hdr.classList.add('receive'); setSurpriseReward(freeDays); addRewardChatMsg(freeDays); }
+    flyToHeader(token, hdr, done, reduce);
+    setTimeout(done, reduce?700:2000); }
+  function spWireCTA(ov, freeDays){ var cta=ov.querySelector('.sp-cta'); cta.style.display=''; cta.onclick=function(){ spClaim(ov, freeDays); }; }
+
+  /* gift-box parts (used by the gift reveal) */
+  var GIFT_LID='<svg viewBox="0 0 74 30"><rect x="4" y="14" width="66" height="14" rx="5" fill="#B00072"/><rect x="31" y="14" width="12" height="14" fill="#fff" opacity=".92"/><path d="M37 14 C29 1 13 3 18 14 C22 20 33 16 37 14 Z" fill="#fff"/><path d="M37 14 C45 1 61 3 56 14 C52 20 41 16 37 14 Z" fill="#fff"/></svg>';
+  var GIFT_BODY='<svg viewBox="0 0 74 48"><rect x="8" y="2" width="58" height="42" rx="6" fill="#D9008D"/><rect x="31" y="2" width="12" height="42" fill="#fff" opacity=".92"/></svg>';
+
+  /* illustrations for the reveals */
+  var WIOM_MARK_W='<svg viewBox="0 0 24 24" fill="none"><path d="M3 13c2-5 6-5 9 0s7 5 9 0" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/></svg>';
+  var CHECK_SM='<svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#008043" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var SEAL_OK='<svg class="gc-seal" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><g fill="#00A15A"><rect x="17" y="17" width="46" height="46" rx="15"/><rect x="17" y="17" width="46" height="46" rx="15" transform="rotate(45 40 40)"/></g><path d="M28 41 l8.5 8.5 l16-18" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var GIFT_3D='<svg viewBox="0 0 120 112" xmlns="http://www.w3.org/2000/svg">'
+    +'<ellipse cx="60" cy="104" rx="33" ry="5" fill="#EBD3E4"/>'
+    +'<g fill="none" stroke-linecap="round"><path d="M20 44 q5 -6 10 0" stroke="#E23744" stroke-width="3.4"/><path d="M92 40 l9 -6" stroke="#39B54A" stroke-width="3.4"/><path d="M100 66 l9 6" stroke="#F7941D" stroke-width="3.4"/></g>'
+    +'<circle cx="16" cy="64" r="3" fill="#39B54A"/><circle cx="102" cy="20" r="3.2" fill="#FFC130"/><circle cx="26" cy="20" r="2.6" fill="#E23744"/>'
+    +'<path d="M34 60 h52 v33 a5 5 0 0 1 -5 5 H39 a5 5 0 0 1 -5 -5 Z" fill="#E0007A"/>'
+    +'<path d="M74 60 h12 v33 a5 5 0 0 1 -5 5 H74 Z" fill="#C1006A"/>'
+    +'<rect x="28" y="48" width="64" height="16" rx="5" fill="#FF2AA6"/>'
+    +'<rect x="80" y="48" width="12" height="16" rx="5" fill="#E4128B"/>'
+    +'<rect x="54" y="48" width="12" height="50" fill="#FFC130"/><rect x="54" y="48" width="4" height="50" fill="#FFDA79"/>'
+    +'<path d="M60 48 C49 33 33 36 39 48 C43 54 54 51 60 48 Z" fill="#FFC130"/>'
+    +'<path d="M60 48 C71 33 87 36 81 48 C77 54 66 51 60 48 Z" fill="#FFC130"/>'
+    +'<circle cx="60" cy="48" r="6" fill="#F5B301"/></svg>';
+
+  /* ---- variation: scratch card (Beem style) ---- */
+  function openScratch(freeDays){
+    spClear(); var reduce=spReduce();
+    var ov=ciNode('<div class="sp scratch"><div class="sp-x">✕</div>'
+      +'<div class="sp-cap"><div class="l1">वाह! 🎉</div><div class="l2">आपको एक सरप्राइज़ इनाम मिला है</div></div>'
+      +'<div class="scratch-wrap"><div class="scratch-card"><div class="scratch-base">'
+        +'<div class="sp-token"><span class="sh"></span>'+GIFT_WHITE+'</div>'
+        +'<div class="sc-big">+'+freeDays+' दिन<br>मुफ़्त नेट</div>'
+      +'</div><canvas class="scratch-foil"></canvas></div>'
+      +'<div class="sc-hint">इनाम खोलने के लिए कार्ड को उँगली से रगड़ें 👆</div>'
+      +'<div class="sc-note">“इनाम में जोड़ें” दबाएँ — फिर “मेरे इनाम” से जब चाहें रिडीम करें</div></div>'
+      +'<div class="scratch-cta-wrap"><div class="sp-cta" style="display:none">इनाम में जोड़ें</div></div></div>');
+    document.querySelector('.screen[data-s="chat"]').appendChild(ov);
+    ov.querySelector('.sp-x').onclick=function(){ ov.remove(); };
+    var card=ov.querySelector('.scratch-card'), cv=ov.querySelector('.scratch-foil');
+    var ctx=cv.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2), done=false;
+    function rr(x,y,w,h,ra){ ctx.beginPath(); ctx.moveTo(x+ra,y); ctx.arcTo(x+w,y,x+w,y+h,ra); ctx.arcTo(x+w,y+h,x,y+h,ra); ctx.arcTo(x,y+h,x,y,ra); ctx.arcTo(x,y,x+w,y,ra); ctx.closePath(); }
+    function draw(){ var r=card.getBoundingClientRect(), W=r.width, H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation='source-over'; ctx.fillStyle='#D9008D'; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='rgba(255,255,255,.09)'; for(var gy=18;gy<H;gy+=22){ for(var gx=18;gx<W;gx+=22){ ctx.beginPath(); ctx.arc(gx,gy,2,0,7); ctx.fill(); } }
+      ctx.strokeStyle='rgba(255,255,255,.55)'; ctx.lineWidth=2.2; ctx.lineCap='round';
+      [[40,50],[190,58],[52,186],[186,180],[152,40],[34,124]].forEach(function(p){ var s=5; ctx.beginPath(); ctx.moveTo(p[0]-s,p[1]); ctx.lineTo(p[0]+s,p[1]); ctx.moveTo(p[0],p[1]-s); ctx.lineTo(p[0],p[1]+s); ctx.stroke(); });
+      var cx=W/2, cy=H/2-10;
+      ctx.strokeStyle='#fff'; ctx.fillStyle='rgba(255,255,255,.13)'; ctx.lineWidth=3.4; ctx.lineJoin='round'; ctx.lineCap='round';
+      rr(cx-27,cy-2,54,34,6); ctx.fill(); ctx.stroke();
+      rr(cx-32,cy-16,64,16,5); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx,cy-16); ctx.lineTo(cx,cy+32); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx,cy-16); ctx.bezierCurveTo(cx-16,cy-30,cx-26,cy-20,cx-15,cy-16); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx,cy-16); ctx.bezierCurveTo(cx+16,cy-30,cx+26,cy-20,cx+15,cy-16); ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,.95)'; ctx.font='800 13.5px "Noto Sans Devanagari",sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('स्क्रैच करें', cx, cy+64); }
+    function reveal(){ if(done)return; done=true; card.classList.add('done'); spBurst(ov, ov.querySelector('.sp-token')); spWireCTA(ov, freeDays);
+      ov.querySelector('.sc-hint').textContent='🎉 इनाम खुल गया!'; spCap(ov,'वाह! 🎉','आपका इनाम तैयार है'); }
+    if(reduce){ requestAnimationFrame(function(){ draw(); reveal(); }); return; }
+    requestAnimationFrame(draw);
+    var on=false, cnt=0;
+    function P(e){ var r=cv.getBoundingClientRect(); var t=(e.touches&&e.touches[0])||e; return {x:t.clientX-r.left, y:t.clientY-r.top}; }
+    function rub(p){ ctx.globalCompositeOperation='destination-out'; ctx.beginPath(); ctx.arc(p.x,p.y,22,0,7); ctx.fill(); }
+    function pct(){ try{ var d=ctx.getImageData(0,0,cv.width,cv.height).data, clear=0, tot=0; for(var i=3;i<d.length;i+=160){ tot++; if(d[i]===0)clear++; } if(clear/tot>0.5) reveal(); }catch(e){} }
+    cv.addEventListener('pointerdown',function(e){ on=true; rub(P(e)); });
+    cv.addEventListener('pointermove',function(e){ if(!on)return; rub(P(e)); if((++cnt%6)===0) pct(); });
+    window.addEventListener('pointerup',function(){ if(on){ on=false; pct(); } });
+  }
+
+  /* ---- variation: gift box → success coupon (Swiggy style) ---- */
+  function openGiftBox(freeDays){
+    spClear(); var reduce=spReduce();
+    var ov=ciNode('<div class="sp giftbox"><div class="sp-x">✕</div>'
+      +'<div class="sp-cap"><div class="l1">आपके लिए एक तोहफ़ा 🎁</div><div class="l2">बॉक्स पर टैप करके खोलें</div></div>'
+      +'<div class="gb-stage">'
+        +'<div class="gb-box"><div class="gb-body">'+GIFT_BODY+'</div><div class="gb-lid">'+GIFT_LID+'</div></div>'
+        +'<div class="gb-hint">👆 टैप करें</div>'
+        +'<div class="gc" style="display:none">'+SEAL_OK
+          +'<div class="gc-title">वाह! इनाम मिल गया 🎉</div>'
+          +'<div class="gc-sub">आपका सरप्राइज़ इनाम अकाउंट में जुड़ गया</div>'
+          +'<div class="gc-illus"><div class="sp-token">'+GIFT_3D+'</div></div>'
+          +'<div class="gc-coupon"><div class="gc-row">'
+            +'<span class="gc-brand"><span class="gc-logo">'+WIOM_MARK_W+'</span>व्योम</span>'
+            +'<span class="gc-arrow">→</span><span class="gc-amt">+'+freeDays+' दिन मुफ़्त नेट</span></div>'
+            +'<div class="gc-perf"></div><div class="gc-status">'+CHECK_SM+'रिडीम करने पर आपके नेट में जुड़ेगा</div></div>'
+          +'<div class="gc-foot">शुक्रिया! आपका इनाम आपके अकाउंट में सुरक्षित है।</div>'
+        +'</div>'
+      +'</div><div class="scratch-cta-wrap"><div class="sp-cta" style="display:none">इनाम में जोड़ें</div></div></div>');
+    document.querySelector('.screen[data-s="chat"]').appendChild(ov);
+    ov.querySelector('.sp-x').onclick=function(){ ov.remove(); };
+    var box=ov.querySelector('.gb-box'), hint=ov.querySelector('.gb-hint'), gc=ov.querySelector('.gc'), opened=false;
+    function open(){ if(opened)return; opened=true; box.classList.add('open'); hint.style.display='none'; spBurst(ov, box);
+      later(function(){ box.style.display='none'; gc.style.display='flex'; void gc.offsetWidth; gc.classList.add('show'); spWireCTA(ov, freeDays); spCap(ov,'🎉 इनाम मिल गया!','मुबारक हो'); }, 440); }
+    box.onclick=open;
+    if(reduce){ open(); }
+  }
+
+  /* ---- variation: kites (1 पतंग = 1 दिन) ---- */
+  function KITE(c1,c2){
+    return '<svg viewBox="0 0 64 116" xmlns="http://www.w3.org/2000/svg">'
+      +'<path d="M32 70 q11 12 0 23 q-11 12 0 21" stroke="'+c1+'" stroke-width="2.4" fill="none" stroke-linecap="round"/>'
+      +'<path d="M25 82 l14 0 -7 7 z" fill="'+c2+'"/><path d="M25 100 l14 0 -7 7 z" fill="'+c1+'"/>'
+      +'<polygon points="32,4 58,38 32,44" fill="'+c1+'"/><polygon points="32,4 6,38 32,44" fill="'+c2+'"/>'
+      +'<polygon points="32,70 58,38 32,44" fill="'+c2+'"/><polygon points="32,70 6,38 32,44" fill="'+c1+'"/>'
+      +'<path d="M32 4 L58 38 L32 70 L6 38 Z" fill="none" stroke="rgba(20,16,33,.12)" stroke-width="1.2"/>'
+      +'<path d="M32 4 V70 M6 38 H58" stroke="rgba(255,255,255,.55)" stroke-width="1.2"/>'
+      +'<circle cx="32" cy="44" r="2.4" fill="rgba(255,255,255,.85)"/></svg>';
+  }
+  function openKite(freeDays){
+    spClear(); var reduce=spReduce(); var N=freeDays;
+    var ov=ciNode('<div class="sp kitesp"><div class="sp-x">✕</div>'
+      +'<div class="sp-cap"><div class="l1">आपके लिए इनाम आया है 🪁</div><div class="l2">देखिए कितनी पतंगें उड़ीं</div></div>'
+      +'<div class="kite-stage"><div class="kite-greet"><span class="kg1">आज़ादी के इस पर्व पर</span><span class="kg2">हार्दिक शुभकामनाएं <span class="fl">🇮🇳</span></span></div></div>'
+      +'<div class="sp-reveal"><div class="sp-token"><span class="sh"></span>'+GIFT_WHITE+'</div>'
+        +'<div class="sp-big">+'+N+' दिन मुफ़्त नेट</div>'
+        +'<div class="sp-sub">हर पतंग = एक दिन मुफ़्त नेट 🪁</div>'
+        +'<div class="sp-cta">इनाम में जोड़ें</div></div>'
+      +'</div>');
+    document.querySelector('.screen[data-s="chat"]').appendChild(ov);
+    ov.querySelector('.sp-x').onclick=function(){ ov.remove(); };
+    var stage=ov.querySelector('.kite-stage'), reveal=ov.querySelector('.sp-reveal'), token=ov.querySelector('.sp-token');
+    var KCOL=[['#D9008D','#FF7FC4'],['#F7941D','#FFC65B'],['#2AA84A','#83DE97'],['#1E7FD6','#6FB8F2'],['#7A4FD6','#BCA2ED'],['#E23744','#FF8A93'],['#00A99D','#63D4CA']];
+    var mid=(N-1)/2;
+    for(var i=0;i<N;i++){
+      var c=KCOL[i%KCOL.length]; var k=document.createElement('div'); k.className='kite';
+      var frac=N===1?0.5:(i/(N-1));
+      k.style.left=(18+frac*64)+'%'; k.style.top=(46+Math.abs(i-mid)*24)+'px';
+      k.innerHTML='<div class="kwrap">'+KITE(c[0],c[1])+'</div>';
+      stage.appendChild(k);
+      if(reduce){ k.classList.add('up'); }
+      else { (function(el,d){ later(function(){ el.classList.add('up'); }, 160+d); })(k, i*160); }
+    }
+    var greet=ov.querySelector('.kite-greet');
+    function showGreet(){ if(greet)greet.classList.add('show'); }
+    function showReward(){ if(!ov.parentNode)return; reveal.classList.add('show'); token.classList.add('pop'); spBurst(ov, token); spWireCTA(ov, freeDays);
+      spCap(ov,'🎉 आपको मिलीं '+N+' पतंगें!','हर पतंग = एक दिन मुफ़्त नेट'); }
+    if(reduce){ showGreet(); showReward(); return; }
+    var total=160+(N-1)*160+1000;
+    later(showGreet, total-150); later(showReward, total+250);
+  }
+
+</script>
+</body></html>
