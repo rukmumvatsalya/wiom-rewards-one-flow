@@ -984,12 +984,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     border-radius:100px;padding:5px 4px;font-size:11px;line-height:15px;font-weight:800;color:var(--text-positive);white-space:nowrap}
 
   /* इनाम आइकन में उड़ने वाला टोकन */
-  .ra-fly{position:absolute;width:78px;height:78px;border-radius:50%;background:var(--bg-brand-focus);
-    display:grid;place-items:center;z-index:40;box-shadow:0 14px 30px -10px rgba(217,0,141,.55)}
-  .ra-fly svg{width:38px;height:38px}
+  .ra-fly{position:absolute;border-radius:50%;background:var(--bg-brand-focus);
+    display:grid;place-items:center;z-index:40;transform-origin:center;will-change:transform;
+    box-shadow:0 14px 30px -10px rgba(217,0,141,.55)}
+  .ra-fly svg{width:46%;height:46%}
 
   /* ═══ पूरे पेज का इनाम मोमेंट ═══ */
-  .ra{position:absolute;inset:0;display:flex;flex-direction:column;
+  .ra{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;
     background:linear-gradient(180deg,#FFE7F4 0%,#FFF5FA 40%,#FAF9FC 100%)}
   .ra-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
   .ra-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
@@ -2549,16 +2550,40 @@ function flyRewardToHeader(){
   const scr = screenEl('rewardsadded'), ic = $('#raRwIc');
   if(!scr || !ic || !scr.classList.contains('active')) return;
   const src = scr.querySelector('.ra-token'); if(!src) return;
-  const r = src.getBoundingClientRect(); if(!r.width) { ic.classList.add('pop'); return; }
+  const sr = scr.getBoundingClientRect(), r = src.getBoundingClientRect(), h = ic.getBoundingClientRect();
+  if(!r.width || !h.width){ ic.classList.add('pop'); return; }
+
+  /* every coordinate is screen-relative — the token is absolutely positioned inside .screen */
+  const size = r.width;
+  const sx = r.left - sr.left + r.width/2,  sy = r.top - sr.top + r.height/2;
+  const ex = h.left - sr.left + h.width/2,  ey = h.top - sr.top + h.height/2;
+  const endScale = h.width / size;                       /* land at exactly the icon's size */
+
   const tok = ciNode(`<div class="ra-fly">${GIFT_WHITE}</div>`);
+  tok.style.width = tok.style.height = size + 'px';      /* start identical to the hero — no jump */
+  tok.style.left  = (sx - size/2) + 'px';
+  tok.style.top   = (sy - size/2) + 'px';
   scr.appendChild(tok);
-  tok.style.left = (r.left + (r.width-78)/2) + 'px';
-  tok.style.top  = (r.top  + (r.height-78)/2) + 'px';
+
   /* the hero stays put and recoils; a copy is what travels, so no hole is left behind */
-  src.style.transition = 'transform .22s var(--ease)';
-  src.style.transform = 'scale(.88)';
-  later(()=>{ src.style.transform = ''; }, 240);
-  flyToHeader(tok, ic, ()=> ic.classList.add('pop'), false, scr);
+  src.style.transition = 'transform .24s var(--ease)';
+  src.style.transform = 'scale(.86)';
+  later(()=>{ src.style.transform = ''; }, 250);
+
+  const cx = (sx + ex)/2 + 30, cy = Math.min(sy, ey) - 58, dur = 780;
+  let start = null, popped = false;
+  function frame(ts){
+    if(!tok.isConnected) return;
+    if(start === null) start = ts;
+    const p = Math.min(1, (ts - start)/dur), e = easeInOutCubic(p);
+    const x = (1-e)*(1-e)*sx + 2*(1-e)*e*cx + e*e*ex;
+    const y = (1-e)*(1-e)*sy + 2*(1-e)*e*cy + e*e*ey;
+    tok.style.transform = `translate(${x-sx}px, ${y-sy}px) scale(${1 + (endScale-1)*e})`;
+    if(!popped && p >= 0.84){ popped = true; ic.classList.add('pop'); }   /* the icon catches it */
+    if(p > 0.9) tok.style.opacity = String(Math.max(0, 1 - (p-0.9)/0.1));
+    if(p < 1) requestAnimationFrame(frame); else { tok.remove(); ic.classList.add('pop'); }
+  }
+  requestAnimationFrame(frame);
 }
 
 /* ═══ v2 · डेमो कंट्रोल — किस रकम पर पूरा फ़्लो चलाना है ═══ */
