@@ -693,6 +693,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .of-note svg{flex:none;margin-top:1px}
 /* locked-offer strip on the recharge screen */
 .ft-row .ft-ic.gift svg{width:20px;height:20px}
+.ft-row .ft-t.offer{color:var(--text-positive);font-weight:700}
 .ft-row .ft-t b{font-weight:800}
 .ft-row .ft-t .sub{display:block;font-size:12.5px;line-height:19px;color:var(--text-sec);margin-top:3px}
 .of-lock{display:flex;align-items:flex-start;gap:12px;background:#E1FAED;border:1px solid #A5E5C6;
@@ -1282,11 +1283,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <section class="screen" data-s="offers">
       <div class="statusbar" data-sb></div>
       <canvas class="ra-confetti" id="ofConfetti" style="z-index:6"></canvas>
-      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="spacer"></div><div class="appbar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13v-1a8 8 0 0116 0v1" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/><rect x="2.5" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><rect x="17" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><path d="M19 19.5v.5a2 2 0 01-2 2h-3" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="appbar-icon"><svg class="ab-lang" viewBox="0 0 24 24" fill="none"><rect x="1.5" y="2.5" width="15" height="15" rx="4" fill="#352d42"/><text x="9" y="13.6" font-family="Noto Sans, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">A</text><rect x="10" y="9" width="12.5" height="12.5" rx="3.5" fill="#352d42" stroke="#faf9fc" stroke-width="1.4"/><text x="16.2" y="18.6" font-family="Noto Sans Devanagari, Noto Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">अ</text></svg></div><div class="vswitch" id="ofVer"><span class="on" data-v="a">A</span><span data-v="b">B</span><span data-v="c">C</span></div></div></div>
+      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="spacer"></div><div class="appbar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13v-1a8 8 0 0116 0v1" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/><rect x="2.5" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><rect x="17" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><path d="M19 19.5v.5a2 2 0 01-2 2h-3" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="appbar-icon"><svg class="ab-lang" viewBox="0 0 24 24" fill="none"><rect x="1.5" y="2.5" width="15" height="15" rx="4" fill="#352d42"/><text x="9" y="13.6" font-family="Noto Sans, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">A</text><rect x="10" y="9" width="12.5" height="12.5" rx="3.5" fill="#352d42" stroke="#faf9fc" stroke-width="1.4"/><text x="16.2" y="18.6" font-family="Noto Sans Devanagari, Noto Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">अ</text></svg></div><div class="vswitch" id="ofVer"><span data-v="a">A</span><span class="on" data-v="b">B</span><span data-v="c">C</span></div></div></div>
       <div class="content">
 
         <!-- A · तीन बराबर टिकट -->
-        <div class="ofv on" data-v="a">
+        <div class="ofv" data-v="a">
           <div class="eduhead rv d1">
             <h2>हाँ, अभी तीन ऑफर चल रहे हैं</h2>
             <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त — आपके खाते में जुड़ जाएंगे।</p>
@@ -1295,7 +1296,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </div>
 
         <!-- B · एक बड़ा ऑफर, दो और साथ में -->
-        <div class="ofv" data-v="b">
+        <div class="ofv on" data-v="b">
           <div class="eduhead rv d1" style="margin-top:2px">
             <h2>हाँ! ऑफर चालू है 🎉</h2>
             <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त।</p>
@@ -1578,7 +1579,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="sheet-title">रिचार्ज के विकल्प</div>
       <div class="sheet-sub">80 से 100 mbps, डेटा की कोई लिमिट नहीं।</div>
       <div class="sheet-scroll" id="planList"></div>
-      <div style="padding-top:12px"><button class="cta" id="planCta">₹23 का रिचार्ज चुनें</button></div>
+      <div style="padding-top:12px"><button class="cta" id="planCta">कोई ऑफर चल रहा है क्या?</button></div>
     </div>
 
 
@@ -1635,7 +1636,7 @@ const LM_TYPES=[{k:'मंदिर / मस्जिद / गुरुद्व
 const state={idx:0,plan:0,phone:'',date:'27 जुलाई',
   locAddr:'Rajiv Colony, Sector 33',serviceable:true,
   name:'',landmark:'Hanuman Mandir',voiceDone:false,timers:[],
-  offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
+  viaSheet:false,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
 const cur=()=>PLANS[state.plan];
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -1677,7 +1678,7 @@ function onEnter(id){
     case 'checking':$('#permOverlay').style.display='none';later(()=>{$('#permOverlay').style.display='grid';},1000);break;
     case 'edu2':syncEdu2Cta();startEdu2Auto();break;
     case 'cost':syncCostCta();break;
-    case 'offers':renderOffers();break;
+    case 'offers':renderOffers();syncOffersCta();break;
     case 'detail':renderDetail();break;
     case 'paymethod':syncAmounts();break;
     case 'processing':syncAmounts();later(()=>goTo('paydone'),2000);break;
@@ -1814,12 +1815,13 @@ function renderPlanRows(){
     return `<div class="pkrow ${sel?'sel':''}" data-p="${i}"><div class="pk-main"><span class="pk-d">${p.days} दिन <small>(${p.span})</small></span>${sel?`<span class="pk-p">₹${p.cost}</span>`:`<span class="pk-chev">▾</span>`}</div>${sel&&p.days===28?CMP28:''}</div>`;
   }).join('');
   $$('#planList [data-p]').forEach(r=>r.onclick=()=>{sheetSel=+r.dataset.p;renderPlanRows();});
-  const pc=$('#planCta'); if(pc) pc.textContent='समझ गया';
+  const pc=$('#planCta'); if(pc) pc.textContent='कोई ऑफर चल रहा है क्या?';
 }
 function initPlanSheet(){
   document.addEventListener('click',e=>{const o=e.target.closest('[data-plansheet]');if(o){sheetSel=state.plan;renderPlanRows();openSheet('plan');}});
   $('#planScrim').onclick=()=>closeSheet('plan');
-  $('#planCta').onclick=()=>{closeSheet('plan');};   /* the sheet is informational here — the offer path fixes the recharge */
+  /* the sheet already answered "कितने का होता है" — so it asks about offers next */
+  $('#planCta').onclick=()=>{ closeSheet('plan'); state.viaSheet=true; goTo('offers'); };
 }
 
 
@@ -1867,7 +1869,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
-const restart=()=>{Object.assign(state,{offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
+const restart=()=>{Object.assign(state,{viaSheet:false,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
 $('#btnRestart').onclick=restart;
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='Escape'){closeSheets();return;}if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='r')restart();});
 
@@ -1893,7 +1895,7 @@ function renderDetail(){
       <div class="ft-row"><span class="ft-ic">${TICK24}</span><div class="ft-t">नेट नहीं लगा तो पूरा पैसा वापस</div></div>
       <div class="ft-row"><span class="ft-ic">${TICK24}</span><div class="ft-t">आपका ${p.days} दिन का रिचार्ज नेट लगने के बाद ही शुरू होगा - पहले नहीं</div></div>
       <div class="ft-row"><span class="ft-ic">${TICK24}</span><div class="ft-t">बॉक्स व्योम का होता है, जमा राशि ₹0 - और कुछ नहीं देना</div></div>
-      ${state.offersGrabbed ? `<div class="ft-row"><span class="ft-ic gift">${GIFT_ROW}</span><div class="ft-t"><b>तीन ऑफर भी मिलेंगे</b>${OFFERS.map(o=>`<span class="sub">${o.pay} दिन के रिचार्ज पर +${o.free} दिन मुफ़्त</span>`).join('')}</div></div>` : ''}
+      ${state.offersGrabbed ? `<div class="ft-row"><span class="ft-ic gift">${GIFT_ROW}</span><div class="ft-t offer">जो आज ऑफर चल रहा है, वो भी इसी में मिल जाएगा</div></div>` : ''}
     </div>`;
   const c=$('#detailCta'); c.textContent=`₹${p.cost} का रिचार्ज करें`;
   c.onclick=()=>goTo('paymethod');
@@ -1985,7 +1987,7 @@ const INSTALL_PLAN=0;                                  /* 1 दिन · ₹23 �
 const bonusDays=()=> state.rewardPick>=0 ? OFFERS[state.rewardPick].free : 0;
 const installDays=()=> PLANS[state.plan].days + bonusDays();
 
-let offerVer='a';
+let offerVer='b';                       /* the hero version is the default */
 function setOfferVer(v){
   offerVer=v;
   $$('#ofVer span').forEach(x=>x.classList.toggle('on', x.dataset.v===v));
@@ -2025,8 +2027,18 @@ function countTo(card){
 function initRewardTabs(){ const _b=$('#rwBack'); if(_b) _b.onclick=leaveRewards; $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); }); }
 function initOffers(){
   $$('#ofVer span').forEach(b=> b.onclick=()=>setOfferVer(b.dataset.v));
+}
+/* offers → खर्चा when they arrived from the sheet, offers → booking otherwise */
+function syncOffersCta(){
   const b=$('#offersCta'); if(!b) return;
-  b.onclick=()=>{ state.offersGrabbed=true; state.plan=INSTALL_PLAN; goTo('detail'); };
+  state.offersGrabbed = true;
+  if(state.viaSheet){
+    b.textContent = 'शुरुआत में कितना खर्चा होता है?';
+    b.onclick = ()=> goTo('cost');
+  } else {
+    b.textContent = 'कैसे बुक करें?';
+    b.onclick = ()=>{ state.plan = INSTALL_PLAN; goTo('detail'); };
+  }
 }
 
 /* ═══ पूरे पेज का इनाम मोमेंट — पेमेंट के तुरंत बाद ═══ */
@@ -2172,8 +2184,13 @@ function leaveRewards(){
 
 function syncCostCta(){
   const b=$('#costCta'); if(!b) return;
-  b.textContent='कोई ऑफर चल रहा है क्या?';
-  b.onclick=()=>goTo('offers');
+  if(state.viaSheet){                      /* offers already seen — the only question left is booking */
+    b.textContent='कैसे बुक करें?';
+    b.onclick=()=>{ state.plan=INSTALL_PLAN; goTo('detail'); };
+  } else {
+    b.textContent='कोई ऑफर चल रहा है क्या?';
+    b.onclick=()=>goTo('offers');
+  }
 }
 
 buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs();

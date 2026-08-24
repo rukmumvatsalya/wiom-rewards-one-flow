@@ -986,8 +986,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
   /* ═══ रिचार्ज स्क्रीन पर इनाम की याद ═══ */
   .trustrow .ic.gift svg{width:20px;height:20px}
-  .trustrow .t b{font-weight:800}
-  .trustrow .t .sub{display:block;font-size:12.5px;line-height:19px;color:var(--text-sec);margin-top:3px}
+  .trustrow .t.offer{color:var(--text-positive);font-weight:700}
   .rwnote{background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);border-radius:var(--r-card);padding:12px 13px;margin-top:14px}
   .rwnote-top{display:flex;align-items:center;gap:8px}
   .rwnote-top .t{font-size:14px;line-height:20px;font-weight:800;color:var(--text-positive)}
@@ -1472,12 +1471,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="appbar"><div class="appbar-row">
         <div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="spacer"></div>
-        <div class="vswitch" id="ofVer"><span class="on" data-v="a">A</span><span data-v="b">B</span><span data-v="c">C</span></div>
+        <div class="vswitch" id="ofVer"><span data-v="a">A</span><span class="on" data-v="b">B</span><span data-v="c">C</span></div>
       </div></div>
       <div class="content">
 
         <!-- A · तीन बराबर टिकट -->
-        <div class="ofv on" data-v="a">
+        <div class="ofv" data-v="a">
           <div class="eduhead rv d1" style="margin-top:6px">
             <h2>हाँ, अभी तीन ऑफर चल रहे हैं</h2>
             <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त — आपके खाते में जुड़ जाएंगे।</p>
@@ -1502,7 +1501,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </div>
 
         <!-- B · एक बड़ा ऑफर, दो और साथ में -->
-        <div class="ofv" data-v="b">
+        <div class="ofv on" data-v="b">
           <div class="eduhead rv d1" style="margin-top:4px">
             <h2>हाँ! ऑफर चालू है 🎉</h2>
             <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त।</p>
@@ -2153,7 +2152,7 @@ function trustHTML(p){
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">नेट नहीं लगा तो पूरा पैसा वापस</div></div>
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">${start}</div></div>
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">बॉक्स व्योम का, जमा राशि ₹0 — और कुछ नहीं देना</div></div>
-    <div class="trustrow"><span class="ic gift">${GIFT_ROW}</span><div class="t"><b>तीन ऑफर भी मिलेंगे</b><span class="sub">2 दिन के रिचार्ज पर +2 दिन मुफ़्त</span><span class="sub">7 दिन के रिचार्ज पर +7 दिन मुफ़्त</span><span class="sub">14 दिन के रिचार्ज पर +14 दिन मुफ़्त</span></div></div>
+    <div class="trustrow"><span class="ic gift">${GIFT_ROW}</span><div class="t offer">जो आज ऑफर चल रहा है, वो भी इसी में मिल जाएगा</div></div>
   </div>`;
 }
 function heroOffer(p){
@@ -2628,7 +2627,7 @@ function openPriceSheet(){
 }
 
 /* ═══ v2 · ऑफर स्क्रीन — तीन वर्शन, तीनों में कॉन्फ़ेटी ═══ */
-let offersShown = false, offerVer = 'a';
+let offersShown = false, offerVer = 'b';   /* the hero version is the default */
 function setOfferVer(v){
   offerVer = v;
   $$('#ofVer span').forEach(x => x.classList.toggle('on', x.dataset.v === v));
