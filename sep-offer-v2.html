@@ -952,6 +952,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 @media (prefers-reduced-motion:reduce){
   .ra .ra-token,.ra .ra-title,.ra .ra-sub,.ra .ra-row,.ra .ra-foot,.ra .actions{opacity:1;transform:none;animation:none!important}
 }
+
+.ci-bub .ci-bcta{margin-top:10px;border-top:1px solid rgba(20,16,33,.1);padding-top:11px;text-align:center;
+  color:var(--text-brand);font-weight:800;font-size:14.5px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -1856,11 +1859,11 @@ function flyGiftToBar(scr, ov, slot, done){
   })(t0);
 }
 function addRewardMsg(){
-  const n=celeNode(`<div class="ci-row"><div class="ci-reward">
-      <div class="top"><span style="font-size:22px">🎁</span><div><div class="t">3 इनाम जुड़ गए</div><div class="s">2+2, 7+7 और 14+14 — तीनों आपके नाम पर हैं। एक अभी इंस्टॉलेशन रिचार्ज पर लगाएँ, बाकी रिन्यूअल रिचार्ज के लिए रखे रहेंगे।</div></div></div>
-      <div class="btn" id="rcOpen">इनाम देखें</div></div></div>`);
+  const n=celeBub('<b>3 इनाम जुड़ गए 🎁</b><br>2+2, 7+7 और 14+14 — तीनों आपके नाम पर हैं।<br><br>एक अभी अपने रिचार्ज पर लगाएँ, बाकी रिन्यूअल रिचार्ज के लिए रखे रहेंगे।','4:36 PM');
+  const bub=n.querySelector('.ci-bub');
+  const link=document.createElement('div'); link.className='ci-bcta'; link.textContent='इनाम देखें';
+  link.onclick=()=>goTo('rewards'); bub.appendChild(link);
   celeAdd(n);
-  $('#rcOpen').onclick=()=>goTo('rewards');
 }
 function applyReward(){
   const dot=$('#rwDot'); if(dot) dot.classList.remove('on');

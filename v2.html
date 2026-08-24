@@ -985,6 +985,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   }
 
   /* ═══ रिचार्ज स्क्रीन पर इनाम की याद ═══ */
+  .trustrow .ic.gift svg{width:20px;height:20px}
+  .trustrow .t b{font-weight:800}
+  .trustrow .t .sub{display:block;font-size:12.5px;line-height:19px;color:var(--text-sec);margin-top:3px}
   .rwnote{background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);border-radius:var(--r-card);padding:12px 13px;margin-top:14px}
   .rwnote-top{display:flex;align-items:center;gap:8px}
   .rwnote-top .t{font-size:14px;line-height:20px;font-weight:800;color:var(--text-positive)}
@@ -1042,6 +1045,95 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .prow.pick.on .d,.prow.pick.on .p{color:var(--text-brand)}
   .prow .tag{display:inline-block;margin-left:7px;background:var(--bg-positive-pri);color:var(--text-positive);
     border:1px solid var(--stroke-positive);border-radius:100px;padding:2px 7px;font-size:10px;font-weight:800}
+
+  /* ═══ ऑफर स्क्रीन के वर्शन ═══ */
+  .vswitch{display:flex;gap:2px;background:var(--bg-neutral-sec);border-radius:100px;padding:3px;margin-right:10px}
+  .vswitch span{width:26px;height:24px;display:grid;place-items:center;border-radius:100px;
+    font-size:11px;font-weight:800;color:var(--text-ter);cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .vswitch span.on{background:#fff;color:var(--text-pri);box-shadow:0 1px 2px rgba(22,16,33,.10)}
+  .ofv{display:none}.ofv.on{display:block}
+
+  /* ── वर्शन B · एक बड़ा ऑफर + दो छोटे ── */
+  .obig{position:relative;border-radius:20px;overflow:hidden;padding:20px 18px 18px;text-align:center;
+    background:linear-gradient(155deg,#d9008d 0%,#a3009f 52%,#6d17ce 100%);
+    box-shadow:0 16px 34px -18px rgba(109,23,206,.7);
+    opacity:0;transform:translateY(18px) scale(.97)}
+  .ofv.on .obig{animation:ofIn .55s var(--ease) .1s forwards}
+  .obig::after{content:"";position:absolute;inset:-40% -10% auto;height:190%;pointer-events:none;
+    background:conic-gradient(from 0deg,rgba(255,255,255,.10) 0 10deg,transparent 10deg 34deg)}
+  .obig-tag{position:relative;z-index:2;display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.18);
+    color:#fff;font-size:11px;font-weight:800;padding:5px 12px;border-radius:100px;backdrop-filter:blur(4px)}
+  .obig-free{position:relative;z-index:2;margin-top:12px;color:#fff;font-size:44px;line-height:50px;font-weight:800;letter-spacing:-1.4px}
+  .obig-free span{display:block;font-size:17px;line-height:22px;font-weight:700;letter-spacing:0;opacity:.92;margin-top:2px}
+  .obig-line{position:relative;z-index:2;margin-top:14px;background:rgba(255,255,255,.14);border-radius:12px;
+    padding:10px 12px;color:#fff;font-size:13px;line-height:19px;font-weight:600}
+  .obig-line b{font-weight:800}
+  .osmall-h{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--text-ter);
+    text-transform:uppercase;margin:18px 0 9px;text-align:center;opacity:0}
+  .ofv.on .osmall-h{animation:fadeUp .45s var(--ease) .5s forwards}
+  .osmall-row{display:flex;gap:10px}
+  .osmall{flex:1;background:#fff;border:1px solid var(--stroke-pri);border-radius:14px;padding:13px 10px;text-align:center;
+    box-shadow:0 1px 2px rgba(22,16,33,.04);opacity:0;transform:translateY(12px)}
+  .ofv.on .osmall:nth-child(1){animation:ofIn .45s var(--ease) .6s forwards}
+  .ofv.on .osmall:nth-child(2){animation:ofIn .45s var(--ease) .72s forwards}
+  .osmall .n{font-size:15px;line-height:20px;font-weight:800;color:var(--text-sec)}
+  .osmall .n small{font-size:10.5px;font-weight:600;color:var(--text-ter);display:block;margin-top:1px}
+  .osmall .f{margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:var(--bg-positive-sec);
+    color:var(--text-positive);border-radius:100px;padding:4px 10px;font-size:12px;font-weight:800;white-space:nowrap}
+
+  /* ── वर्शन C · ऑफर पोस्टर + कूपन ── */
+  .opost{position:relative;text-align:center;padding:6px 0 4px;overflow:hidden}
+  .opost-rays{position:absolute;width:330px;height:330px;left:50%;top:-96px;margin-left:-165px;opacity:.5;
+    background:conic-gradient(from 0deg,rgba(217,0,141,.16) 0 9deg,transparent 9deg 30deg);border-radius:50%}
+  .ofv.on .opost-rays{animation:raRay 26s linear infinite}
+  .opost-seal{position:relative;z-index:2;width:104px;height:104px;margin:0 auto;border-radius:50%;
+    background:linear-gradient(150deg,#d9008d,#6d17ce);color:#fff;display:grid;place-items:center;align-content:center;
+    box-shadow:0 14px 30px -12px rgba(217,0,141,.6);opacity:0;transform:scale(.55) rotate(-14deg)}
+  .ofv.on .opost-seal{animation:sealIn .6s cubic-bezier(.34,1.6,.5,1) .12s forwards}
+  @keyframes sealIn{to{opacity:1;transform:none}}
+  .opost-seal b{font-size:27px;line-height:30px;font-weight:800;letter-spacing:-.6px}
+  .opost-seal span{font-size:12px;line-height:15px;font-weight:700;opacity:.9;letter-spacing:.06em}
+  .opost-h{position:relative;z-index:2;margin-top:14px;font-size:21px;line-height:29px;font-weight:800;
+    letter-spacing:-.3px;color:var(--text-pri);opacity:0}
+  .ofv.on .opost-h{animation:fadeUp .5s var(--ease) .42s forwards}
+  .opost-h b{color:var(--text-positive)}
+  .ocoup-list{display:flex;flex-direction:column;gap:9px;margin-top:18px}
+  .ocoup{position:relative;display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--stroke-pri);
+    border-left:3px dashed var(--stroke-positive);border-radius:6px 14px 14px 6px;padding:12px 14px;
+    box-shadow:0 1px 2px rgba(22,16,33,.04);opacity:0;transform:translateX(-14px)}
+  .ofv.on .ocoup:nth-child(1){animation:coupIn .45s var(--ease) .58s forwards}
+  .ofv.on .ocoup:nth-child(2){animation:coupIn .45s var(--ease) .70s forwards}
+  .ofv.on .ocoup:nth-child(3){animation:coupIn .45s var(--ease) .82s forwards}
+  @keyframes coupIn{to{opacity:1;transform:none}}
+  .ocoup .oc-ic{width:32px;height:32px;flex:none;border-radius:50%;background:var(--bg-positive-pri);display:grid;place-items:center}
+  .ocoup .oc-t{flex:1;font-size:13px;line-height:18px;color:var(--text-sec)}
+  .ocoup .oc-t b{font-size:16px;font-weight:800;color:var(--text-pri)}
+  .ocoup .oc-f{flex:none;font-size:13px;font-weight:800;color:var(--text-positive);white-space:nowrap}
+  @media (prefers-reduced-motion:reduce){
+    .obig,.osmall,.opost-seal,.opost-h,.osmall-h,.ocoup{opacity:1;transform:none}
+    .ofv.on .obig,.ofv.on .osmall,.ofv.on .opost-seal,.ofv.on .opost-h,.ofv.on .osmall-h,.ofv.on .ocoup,.ofv.on .opost-rays{animation:none}
+  }
+
+  /* ═══ भुगतान स्क्रीन — जगह ऊपर, ब्यौरा नीचे ═══ */
+  .pm-tag{display:inline-flex;align-items:center;gap:5px;background:var(--bg-brand-subtle);color:var(--text-brand);
+    font-size:10.5px;line-height:14px;font-weight:800;padding:4px 10px;border-radius:100px;margin-bottom:8px}
+  .pm-addr{display:flex;align-items:flex-start;gap:10px;background:var(--bg-neutral-sec);border-radius:16px;padding:13px 14px}
+  .pm-addr .a{flex:1;font-size:13px;line-height:19px;color:var(--text-sec)}
+  .pm-sum{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;padding:4px 15px 14px;margin-top:14px}
+  .pm-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px dashed #e4dfee}
+  .pm-row .k{font-size:14px;line-height:20px;color:var(--text-pri)}
+  .pm-row .v{font-size:15px;font-weight:800;white-space:nowrap}
+  .pm-row .v.zero{color:var(--text-positive)}
+  .pm-row.total{border-bottom:none;border-top:1.5px solid var(--stroke-pri);margin-top:2px;padding-top:14px}
+  .pm-row.total .k{font-size:16px;font-weight:800}
+  .pm-row.total .v{font-size:19px;font-weight:800}
+  .pm-off{padding:12px 0 2px;border-bottom:1px dashed #e4dfee}
+  .pm-off-h{display:flex;align-items:center;gap:7px;font-size:12.5px;line-height:18px;font-weight:800;color:var(--text-positive)}
+  .pm-off-list{display:flex;gap:6px;margin-top:9px;padding-bottom:10px}
+  .pm-off-list span{flex:1;text-align:center;background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);
+    border-radius:100px;padding:5px 4px;font-size:11px;line-height:15px;font-weight:800;color:var(--text-positive);white-space:nowrap}
+  .pm-link{display:block;width:100%;text-align:center;background:none;border:none;font-family:inherit;
+    padding:13px 8px 2px;font-size:14px;font-weight:700;color:var(--text-brand);cursor:pointer}
 </style>
 </head>
 <body>
@@ -1377,29 +1469,70 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <section class="screen" data-s="offers">
       <div class="statusbar" data-sb></div>
       <canvas class="of-confetti" id="ofConfetti"></canvas>
-      <div class="appbar"><div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+      <div class="appbar"><div class="appbar-row">
+        <div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="spacer"></div>
+        <div class="vswitch" id="ofVer"><span class="on" data-v="a">A</span><span data-v="b">B</span><span data-v="c">C</span></div>
+      </div></div>
       <div class="content">
-        <div class="eduhead rv d1" style="margin-top:6px">
-          <h2>हाँ, अभी तीन ऑफर चल रहे हैं</h2>
-          <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त — आपके खाते में जुड़ जाएंगे।</p>
+
+        <!-- A · तीन बराबर टिकट -->
+        <div class="ofv on" data-v="a">
+          <div class="eduhead rv d1" style="margin-top:6px">
+            <h2>हाँ, अभी तीन ऑफर चल रहे हैं</h2>
+            <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त — आपके खाते में जुड़ जाएंगे।</p>
+          </div>
+          <div class="of-list" id="ofList">
+            <div class="ofc" data-i="0" data-from="2" data-to="4">
+              <div class="ofc-side"><div class="v">2 दिन</div><div class="c">का रिचार्ज</div></div>
+              <div class="ofc-link"><span class="ln"></span><span class="plus">+2 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
+              <div class="ofc-side to"><div class="v" data-num>4 दिन</div><div class="c">नेट चलेगा</div></div>
+            </div>
+            <div class="ofc" data-i="1" data-from="7" data-to="14">
+              <div class="ofc-side"><div class="v">7 दिन</div><div class="c">का रिचार्ज</div></div>
+              <div class="ofc-link"><span class="ln"></span><span class="plus">+7 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
+              <div class="ofc-side to"><div class="v" data-num>14 दिन</div><div class="c">नेट चलेगा</div></div>
+            </div>
+            <div class="ofc" data-i="2" data-from="14" data-to="28">
+              <div class="ofc-side"><div class="v">14 दिन</div><div class="c">का रिचार्ज</div></div>
+              <div class="ofc-link"><span class="ln"></span><span class="plus">+14 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
+              <div class="ofc-side to"><div class="v" data-num>28 दिन</div><div class="c">नेट चलेगा</div></div>
+            </div>
+          </div>
         </div>
-        <div class="of-list" id="ofList">
-          <div class="ofc" data-i="0" data-from="2" data-to="4">
-            <div class="ofc-side"><div class="v">2 दिन</div><div class="c">का रिचार्ज</div></div>
-            <div class="ofc-link"><span class="ln"></span><span class="plus">+2 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
-            <div class="ofc-side to"><div class="v" data-num>4 दिन</div><div class="c">नेट चलेगा</div></div>
+
+        <!-- B · एक बड़ा ऑफर, दो और साथ में -->
+        <div class="ofv" data-v="b">
+          <div class="eduhead rv d1" style="margin-top:4px">
+            <h2>हाँ! ऑफर चालू है 🎉</h2>
+            <p>जितने दिन का रिचार्ज, उतने दिन का नेट मुफ़्त।</p>
           </div>
-          <div class="ofc" data-i="1" data-from="7" data-to="14">
-            <div class="ofc-side"><div class="v">7 दिन</div><div class="c">का रिचार्ज</div></div>
-            <div class="ofc-link"><span class="ln"></span><span class="plus">+7 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
-            <div class="ofc-side to"><div class="v" data-num>14 दिन</div><div class="c">नेट चलेगा</div></div>
+          <div class="obig" style="margin-top:16px">
+            <span class="obig-tag">🎁 सबसे बड़ा ऑफर</span>
+            <div class="obig-free">14 दिन<span>नेट बिल्कुल मुफ़्त</span></div>
+            <div class="obig-line">14 दिन का रिचार्ज करें — नेट चलेगा पूरे <b>28 दिन</b></div>
           </div>
-          <div class="ofc" data-i="2" data-from="14" data-to="28">
-            <div class="ofc-side"><div class="v">14 दिन</div><div class="c">का रिचार्ज</div></div>
-            <div class="ofc-link"><span class="ln"></span><span class="plus">+14 दिन मुफ़्त</span><span class="ln r"></span><span class="arw"></span></div>
-            <div class="ofc-side to"><div class="v" data-num>28 दिन</div><div class="c">नेट चलेगा</div></div>
+          <div class="osmall-h">छोटे रिचार्ज पर भी ऑफर है</div>
+          <div class="osmall-row">
+            <div class="osmall"><div class="n">2 दिन<small>का रिचार्ज</small></div><div class="f"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg> +2 दिन</div></div>
+            <div class="osmall"><div class="n">7 दिन<small>का रिचार्ज</small></div><div class="f"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg> +7 दिन</div></div>
           </div>
         </div>
+
+        <!-- C · ऑफर पोस्टर + कूपन -->
+        <div class="ofv" data-v="c">
+          <div class="opost">
+            <span class="opost-rays"></span>
+            <div class="opost-seal"><b>डबल</b><span>ऑफर</span></div>
+            <h2 class="opost-h">जितने दिन का रिचार्ज<br>उतने दिन नेट <b>मुफ़्त</b></h2>
+          </div>
+          <div class="ocoup-list">
+            <div class="ocoup"><span class="oc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg></span><div class="oc-t"><b>2 दिन</b> का रिचार्ज</div><span class="oc-f">+2 दिन मुफ़्त</span></div>
+            <div class="ocoup"><span class="oc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg></span><div class="oc-t"><b>7 दिन</b> का रिचार्ज</div><span class="oc-f">+7 दिन मुफ़्त</span></div>
+            <div class="ocoup"><span class="oc-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg></span><div class="oc-t"><b>14 दिन</b> का रिचार्ज</div><span class="oc-f">+14 दिन मुफ़्त</span></div>
+          </div>
+        </div>
+
         <hr class="of-sep" id="ofSep">
         <div class="of-foot" id="ofFoot">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:2px"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1594,23 +1727,30 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="statusbar" data-sb></div>
       <div class="appbar">
         <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-        <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 के भुगतान का तरीका चुनें</h1></div>
+        <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 देकर बुकिंग पक्की करें</h1></div>
       </div>
       <div class="content">
-        <div class="addrcard rv d1" style="display:flex;align-items:flex-start;gap:10px">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:2px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg>
-          <div class="ar-full" style="margin-top:0;flex:1">Rajiv Colony, Gali No. 2, Rajiv Colony, Sector 33, Gurugram, H…</div>
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;cursor:pointer"><path d="M4 20h4l10-10-4-4L4 16v4z" stroke="#665e75" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" stroke="#665e75" stroke-width="1.7"/></svg>
-        </div>
-        <div class="card rv d2 mt16" style="cursor:pointer;border:1.5px solid var(--stroke-brand)" data-go="upiapps">
-          <div class="row" style="align-items:flex-start">
-            <div style="width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="#d9008d" stroke-width="1.8"/><path d="M10 6h4M9 11h6M9 14h6" stroke="#d9008d" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </div>
-            <div><div class="b1m brandc">UPI / ऑनलाइन भुगतान</div><div class="b2 sec mt4">UPI, क्रेडिट/डेबिट कार्ड और अन्य तरीके</div></div>
+        <div class="rv d1">
+          <span class="pm-tag">📍 नेट लगवाने की जगह</span>
+          <div class="pm-addr">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:1px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg>
+            <div class="a">Rajiv Colony, Gali No. 2, Sector 33, Gurugram, Haryana 122001</div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;cursor:pointer"><path d="M4 20h4l10-10-4-4L4 16v4z" stroke="#665e75" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" stroke="#665e75" stroke-width="1.7"/></svg>
           </div>
         </div>
-        <div class="linkrow">मेरे पास UPI/कार्ड नहीं है? <span class="chev">›</span></div>
+        <div class="pm-sum rv d2">
+          <div class="pm-row"><span class="k">नेट कनेक्शन लगाने का</span><span class="v zero">₹0</span></div>
+          <div class="pm-row"><span class="k" id="pmPlanK">1 दिन का रिचार्ज</span><span class="v" id="pmPlanV">₹23</span></div>
+          <div class="pm-off">
+            <div class="pm-off-h"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg> साथ में तीन ऑफर भी</div>
+            <div class="pm-off-list"><span>2 दिन मुफ़्त</span><span>7 दिन मुफ़्त</span><span>14 दिन मुफ़्त</span></div>
+          </div>
+          <div class="pm-row total"><span class="k">अभी देना है</span><span class="v" id="pmTotal">₹23</span></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="cta" data-go="upiapps" id="pmCta">UPI से ₹23 दें</button>
+        <button class="pm-link">मेरे पास UPI/कार्ड नहीं है? ›</button>
       </div>
     </section>
 
@@ -1795,6 +1935,7 @@ const cur = () => PLANS[state.plan];
 const $  = (s,r=document)=>r.querySelector(s);
 const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
 const screenEl = id => $(`.screen[data-s="${id}"]`);
+const GIFT_ROW = '<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 const TICK = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
 
 /* ═══ rail ═══ */
@@ -2012,6 +2153,7 @@ function trustHTML(p){
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">नेट नहीं लगा तो पूरा पैसा वापस</div></div>
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">${start}</div></div>
     <div class="trustrow"><span class="ic">${TICK}</span><div class="t">बॉक्स व्योम का, जमा राशि ₹0 — और कुछ नहीं देना</div></div>
+    <div class="trustrow"><span class="ic gift">${GIFT_ROW}</span><div class="t"><b>तीन ऑफर भी मिलेंगे</b><span class="sub">2 दिन के रिचार्ज पर +2 दिन मुफ़्त</span><span class="sub">7 दिन के रिचार्ज पर +7 दिन मुफ़्त</span><span class="sub">14 दिन के रिचार्ज पर +14 दिन मुफ़्त</span></div></div>
   </div>`;
 }
 function heroOffer(p){
@@ -2067,7 +2209,7 @@ function rewardNoteHTML(){
 function renderDetail(){
   const p = cur(), el = $('#detailContent');
   /* Welcome Offer on every plan — free days, banked, redeemed later after install. */
-  el.innerHTML = (isOffer(p) ? heroOffer(p) : heroPlain(p)) + trustHTML(p) + rewardNoteHTML();
+  el.innerHTML = (isOffer(p) ? heroOffer(p) : heroPlain(p)) + trustHTML(p);
   $('#detailCta').textContent = `₹${p.cost} का रिचार्ज करें`;
 }
 
@@ -2077,8 +2219,12 @@ const closeSheets = ()=>{ document.querySelectorAll('.psheet-scrim').forEach(e=>
 /* ═══ amounts / confirm ═══ */
 const RS_WORDS = {23:'Twenty Three',45:'Forty Five',155:'One Hundred Fifty Five',305:'Three Hundred Five',565:'Five Hundred Sixty Five'};
 function syncAmounts(){
-  const c = cur().cost;
-  $('#pmTitle').textContent = `₹${c} के भुगतान का तरीका चुनें`;
+  const c = cur().cost, p = cur();
+  $('#pmTitle').textContent = `₹${c} देकर बुकिंग पक्की करें`;
+  $('#pmPlanK').textContent = `${p.days} दिन का रिचार्ज`;
+  $('#pmPlanV').textContent = `₹${c}`;
+  $('#pmTotal').textContent = `₹${c}`;
+  $('#pmCta').textContent   = `UPI से ₹${c} दें`;
   $('#procAmt').textContent = `₹${c} के रिचार्ज की स्थिति जाँची जा रही है`;
   $('#pgAmt').textContent   = `₹${c}`;
   $('#uiAmt').textContent   = `₹${c}`;
@@ -2481,20 +2627,34 @@ function openPriceSheet(){
   sh.onclick = e => { if(e.target === sh || e.target.classList.contains('cta')) sh.remove(); };
 }
 
-/* ═══ v2 · तीन ऑफर — कॉन्फ़ेटी + एक-एक कार्ड ═══ */
-let offersShown = false;
+/* ═══ v2 · ऑफर स्क्रीन — तीन वर्शन, तीनों में कॉन्फ़ेटी ═══ */
+let offersShown = false, offerVer = 'a';
+function setOfferVer(v){
+  offerVer = v;
+  $$('#ofVer span').forEach(x => x.classList.toggle('on', x.dataset.v === v));
+  $$('.screen[data-s="offers"] .ofv').forEach(x => x.classList.toggle('on', x.dataset.v === v));
+  if(screenEl('offers').classList.contains('active')) enterOffers();
+}
 function enterOffers(){
-  const cards = $$('#ofList .ofc'), sep = $('#ofSep'), foot = $('#ofFoot');
+  const scr = screenEl('offers');
+  const sep = $('#ofSep'), foot = $('#ofFoot');
+  const cards = [...scr.querySelectorAll('.ofv.on .ofc')];
   cards.forEach(c => c.classList.remove('show'));
   sep.classList.remove('show'); foot.classList.remove('show');
+  /* replay the active version's own entrance */
+  const pane = scr.querySelector('.ofv.on');
+  if(pane){ pane.classList.remove('on'); void pane.offsetWidth; pane.classList.add('on'); }
   const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
-  cards.forEach(c => { const el = c.querySelector('[data-num]'); if(el) el.textContent = `${c.dataset.from} दिन`; });
-  if(reduce){ cards.forEach(c=>{ c.classList.add('show'); const el=c.querySelector('[data-num]'); if(el) el.textContent = `${c.dataset.to} दिन`; });
-    sep.classList.add('show'); foot.classList.add('show'); return; }
+  const settle = 480 + Math.max(cards.length,3)*380 + 120;
+  if(reduce){
+    cards.forEach(c => { c.classList.add('show'); const el=c.querySelector('[data-num]'); if(el) el.textContent = `${c.dataset.to} दिन`; });
+    sep.classList.add('show'); foot.classList.add('show'); return;
+  }
   const cv = $('#ofConfetti');
   if(cv){ later(()=>{ const r = cv.getBoundingClientRect(); if(r.width) burstConfetti(cv, r.width/2, r.height*0.30); }, 220); }
+  cards.forEach(c => { const el = c.querySelector('[data-num]'); if(el) el.textContent = `${c.dataset.from} दिन`; });
   cards.forEach((c,i)=> later(()=>{ c.classList.add('show'); later(()=> countTo(c), 950); }, 480 + i*380));
-  later(()=>{ sep.classList.add('show'); foot.classList.add('show'); }, 480 + cards.length*380 + 120);
+  later(()=>{ sep.classList.add('show'); foot.classList.add('show'); }, cards.length ? settle : 1000);
   offersShown = true;
 }
 
@@ -2700,6 +2860,7 @@ document.addEventListener('keydown', e=>{
 /* ═══ boot ═══ */
 buildRail(); initPhone(); initOtp(); initSlider(); initSlot(); initAddrCapture(); initPin();
 const _pl = $('#priceLink'); if(_pl) _pl.onclick = openPriceSheet;
+$$('#ofVer span').forEach(b => b.onclick = ()=> setOfferVer(b.dataset.v));
 const _ciHdr = $('#ciHdr'); if(_ciHdr) _ciHdr.onclick = ()=>openRewards('chat');
 const _confRw = $('#confRwIc'); if(_confRw) _confRw.onclick = ()=>openRewards('confirmed');
 const _raRw = $('#raRwIc'); if(_raRw) _raRw.onclick = ()=>openRewards('rewardsadded');
