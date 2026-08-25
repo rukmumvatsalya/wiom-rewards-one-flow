@@ -1321,7 +1321,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </div>
       </div>
       <div class="actions">
-        <button class="cta off" id="offersCta">ऑफर चुनें</button>
+        <button class="cta" id="offersCta" style="display:none"></button>
         <button class="cta-sub2" id="offersFull" style="display:none">मुझे पूरे पैसे देने हैं</button>
       </div>
     </section>
@@ -2003,13 +2003,13 @@ function syncOffersCta(){
   if(!b) return;
   state.offersGrabbed = true;
   if(state.offerPick < 0){
-    b.classList.add('off'); b.textContent = 'ऑफर चुनें'; b.onclick = null;
+    b.style.display = 'none'; b.onclick = null;
     if(f) f.style.display = 'none';
     if(bal){ bal.style.display = ''; bal.innerHTML = '<span>ⓘ</span><span>तीनों में से एक चुनें — बाकी दो आपके खाते में आगे के लिए रखे रहेंगे।</span>'; }
     return;
   }
   const o = OFFERS[state.offerPick], p = PLANS[planIdxFor(o.pay)];
-  b.classList.remove('off');
+  b.style.display = ''; b.classList.remove('off');
   b.textContent = `₹${ADVANCE} देकर बुकिंग पूरी करें`;
   b.onclick = ()=>{ state.payMode = 'advance'; goTo('paymethod'); };
   if(f){ f.style.display = ''; f.textContent = `मुझे पूरे पैसे देने हैं — ₹${p.cost}`;
