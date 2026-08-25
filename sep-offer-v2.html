@@ -1135,6 +1135,58 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   font-size:12px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
 .pmpop span.on{background:#fff;color:#1a1620}
 #mVer{display:none}
+/* ═══ किनारे-से-किनारे कार्ट (Flipkart जैसा) ═══ */
+#pmStage{margin:0 -16px;padding-top:0}
+.es{background:#fff;padding:14px 16px;position:relative}
+.es + .es{border-top:8px solid var(--bg-neutral-sec)}
+.es-h{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-ter);margin-bottom:9px}
+.es-r{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.es-t{font-size:15px;line-height:21px;font-weight:700;color:var(--text-pri)}
+.es-s{font-size:12px;line-height:17px;color:var(--text-ter);margin-top:2px}
+.es-p{font-size:15.5px;font-weight:800;white-space:nowrap;color:var(--text-pri)}
+.es-p.free{color:var(--text-positive);font-size:14px}
+.es-lk{font-size:13px;font-weight:800;color:var(--text-brand);cursor:pointer;white-space:nowrap}
+.es-gap{height:6px;background:var(--bg-neutral-sec);margin:13px -16px}
+.es-addr{display:flex;align-items:flex-start;gap:10px}
+.es-addr svg{flex:none;margin-top:2px}
+/* offer — must read as already added */
+.es.offer{background:var(--bg-positive-pri)}
+.es.offer::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--text-positive)}
+.es-off{display:flex;align-items:flex-start;gap:11px}
+.es-off .ic{width:34px;height:34px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center}
+.es-off .t{font-size:14.5px;line-height:20px;font-weight:800;color:var(--text-positive)}
+.es-off .s{font-size:12px;line-height:17px;color:var(--text-positive);opacity:.85;margin-top:3px}
+.es-off .tag{margin-left:auto;flex:none;background:var(--text-positive);color:#fff;border-radius:100px;
+  padding:4px 10px;font-size:10.5px;line-height:15px;font-weight:800;white-space:nowrap}
+.es-chips{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.es-chips span{background:#fff;border:1px solid var(--stroke-positive);border-radius:100px;padding:3px 10px;
+  font-size:10.5px;line-height:15px;font-weight:800;color:var(--text-positive)}
+/* total — expands in place */
+.es-tot{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.es-tot .v{font-size:20px;font-weight:800;letter-spacing:-.4px}
+.es-tot .cv{transition:transform .25s ease;color:var(--text-ter);font-size:19px;margin-left:2px}
+.es.open .es-tot .cv{transform:rotate(90deg)}
+.es-det{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.22,1,.36,1)}
+.es.open .es-det{max-height:260px}
+.es-det-in{padding-top:12px;margin-top:12px;border-top:1px dashed #e4dfee}
+.es-dr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:13.5px;line-height:19px;color:var(--text-sec)}
+.es-dr b{font-weight:700;color:var(--text-pri)}
+.es-dr b.free{color:var(--text-positive)}
+/* savings ribbon */
+.es-rib{background:var(--bg-positive-pri);color:var(--text-positive);text-align:center;
+  padding:10px 16px;font-size:12.5px;line-height:18px;font-weight:800}
+/* big-total variant */
+.es-big{text-align:left}
+.es-big .n{font-size:30px;line-height:36px;font-weight:800;letter-spacing:-.8px;margin-top:2px}
+/* payment-summary sheet */
+.pmsheet-scrim{position:absolute;inset:0;z-index:46;background:rgba(22,16,33,.45);display:flex;align-items:flex-end;
+  animation:pmshFade .2s ease both}
+@keyframes pmshFade{from{opacity:0}to{opacity:1}}
+.pmsheet{width:100%;background:#fff;border-radius:20px 20px 0 0;padding:14px 16px 18px;animation:pmshUp .3s cubic-bezier(.22,1,.36,1) both}
+@keyframes pmshUp{from{transform:translateY(100%)}to{transform:none}}
+.pmsheet-grab{width:38px;height:4px;border-radius:2px;background:#e2ddec;margin:0 auto 14px}
+.pmsheet h3{font-size:17px;line-height:24px;font-weight:800}
+.pmv-on .es{opacity:0;transform:translateY(8px);animation:pmIn .4s cubic-bezier(.22,1,.36,1) both}
 </style>
 </head>
 <body>
@@ -1894,7 +1946,82 @@ const PMG = c => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" st
 const PM_ADDR = () => (typeof state!=='undefined' && state.locAddr) ? state.locAddr : 'Rajiv Colony, Sector 33, Gurugram';
 const pmAddrRow = () => `<div class="pmc"><div class="pmsec"><div class="pm-row2"><div><div class="pm-sm">नेट लगवाने की जगह</div><div style="font-size:13.5px;line-height:19px;margin-top:2px">${PM_ADDR()}</div></div><span class="pm-lk">बदलें</span></div></div></div>`;
 
-const PM_VERSIONS = [
+/* ═══ किनारे-से-किनारे कार्ट · 6 वेरिएशन ═══
+   हर सेक्शन पूरी चौड़ाई, बीच में स्लेटी पट्टी. Wiom के पास काटने वाली कीमत
+   नहीं है, इसलिए "बचत" हमेशा दिनों में — बनाई हुई ₹ में नहीं. */
+const ES_PIN = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg>';
+const esG = c => `<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="${c}" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="${c}" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+
+const esAddr = () => `<div class="es"><div class="es-h">नेट लगने की जगह</div>
+  <div class="es-addr">${ES_PIN}<div style="flex:1"><div style="font-size:14px;line-height:20px;font-weight:700">${PM_ADDR()}</div>
+    <div class="es-s">यहीं टेक्नीशियन आकर नेट बॉक्स लगाएगा</div></div><span class="es-lk">बदलें</span></div></div>`;
+
+/* the cart: connection and recharge, split by a grey band */
+const esCart = p => `<div class="es"><div class="es-h">आपका कार्ट</div>
+  <div class="es-r"><div><div class="es-t">नेट कनेक्शन</div><div class="es-s">नेट बॉक्स + लगवाई · जमा राशि ₹0</div></div><span class="es-p free">मुफ़्त</span></div>
+  <div class="es-gap"></div>
+  <div class="es-r"><div><div class="es-t">${p.days} दिन का रिचार्ज</div><div class="es-s">80–100 Mbps · डेटा की कोई लिमिट नहीं</div></div><span class="es-p">₹${p.cost}</span></div></div>`;
+
+/* the offer must read as already added, and usable on the NEXT recharge */
+const esOffer = (chips) => `<div class="es offer"><div class="es-off">
+  <span class="ic">${esG('#008043')}</span>
+  <div style="flex:1"><div class="t">3 ऑफर जुड़ गए</div>
+    <div class="s">अगले रिचार्ज पर अपने आप लग जाएँगे — ${PM_FREE_DAYS} दिन तक मुफ़्त नेट</div></div>
+  <span class="tag">✓ जुड़ा</span></div>
+  ${chips===false?'':`<div class="es-chips">${PM_OFF.map(o=>`<span>${o.pay} दिन पर +${o.free} मुफ़्त</span>`).join('')}</div>`}</div>`;
+
+const esDetail = p => `<div class="es-dr"><span>${p.days} दिन का रिचार्ज</span><b>₹${p.cost}</b></div>
+  <div class="es-dr"><span>नेट बॉक्स + लगवाई</span><b class="free">मुफ़्त</b></div>
+  <div class="es-dr"><span>जमा राशि</span><b class="free">₹0</b></div>
+  <div class="es-dr"><span>GST और बाकी सब</span><b class="free">₹0</b></div>`;
+
+const esTot = (p, mode) => `<div class="es" id="esTot">
+  <div class="es-tot" data-tot="${mode}"><div><div class="es-h" style="margin:0">कुल देना है</div>
+    <div class="v" style="margin-top:3px">₹${p.cost}</div></div>
+    <span class="es-lk">ब्यौरा <span class="cv">›</span></span></div>
+  ${mode==='inline'?`<div class="es-det"><div class="es-det-in">${esDetail(p)}</div></div>`:''}</div>`;
+
+const ES_VERSIONS = [
+{id:'e1', name:'सादा', build:p=>esAddr()+esCart(p)+esOffer()+esTot(p,'inline')},
+{id:'e2', name:'शीट', build:p=>esAddr()+esCart(p)+esOffer()+esTot(p,'sheet')},
+{id:'e3', name:'ऑफर ऊपर', build:p=>esOffer()+esAddr()+esCart(p)+esTot(p,'inline')},
+{id:'e4', name:'ऑफर कार्ट में', build:p=>esAddr()+
+  `<div class="es"><div class="es-h">आपका कार्ट</div>
+    <div class="es-r"><div><div class="es-t">नेट कनेक्शन</div><div class="es-s">नेट बॉक्स + लगवाई · जमा ₹0</div></div><span class="es-p free">मुफ़्त</span></div>
+    <div class="es-gap"></div>
+    <div class="es-r"><div><div class="es-t">${p.days} दिन का रिचार्ज</div><div class="es-s">80–100 Mbps · कोई लिमिट नहीं</div></div><span class="es-p">₹${p.cost}</span></div>
+    <div style="background:var(--bg-positive-pri);border:1px dashed var(--stroke-positive);border-radius:10px;padding:10px 12px;margin-top:13px">
+      <div class="es-off"><span style="flex:none">${esG('#008043')}</span><div style="flex:1"><div class="t" style="font-size:13.5px">3 ऑफर मुफ़्त में जुड़े</div>
+        <div class="s">अगले रिचार्ज पर लगेंगे · ${PM_FREE_DAYS} दिन तक मुफ़्त</div></div><span class="tag">✓</span></div></div>
+  </div>` + esTot(p,'inline')},
+{id:'e5', name:'सेव पट्टी', build:p=>`<div class="es-rib">🎉 इस बुकिंग के साथ ${PM_FREE_DAYS} दिन मुफ़्त नेट भी जुड़ा</div>`
+  +esAddr()+esCart(p)+esOffer(false)+esTot(p,'sheet')},
+{id:'e6', name:'बड़ा कुल', build:p=>esAddr()+esCart(p)+esOffer()+
+  `<div class="es es-big"><div class="es-h">कुल देना है</div><div class="n">₹${p.cost}</div>
+    <div class="es-det-in" style="border-top:1px dashed #e4dfee">${esDetail(p)}</div></div>`},
+];
+function esWire(st, p){
+  st.querySelectorAll('[data-tot]').forEach(el => el.onclick = ()=>{
+    if(el.dataset.tot === 'inline'){ el.closest('.es').classList.toggle('open'); return; }
+    openPmSheet(p);
+  });
+}
+function openPmSheet(p){
+  const scr = screenEl('paymethod'); if(!scr || scr.querySelector('.pmsheet-scrim')) return;
+  const sh = document.createElement('div');
+  sh.className = 'pmsheet-scrim';
+  sh.innerHTML = `<div class="pmsheet"><div class="pmsheet-grab"></div><h3>भुगतान का ब्यौरा</h3>
+    <div style="margin-top:10px">${esDetail(p)}</div>
+    <div class="es-dr" style="border-top:1.5px solid var(--stroke-pri);margin-top:8px;padding-top:12px;font-size:16px;font-weight:800">
+      <span style="color:var(--text-pri)">कुल देना है</span><b style="font-size:19px">₹${p.cost}</b></div>
+    <div class="es-chips" style="margin-top:12px">${PM_OFF.map(o=>`<span>${o.pay} दिन पर +${o.free} मुफ़्त</span>`).join('')}</div>
+    <button class="cta" style="margin-top:16px">ठीक है</button></div>`;
+  scr.appendChild(sh);
+  sh.onclick = e => { if(e.target === sh || e.target.classList.contains('cta')) sh.remove(); };
+}
+
+const PM_VERSIONS = ES_VERSIONS;
+const PM_OLD_VERSIONS = [
 /* ── 1 · Urban Company ── */
 {id:'uc', name:'UC', build:p=>`
   <div class="pmc"><div class="pm-band mauve" style="border-bottom:1px solid var(--purple-stroke)">
@@ -2042,7 +2169,7 @@ const PM_VERSIONS = [
   <div class="pm-tot"><span class="k">बस इतना देना है</span><span class="v">₹${p.cost}</span></div></div>`},
 ];
 function pmTick(){ return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
-let pmVer = 'uc';
+let pmVer = 'e1';
 function pmPlan(){ return (typeof payPlan === 'function') ? payPlan() : cur(); }
 function buildPmBar(){
   const html = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
@@ -2056,8 +2183,11 @@ function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); }
 function renderPm(){
   const st = $('#pmStage'); if(!st) return;
   const v = PM_VERSIONS.find(x=>x.id===pmVer) || PM_VERSIONS[0];
-  st.className = ''; st.innerHTML = v.build(pmPlan());
+  const p = pmPlan();
+  st.className = ''; st.innerHTML = v.build(p);
   void st.offsetWidth; st.className = 'pmv-on';
+  if(typeof esWire === 'function') esWire(st, p);
+  screenEl('paymethod').querySelectorAll('.pmsheet-scrim').forEach(e=>e.remove());
   const f = st.querySelector('.pm-lad-fill');
   if(f){ const w=f.style.width; f.style.width='0'; later(()=>{ f.style.width=w; }, 260); }
 }
