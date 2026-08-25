@@ -1187,42 +1187,29 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .pmv.on .cart-offer,.pmv.on .addrow,.pmv.on .addtot{animation:none}
 }
 
-/* ── C · कार्ट · एक ही कार्ड, तीन पंक्तियाँ, नीचे कुल ── */
-.cart2{background:#fff;border:1px solid var(--stroke-pri);border-radius:18px;overflow:hidden;margin-top:14px;
-  box-shadow:0 1px 2px rgba(22,16,33,.04), 0 14px 30px -22px rgba(22,16,33,.35)}
-.c2row{display:flex;align-items:center;gap:12px;padding:13px 15px;opacity:0;transform:translateX(-10px)}
-.c2row + .c2row{border-top:1px solid #f2eff7}
-.pmv.on .c2row:nth-of-type(1){animation:c2In .45s cubic-bezier(.22,1,.36,1) .08s both}
-.pmv.on .c2row:nth-of-type(2){animation:c2In .45s cubic-bezier(.22,1,.36,1) .24s both}
+/* ── C · कार्ट · सादा ── */
+.cart2{background:#fff;border:1px solid var(--stroke-pri);border-radius:16px;padding:2px 16px 14px;margin-top:16px}
+.c2row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;
+  opacity:0;transform:translateY(6px)}
+.c2row + .c2row{border-top:1px solid #f4f1f8}
+.pmv.on .c2row:nth-of-type(1){animation:c2In .42s cubic-bezier(.22,1,.36,1) .10s both}
+.pmv.on .c2row:nth-of-type(2){animation:c2In .42s cubic-bezier(.22,1,.36,1) .26s both}
+.pmv.on .c2row.gift{animation:c2In .48s cubic-bezier(.34,1.5,.5,1) .44s both}
 @keyframes c2In{to{opacity:1;transform:none}}
-.c2ic{position:relative;width:38px;height:38px;flex:none;border-radius:12px;background:var(--blue-soft);display:grid;place-items:center}
-.c2ic .bg{position:absolute;right:-4px;bottom:-4px;width:17px;height:17px;border-radius:50%;
-  background:var(--text-positive);border:2px solid #fff;display:grid;place-items:center}
-.c2b{flex:1;min-width:0}
-.c2b .t{font-size:14.5px;line-height:20px;font-weight:700;color:var(--text-pri)}
-.c2b .s{font-size:11.5px;line-height:16px;color:var(--text-ter);margin-top:1px}
-.c2p{font-size:16px;font-weight:800;white-space:nowrap;color:var(--text-pri)}
-.c2p.free{font-size:13.5px;font-weight:800;color:var(--text-positive)}
-/* the offer lands as a band inside the same card */
-.c2off{display:flex;align-items:center;gap:12px;padding:12px 15px;background:var(--bg-positive-pri);
-  border-top:1px dashed var(--stroke-positive);border-bottom:1px dashed var(--stroke-positive);
-  opacity:0;transform:translateY(-8px)}
-.pmv.on .c2off{animation:c2Off .55s cubic-bezier(.34,1.55,.5,1) .46s both}
-@keyframes c2Off{to{opacity:1;transform:none}}
-.c2off .ic{position:relative;width:38px;height:38px;flex:none;border-radius:12px;background:#fff;display:grid;place-items:center}
-.c2off .t{font-size:14px;line-height:20px;font-weight:800;color:var(--text-positive)}
-.c2off .chips{display:flex;gap:5px;margin-top:5px}
-.c2off .chips span{background:#fff;border:1px solid var(--stroke-positive);border-radius:100px;padding:2px 8px;
-  font-size:10px;line-height:14px;font-weight:800;color:var(--text-positive)}
-.c2tot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 15px;
-  background:var(--bg-neutral-sec);opacity:0}
-.pmv.on .c2tot{animation:c2Up .45s cubic-bezier(.22,1,.36,1) .66s both}
-@keyframes c2Up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.c2tot .k{font-size:15px;font-weight:800;color:var(--text-pri)}
-.c2tot .v{font-size:21px;font-weight:800;letter-spacing:-.4px;color:var(--text-pri)}
+.c2row .t{font-size:15px;line-height:21px;color:var(--text-pri)}
+.c2row .p{font-size:15px;line-height:21px;font-weight:700;white-space:nowrap;color:var(--text-pri)}
+.c2row .p.free{color:var(--text-positive)}
+.c2row.gift{border-top:1px dashed var(--stroke-positive)}
+.c2row.gift .t{display:flex;align-items:center;gap:8px;color:var(--text-positive);font-weight:700}
+.c2row.gift .t svg{flex:none}
+.c2tot{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  border-top:1.5px solid var(--stroke-pri);margin-top:2px;padding-top:15px;opacity:0}
+.pmv.on .c2tot{animation:c2In .42s cubic-bezier(.22,1,.36,1) .62s both}
+.c2tot .k{font-size:16px;line-height:22px;font-weight:800;color:var(--text-pri)}
+.c2tot .v{font-size:21px;line-height:26px;font-weight:800;letter-spacing:-.4px;color:var(--text-pri)}
 @media (prefers-reduced-motion:reduce){
-  .c2row,.c2off,.c2tot{opacity:1;transform:none}
-  .pmv.on .c2row,.pmv.on .c2off,.pmv.on .c2tot{animation:none}
+  .c2row,.c2tot{opacity:1;transform:none}
+  .pmv.on .c2row,.pmv.on .c2tot{animation:none}
 }
 </style>
 </head>
@@ -1872,21 +1859,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           <span class="pm-tag">📍 नेट लगवाने की जगह</span>
           <div class="pm-addr"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex:none;margin-top:1px"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg><div class="a">Rajiv Colony, Sector 33, Gurugram</div></div>
           <div class="cart2">
-            <div class="c2row">
-              <span class="c2ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9.5a13 13 0 0118 0" stroke="#1461cc" stroke-width="2" stroke-linecap="round"/><path d="M6.5 13.5a8 8 0 0111 0" stroke="#1461cc" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.7" fill="#1461cc"/></svg><span class="bg"><svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
-              <div class="c2b"><div class="t">नेट कनेक्शन</div><div class="s">नेट बॉक्स + लगवाई · जमा राशि ₹0</div></div>
-              <span class="c2p free">मुफ़्त</span>
-            </div>
-            <div class="c2row">
-              <span class="c2ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="16" rx="3.5" stroke="#1461cc" stroke-width="1.9"/><path d="M8 3v4M16 3v4M3.5 10h17" stroke="#1461cc" stroke-width="1.9" stroke-linecap="round"/></svg><span class="bg"><svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
-              <div class="c2b"><div class="t" id="addT">1 दिन का रिचार्ज</div><div class="s">80–100 Mbps · डेटा की कोई लिमिट नहीं</div></div>
-              <span class="c2p" id="addP">₹23</span>
-            </div>
-            <div class="c2off">
-              <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-              <div class="c2b"><div class="t">3 ऑफर साथ में लगे</div><div class="chips"><span>2+2</span><span>7+7</span><span>14+14</span></div></div>
-              <span class="c2p free">मुफ़्त</span>
-            </div>
+            <div class="c2row"><span class="t">नेट कनेक्शन</span><span class="p free">मुफ़्त</span></div>
+            <div class="c2row"><span class="t" id="addT">1 दिन का रिचार्ज</span><span class="p" id="addP">₹23</span></div>
+            <div class="c2row gift"><span class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="#008043" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="#008043" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="#008043" stroke-width="1.6" stroke-linejoin="round"/></svg> 3 ऑफर</span><span class="p free">मुफ़्त</span></div>
             <div class="c2tot"><span class="k">कुल देना है</span><span class="v" id="addTot">₹23</span></div>
           </div>
         </div>
