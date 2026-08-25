@@ -1379,7 +1379,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
             <span>बाकी 2 ऑफर गिफ्ट आइकॉन में रखे हैं</span>
           </div>
         </div>
-        <div class="actions"><button class="cta" data-go="slot">नेट लगवाने का दिन चुनें ›</button></div>
+        <div class="actions"><button class="cta" id="raCta">नेट लगवाने का दिन चुनें ›</button></div>
       </div>
     </section>
 
@@ -1631,7 +1631,7 @@ const LM_TYPES=[{k:'मंदिर / मस्जिद / गुरुद्व
 const state={idx:0,plan:0,phone:'',date:'27 जुलाई',
   locAddr:'Rajiv Colony, Sector 33',serviceable:true,
   name:'',landmark:'Hanuman Mandir',voiceDone:false,timers:[],
-  viaSheet:false,offerPick:-1,payMode:'advance',offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
+  viaSheet:false,offerPick:-1,payMode:'advance',balancePaid:false,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
 const cur=()=>PLANS[state.plan];
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -1683,6 +1683,11 @@ function onEnter(id){
         state.rewardPick=state.redeemOffer; state.rewardApplied=true; state.rewardMsgPending=true;
         state.redeemOffer=-1; rwTab='used';
         later(()=>goTo('rewards'),1900);
+      } else if(state.payMode === 'advance'){        /* booking only — offer waits for the balance */
+        later(()=>goTo('slot'),1900);
+      } else if(state.payMode === 'balance'){        /* balance cleared — now the offer lands */
+        state.balancePaid = true;
+        later(()=>goTo('rewardsadded'),1900);
       } else later(()=>goTo('rewardsadded'),1900);
       break;
     case 'rewardsadded':enterRewardsAdded();break;
@@ -1827,7 +1832,9 @@ function runChatPay(){
   const nm=state.name||'रमेश', p=payPlan();
   c.innerHTML=`<div class="cstatus"><span class="cs-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.7"/></svg></span><div><div class="cs-a">घर का नेट: ${nm}</div><div class="cs-b">स्थिति: <b>बुकिंग अधूरी है</b></div></div></div>
     <div class="crow" id="cpT1" style="margin-top:12px"><div>${av}</div><div class="ctyping"><i></i><i></i><i></i></div></div>`;
-  later(()=>{ const t=$('#cpT1'); if(t){ t.outerHTML=`<div class="crow"><div>${av}</div><div class="cbubble">✅ आपका <b>₹${p.cost}</b> का पेमेंट हो गया · आपकी बुकिंग पक्की है। नेट लगते ही आपका रिचार्ज चालू हो जाएगा<div class="msg-time">10:15 AM</div></div></div><div class="crow" id="cpT2" style="margin-top:8px"><div>${av}</div><div class="ctyping"><i></i><i></i><i></i></div></div>`; c.scrollTop=c.scrollHeight; } },1200);
+  later(()=>{ const t=$('#cpT1'); if(t){ t.outerHTML=`<div class="crow"><div>${av}</div><div class="cbubble">${state.payMode==='advance'
+      ? `✅ आपका <b>₹${ADVANCE}</b> का पेमेंट हो गया · आपकी बुकिंग पक्की है।<br><br>बाकी <b>₹${p.cost-ADVANCE}</b> नेट सेटअप के समय देने होंगे — तभी ${p.days} दिन का रिचार्ज और मुफ़्त दिन चालू होंगे।`
+      : `✅ आपका <b>₹${p.cost}</b> का पेमेंट हो गया · आपकी बुकिंग पक्की है। नेट लगते ही आपका रिचार्ज चालू हो जाएगा`}<div class="msg-time">10:15 AM</div></div></div><div class="crow" id="cpT2" style="margin-top:8px"><div>${av}</div><div class="ctyping"><i></i><i></i><i></i></div></div>`; c.scrollTop=c.scrollHeight; } },1200);
   later(()=>{ const t=$('#cpT2'); if(t){ t.outerHTML=`<div class="crow"><div>${av}</div><div class="cbubble">आपकी बुकिंग की प्रक्रिया अभी अधूरी है।<br><br>नेट बॉक्स सही घर पहुंचे, इसके लिए अपना पूरा पता लिखें।<br><br>पता शेयर करने के लिए नीचे "पता लिखें" पर टैप करें।<div class="msg-time">10:15 AM</div><div class="msg-cta cpc" id="cpAddrCta">पता लिखें</div></div></div>`; $('#cpAddrCta').onclick=()=>goTo('address-form'); c.scrollTop=c.scrollHeight; } },2700);
 }
 
@@ -1848,11 +1855,13 @@ function syncAmounts(){
   $('#pmTitle').textContent = `₹${amt} के भुगतान का तरीका चुनें`;
   $('#procAmt').textContent = `₹${amt} के भुगतान की स्थिति जाँची जा रही है`;
   $('#pmLoc').textContent   = state.locAddr;
-  const bal = $('#pmBal'), left = rd ? 0 : payBalance();
-  if(bal){
-    bal.style.display = left > 0 ? '' : 'none';
-    if(left > 0) bal.innerHTML = `<span>ⓘ</span><span>यह <b>₹${amt}</b> बुकिंग के लिए है। बाकी <b>₹${left}</b> नेट सेटअप के समय देने होंगे — तभी ${p.days} दिन का रिचार्ज और <b>+${OFFERS[state.offerPick]?OFFERS[state.offerPick].free:0} दिन मुफ़्त</b> चालू होंगे।</span>`;
-  }
+  const bal = $('#pmBal'); if(!bal) return;
+  const free = OFFERS[state.offerPick] ? OFFERS[state.offerPick].free : 0;
+  if(rd || state.payMode === 'full'){ bal.style.display = 'none'; return; }
+  bal.style.display = '';
+  bal.innerHTML = state.payMode === 'balance'
+    ? `<span>ⓘ</span><span>यह बाकी <b>₹${amt}</b> है। भुगतान होते ही नेट सेटअप शुरू होगा और ${p.days} दिन का रिचार्ज + <b>${free} दिन मुफ़्त</b> चालू हो जाएँगे।</span>`
+    : `<span>ⓘ</span><span>यह <b>₹${ADVANCE}</b> बुकिंग के लिए है। बाकी <b>₹${p.cost-ADVANCE}</b> नेट सेटअप के समय देने होंगे — तभी ${p.days} दिन का रिचार्ज और <b>+${free} दिन मुफ़्त</b> चालू होंगे।</span>`;
 }
 
 
@@ -1862,7 +1871,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
-const restart=()=>{Object.assign(state,{viaSheet:false,offerPick:-1,payMode:'advance',offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
+const restart=()=>{Object.assign(state,{viaSheet:false,offerPick:-1,payMode:'advance',balancePaid:false,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
 $('#btnRestart').onclick=restart;
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='Escape'){closeSheets();return;}if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='r')restart();});
 
@@ -1904,6 +1913,7 @@ function celeBub(html,time){ return celeNode(`<div class="ci-row"><div class="ci
 function celeTyping(cb,ms){ const t=celeAdd(celeNode('<div class="ci-row"><div class="ci-typing"><i></i><i></i><i></i></div></div>')); later(()=>{ t.remove(); cb(); }, ms||1100); }
 function runCelebrate(){
   if(state.celeDone) return;                       /* returning from the rewards page — keep the thread */
+  /* after a balance payment the thread is rebuilt, so celeDone is cleared before coming back */
   const p=cur(), base=p.days;
   const stv=$('#celeStv'); if(stv){ stv.textContent='नेट चालू है'; stv.className='ci-stv active'; }
   const th=$('#celeThread'); th.innerHTML='';
@@ -1912,10 +1922,32 @@ function runCelebrate(){
   slot.onclick=()=>goTo('rewards');
   screenEl('celebrate').querySelectorAll('.rc-ov,.rc-flier').forEach(e=>e.remove());
 
-  later(()=> celeTyping(()=>{
-    celeAdd(celeBub(`आपकी बुकिंग पूरी हो गई है ✅ अब <b>${base} दिन तक आपका नेट चालू रहेगा</b> · 100 Mbps, <b>${activeTill(base)}</b> तक।`,'4:36 PM'));
+  const owed = PLANS[state.plan].cost - ADVANCE;
+  const pending = state.payMode === 'advance' && !state.balancePaid;
+
+  if(pending){                                   /* ₹25 is in — ask for the rest before net setup */
+    if(stv){ stv.textContent='नेट सेटअप बाकी है'; stv.className='ci-stv pending'; }
     later(()=> celeTyping(()=>{
-      celeAdd(celeBub('और एक खुशखबरी 🎁 — आपके तीनों ऑफर <b>इनाम</b> बनकर खाते में जुड़ गए हैं।','4:36 PM'));
+      celeAdd(celeBub(`आपका पता मिल गया ✅ स्लॉट भी तय है — <b>${state.date}</b>।`,'4:36 PM'));
+      later(()=> celeTyping(()=>{
+        const n = celeBub(`नेट सेटअप शुरू करने के लिए बाकी <b>₹${owed}</b> का भुगतान करें।<br><br>भुगतान होते ही आपका <b>${base} दिन का रिचार्ज</b> और ऑफर के मुफ़्त दिन चालू हो जाएँगे।`,'4:37 PM');
+        const b = n.querySelector('.ci-bub');
+        const link = document.createElement('div'); link.className='ci-bcta'; link.textContent=`₹${owed} का भुगतान करें`;
+        link.onclick = ()=>{ state.payMode='balance'; state.celeDone=false; goTo('paymethod'); };
+        b.appendChild(link); celeAdd(n);
+      }, 1100), 900);
+    }, 1300), 400);
+    return;
+  }
+
+  const o = state.offerPick>=0 ? OFFERS[state.offerPick] : null;
+  const tot = o ? o.pay + o.free : base;
+  later(()=> celeTyping(()=>{
+    celeAdd(celeBub(`पूरा भुगतान हो गया ✅ नेट सेटअप शुरू — अब <b>${tot} दिन तक आपका नेट चालू रहेगा</b> · 100 Mbps, <b>${activeTill(tot)}</b> तक।`,'4:38 PM'));
+    later(()=> celeTyping(()=>{
+      celeAdd(celeBub(o
+        ? `और खुशखबरी 🎁 — <b>${o.pay}+${o.free}</b> ऑफर लग गया, <b>${o.free} दिन मुफ़्त</b> आपके नेट में जुड़ गए। बाकी 2 ऑफर <b>इनाम</b> में रखे हैं।`
+        : 'और एक खुशखबरी 🎁 — आपके ऑफर <b>इनाम</b> बनकर खाते में जुड़ गए हैं।','4:38 PM'));
       later(runRewardMoment, 500);
     }, 1000), 900);
   }, 1300), 400);
@@ -1983,7 +2015,9 @@ const installDays=()=> PLANS[state.plan].days + bonusDays();
 /* स्क्रीन 10+11 एक साथ — तीनों ऑफर बराबर, एक चुनकर उसी का रिचार्ज */
 const ADVANCE = 25;                       /* बुकिंग पूरी करने के लिए अभी इतना */
 const planIdxFor = days => PLANS.findIndex(p => p.days === days);
-const payAmount = () => state.payMode === 'full' ? PLANS[state.plan].cost : ADVANCE;
+const payAmount = () => state.payMode === 'full'    ? PLANS[state.plan].cost
+                      : state.payMode === 'balance' ? PLANS[state.plan].cost - ADVANCE
+                      :                               ADVANCE;
 const payBalance = () => PLANS[state.plan].cost - payAmount();
 function renderOffers(){
   const l = $('#cmbList'); if(!l) return;
@@ -2033,6 +2067,11 @@ function initRewardTabs(){
 const RA_GIFT_W='<svg viewBox="0 0 24 24" fill="none"><rect x="3.4" y="8.4" width="17.2" height="4" rx="1" stroke="#fff" stroke-width="1.7"/><path d="M5 12.4v7.6h14v-7.6M12 8.4v11.6" stroke="#fff" stroke-width="1.7"/><path d="M12 8.4C11 5.5 9.6 5 8.6 5.6 7.4 6.4 8.1 8.4 12 8.4zM12 8.4c1-2.9 2.4-3.4 3.4-2.8C16.6 6.4 15.9 8.4 12 8.4z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>';
 function enterRewardsAdded(){
   const w=$('#raWrap'); if(!w) return;
+  const raC = $('#raCta');
+  if(raC){
+    if(state.balancePaid){ raC.textContent='चैट पर वापस जाएँ ›'; raC.onclick=()=>goTo('celebrate'); }
+    else { raC.textContent='नेट लगवाने का दिन चुनें ›'; raC.onclick=()=>goTo('slot'); }
+  }
   const o = state.offerPick>=0 ? OFFERS[state.offerPick] : null;
   const rest = OFFERS.filter((_,i)=>i!==state.offerPick);
   const TK = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
