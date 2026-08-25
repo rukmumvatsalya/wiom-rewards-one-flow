@@ -2574,7 +2574,7 @@ const PM_OLD_VERSIONS = [
   <div class="pm-tot"><span class="k">बस इतना देना है</span><span class="v">₹${p.cost}</span></div></div>`},
 ];
 function pmTick(){ return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
-let pmVer = 'e1';
+let pmVer = 'e4';                       /* ऑफर कार्ट के अंदर — यही डिफ़ॉल्ट */
 function pmPlan(){ return (typeof payPlan === 'function') ? payPlan() : cur(); }
 function buildPmBar(){
   const html = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
