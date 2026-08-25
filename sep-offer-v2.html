@@ -1463,7 +1463,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     </section>
 
 
-    <!-- rewards · तीनों इनाम · इंस्टॉलेशन रिचार्ज या रिन्यूअल रिचार्ज -->
+    <!-- rewards · तीनों इनाम · अगले रिचार्ज पर लगते हैं -->
     <section class="screen" data-s="rewards">
       <div class="statusbar" data-sb></div>
       <div class="appbar"><div class="appbar-row">
@@ -1503,7 +1503,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="ra-body">
           <div class="ra-token"><span class="ra-rays"></span><svg viewBox="0 0 24 24" fill="none"><rect x="3.4" y="8.4" width="17.2" height="4" rx="1" stroke="#fff" stroke-width="1.7"/><path d="M5 12.4v7.6h14v-7.6M12 8.4v11.6" stroke="#fff" stroke-width="1.7"/><path d="M12 8.4C11 5.5 9.6 5 8.6 5.6 7.4 6.4 8.1 8.4 12 8.4zM12 8.4c1-2.9 2.4-3.4 3.4-2.8C16.6 6.4 15.9 8.4 12 8.4z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
           <h2 class="ra-title">3 इनाम आपके खाते में<br>जुड़ गए 🎉</h2>
-          <p class="ra-sub">एक अभी अपने रिचार्ज पर लगा सकते हैं, बाकी दो आगे के लिए रखे रहेंगे।</p>
+          <p class="ra-sub">अगली बार जब 2, 7 या 14 दिन का रिचार्ज करेंगे, ये अपने आप लग जाएँगे।</p>
           <div class="ra-rows">
             <div class="ra-row"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>2 दिन के रिचार्ज पर<span class="free">+2 दिन</span></div>
             <div class="ra-row"><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#008043" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>7 दिन के रिचार्ज पर<span class="free">+7 दिन</span></div>
@@ -2487,7 +2487,7 @@ function flyGiftToBar(scr, ov, slot, done){
   })(t0);
 }
 function addRewardMsg(){
-  const n=celeBub('<b>3 इनाम जुड़ गए 🎁</b><br>2+2, 7+7 और 14+14 — तीनों आपके नाम पर हैं।<br><br>एक अभी अपने रिचार्ज पर लगाएँ, बाकी रिन्यूअल रिचार्ज के लिए रखे रहेंगे।','4:36 PM');
+  const n=celeBub('<b>3 इनाम जुड़ गए 🎁</b><br>2+2, 7+7 और 14+14 — तीनों आपके नाम पर हैं।<br><br>अगली बार जब 2, 7 या 14 दिन का रिचार्ज करेंगे, उसी पर अपने आप लग जाएँगे।','4:36 PM');
   const bub=n.querySelector('.ci-bub');
   const link=document.createElement('div'); link.className='ci-bcta'; link.textContent='इनाम देखें';
   link.onclick=()=>goTo('rewards'); bub.appendChild(link);
@@ -2498,8 +2498,8 @@ function applyReward(){
   const dot=$('#rwDot'); if(dot) dot.classList.remove('on');
   const base=PLANS[state.plan].days, tot=installDays();
   const msg = state.rewardPick>=0
-    ? `✅ <b>${OFFERS[state.rewardPick].k}</b> इनाम इंस्टॉलेशन रिचार्ज पर लग गया · अब आपका नेट <b>${tot} दिन</b> तक चालू रहेगा, <b>${activeTill(tot)}</b> तक।<br><br>बाकी 2 इनाम आपके अगले रिचार्ज के लिए रखे हैं — गिफ्ट आइकॉन पर कभी भी देख सकते हैं।`
-    : `तीनों इनाम आपके रिन्यूअल रिचार्ज के लिए रख लिए गए हैं। जब चाहें, ऊपर गिफ्ट आइकॉन से लगा सकते हैं।<br><br>अभी आपका नेट <b>${base} दिन</b> तक चालू है।`;
+    ? `✅ <b>${OFFERS[state.rewardPick].k}</b> इनाम आपके नए रिचार्ज पर लग गया · अब नेट <b>${tot} दिन</b> तक चलेगा, <b>${activeTill(tot)}</b> तक।<br><br>बाकी 2 इनाम रखे हैं — जब वो रिचार्ज करेंगे, अपने आप लग जाएँगे।`
+    : `तीनों इनाम आपके खाते में रखे हैं। अगली बार 2, 7 या 14 दिन का रिचार्ज करेंगे, तो अपने आप लग जाएँगे।<br><br>अभी आपका नेट <b>${base} दिन</b> तक चालू है।`;
   goTo('celebrate',true);
   later(()=> celeTyping(()=> celeAdd(celeBub(msg,'4:38 PM')), 900), 300);
 }
