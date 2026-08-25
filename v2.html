@@ -942,7 +942,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   }
   /* floating prev/next for mobile */
   .mnav{display:none;position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:80;gap:8px}
-  .mnav button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(22,16,33,.42);color:#fff;font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px)}
+  .mnav button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(22,16,33,.42);color:#fff;font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px);display:grid;place-items:center}
   .mnav button:active{background:rgba(22,16,33,.62)}
 
   /* ═══ ऑफर कार्ड — रिचार्ज से नेट तक, बोनस बीच का पुल ═══ */
@@ -1199,6 +1199,21 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 @keyframes pmIn{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.pmv-on .pmc,.pmv-on .pm-rec,.pmv-on .pm-band{opacity:1;transform:none;animation:none}}
 
+
+/* वर्शन स्विच — फ़ोन के बाहर, ताकि स्क्रीन जैसी है वैसी दिखे */
+.pmside{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pmside span{background:#221e2e;border:1px solid #322c42;color:#cfc9de;border-radius:100px;padding:6px 11px;
+  font-size:11.5px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.pmside span:hover{border-color:#4a4262}
+.pmside span.on{background:#fff;border-color:#fff;color:#1a1620}
+.pmpop{position:fixed;left:12px;right:12px;bottom:calc(60px + env(safe-area-inset-bottom));z-index:82;
+  background:rgba(22,16,33,.94);backdrop-filter:blur(10px);border-radius:16px;padding:12px;
+  display:none;gap:6px;flex-wrap:wrap}
+.pmpop.open{display:flex}
+.pmpop span{background:rgba(255,255,255,.12);color:#fff;border-radius:100px;padding:7px 12px;
+  font-size:12px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.pmpop span.on{background:#fff;color:#1a1620}
+#mVer{display:none}
 </style>
 </head>
 <body>
@@ -1796,7 +1811,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 देकर बुकिंग पक्की करें</h1></div>
       </div>
       <div class="content">
-        <div class="pmbar" id="pmBar"></div>
         <div id="pmStage"></div>
       </div>
       <div class="actions">
@@ -1899,7 +1913,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
   </div><!-- /phone -->
 
-  <div class="mnav">
+  <div class="pmpop" id="pmPop"></div>
+  <div class="mnav"><button id="mVer" aria-label="वर्शन">◍</button>
     <button id="mPrev" aria-label="पीछे">‹</button>
     <button id="mNext" aria-label="आगे">›</button>
   </div>
@@ -1923,6 +1938,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <b>v2 · ऑफर पहले, फिर रिचार्ज = बुकिंग.</b> लैंडिंग → OTP → सर्विसबिलिटी → <b>3 शिक्षा स्क्रीन</b> (नेट बॉक्स · रिचार्ज मॉडल · कोई और खर्चा नहीं) → <b>ऑफर देखें</b> (कॉन्फ़ेटी + 3 टिकट) → <b>कैसे बुक करें?</b> → रिचार्ज = बुकिंग (₹23 · 1 दिन) → पेमेंट → रिचार्ज सफल → <b>पूरे पेज का इनाम मोमेंट</b> → दिन चुनें → <b>चैट</b> (भुगतान की पुष्टि → इनाम → पता)।<br><br>
       तीनों ऑफर (2→+2 · 7→+7 · 14→+14) शर्त वाले इनाम हैं — उसी लंबाई का रिचार्ज करने पर अपने आप लगते हैं। ग्राहक को यहाँ प्लान नहीं चुनना पड़ता; ऊपर का <b>डेमो कंट्रोल</b> सिर्फ़ दिखाने के लिए है — रकम बदलकर पूरा पेमेंट फ़्लो उसी पर चलता है।
     </div>
+    <div class="lab" style="font-size:11px;font-weight:800;color:#8a8496;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 0">भुगतान स्क्रीन · वर्शन</div>
+    <div class="pmside" id="pmBar"></div>
     <div class="hint"><kbd>←</kbd> <kbd>→</kbd> screens · <kbd>R</kbd> restart</div>
   </aside>
 </main>
@@ -2030,6 +2047,8 @@ const next = ()=> go(state.idx+1);
 const prev = ()=> go(state.idx-1, true);
 
 function onEnter(id){
+  const _mv=$('#mVer'); if(_mv) _mv.style.display = (id==='paymethod') ? 'grid' : 'none';
+  if(id!=='paymethod'){ const _pp=$('#pmPop'); if(_pp) _pp.classList.remove('open'); }
   switch(id){
     case 'splash':     later(()=>goTo('landing'), 1800); break;
     case 'landing':    applyEntryMode(); break;
@@ -2431,11 +2450,14 @@ function pmTick(){ return '<svg width="10" height="10" viewBox="0 0 24 24" fill=
 let pmVer = 'uc';
 function pmPlan(){ return (typeof payPlan === 'function') ? payPlan() : cur(); }
 function buildPmBar(){
-  const bar = $('#pmBar'); if(!bar) return;
-  bar.innerHTML = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
-  bar.querySelectorAll('span').forEach(b => b.onclick = ()=> setPmVer(b.dataset.v));
+  const html = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
+  ['#pmBar','#pmPop'].forEach(sel => {
+    const host = $(sel); if(!host) return;
+    host.innerHTML = html;
+    host.querySelectorAll('span').forEach(b => b.onclick = ()=>{ setPmVer(b.dataset.v); $('#pmPop').classList.remove('open'); });
+  });
 }
-function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); const on=$('#pmBar .on'); if(on) on.scrollIntoView({block:'nearest',inline:'center'}); }
+function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); }
 function renderPm(){
   const st = $('#pmStage'); if(!st) return;
   const v = PM_VERSIONS.find(x=>x.id===pmVer) || PM_VERSIONS[0];
@@ -3069,6 +3091,7 @@ $$('#demoPlans .chip2').forEach(b => b.onclick = ()=>{
   const cur_ = $('.screen.active')?.dataset.s;
   if(cur_ === 'detail') renderDetail(); else if(cur_) onEnter(cur_);
 });
+const _mv2=$('#mVer'); if(_mv2) _mv2.onclick=()=>$('#pmPop').classList.toggle('open');
 const _mp = $('#mPrev'); if(_mp) _mp.onclick = prev;
 const _mn = $('#mNext'); if(_mn) _mn.onclick = next;
 const restart = ()=>{ offersShown=false; pinLen=0; paintPin(); resetSlot(); chatV2Built=false; state.plan = 0; state.phone=''; chatBuilt=false; confShown=false; clearRewards(); document.querySelectorAll('.sp,.sp-canvas,.conf-fly,.ci-celebrate,.ci-confetti-canvas').forEach(e=>e.remove()); const _h=$('#ciHdr'); if(_h)_h.classList.remove('show','nopending','receive'); go(0); };

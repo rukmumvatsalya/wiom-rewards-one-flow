@@ -1115,6 +1115,26 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 @keyframes pmIn{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.pmv-on .pmc,.pmv-on .pm-rec,.pmv-on .pm-band{opacity:1;transform:none;animation:none}}
 
+
+.mnav{display:none;position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:83;gap:8px}
+.mnav button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(22,16,33,.42);color:#fff;
+  font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px);display:grid;place-items:center}
+.mnav button:active{background:rgba(22,16,33,.62)}
+@media(max-width:900px){.mnav{display:flex}}
+/* वर्शन स्विच — फ़ोन के बाहर, ताकि स्क्रीन जैसी है वैसी दिखे */
+.pmside{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pmside span{background:#221e2e;border:1px solid #322c42;color:#cfc9de;border-radius:100px;padding:6px 11px;
+  font-size:11.5px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.pmside span:hover{border-color:#4a4262}
+.pmside span.on{background:#fff;border-color:#fff;color:#1a1620}
+.pmpop{position:fixed;left:12px;right:12px;bottom:calc(60px + env(safe-area-inset-bottom));z-index:82;
+  background:rgba(22,16,33,.94);backdrop-filter:blur(10px);border-radius:16px;padding:12px;
+  display:none;gap:6px;flex-wrap:wrap}
+.pmpop.open{display:flex}
+.pmpop span{background:rgba(255,255,255,.12);color:#fff;border-radius:100px;padding:7px 12px;
+  font-size:12px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
+.pmpop span.on{background:#fff;color:#1a1620}
+#mVer{display:none}
 </style>
 </head>
 <body>
@@ -1465,7 +1485,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 देकर बुकिंग पक्की करें</h1></div>
       </div>
       <div class="content">
-        <div class="pmbar" id="pmBar"></div>
         <div id="pmStage"></div>
       </div>
       <div class="actions">
@@ -1598,7 +1617,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
   </div><!-- /phone -->
 
-  <div class="mnav"><button id="mPrev">‹</button><button id="mNext">›</button></div>
+  <div class="pmpop" id="pmPop"></div>
+  <div class="mnav"><button id="mVer" aria-label="वर्शन">◍</button><button id="mPrev">‹</button><button id="mNext">›</button></div>
 
   <aside class="side">
     <div><div class="stage-title" id="stageTitle">Splash</div><div class="stage-step" id="stageStep">1 / 32</div></div>
@@ -1607,6 +1627,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <b>एक ही फ्लो:</b> splash → लैंडिंग → नंबर → OTP → लोकेशन परमिशन → सर्विस चेक → सर्विस है → नेट बॉक्स → रिचार्ज मॉडल (<b>रिचार्ज कितने का होता है?</b> → प्लान शीट) → <b>शुरुआत में कितना खर्चा होता है?</b> → केवल रिचार्ज → <b>3 ऑफर</b> (2+2 · 7+7 · 14+14) → रिचार्ज → पेमेंट → दिन चुनें → चैट → पता → landmark → आवाज़ → बुकिंग कन्फर्म → चैट + <b>3 इनाम</b> → गिफ्ट आइकॉन → इनाम कहाँ लगाएँ।<br>
       कोई edge केस नहीं · न Case B, न नॉन-सर्विसेबल, न मौजूदा-यूज़र लॉगिन।
     </div>
+    <div class="lab" style="font-size:11px;font-weight:800;color:#8a8496;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 0">भुगतान स्क्रीन · वर्शन</div>
+    <div class="pmside" id="pmBar"></div>
     <div class="hint"><kbd>←</kbd> <kbd>→</kbd> screens · <kbd>R</kbd> restart</div>
   </aside>
 </main>
@@ -1682,6 +1704,8 @@ const next=()=>go(state.idx+1);
 const prev=()=>go(state.idx-1,true);
 
 function onEnter(id){
+  const _mv=$('#mVer'); if(_mv) _mv.style.display = (id==='paymethod') ? 'grid' : 'none';
+  if(id!=='paymethod'){ const _pp=$('#pmPop'); if(_pp) _pp.classList.remove('open'); }
   stopEdu2Auto();
   switch(id){
     case 'splash':later(()=>goTo('landing'),1600);break;
@@ -2021,11 +2045,14 @@ function pmTick(){ return '<svg width="10" height="10" viewBox="0 0 24 24" fill=
 let pmVer = 'uc';
 function pmPlan(){ return (typeof payPlan === 'function') ? payPlan() : cur(); }
 function buildPmBar(){
-  const bar = $('#pmBar'); if(!bar) return;
-  bar.innerHTML = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
-  bar.querySelectorAll('span').forEach(b => b.onclick = ()=> setPmVer(b.dataset.v));
+  const html = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
+  ['#pmBar','#pmPop'].forEach(sel => {
+    const host = $(sel); if(!host) return;
+    host.innerHTML = html;
+    host.querySelectorAll('span').forEach(b => b.onclick = ()=>{ setPmVer(b.dataset.v); $('#pmPop').classList.remove('open'); });
+  });
 }
-function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); const on=$('#pmBar .on'); if(on) on.scrollIntoView({block:'nearest',inline:'center'}); }
+function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); }
 function renderPm(){
   const st = $('#pmStage'); if(!st) return;
   const v = PM_VERSIONS.find(x=>x.id===pmVer) || PM_VERSIONS[0];
@@ -2048,6 +2075,7 @@ function syncAmounts(){
 $$('[data-go]').forEach(el=>el.addEventListener('click',e=>{if(el.disabled)return;e.stopPropagation();goTo(el.dataset.go);}));
 document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(b)prev();});
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
+const _mv2=$('#mVer'); if(_mv2) _mv2.onclick=()=>$('#pmPop').classList.toggle('open');
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
 const restart=()=>{Object.assign(state,{viaSheet:false,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
