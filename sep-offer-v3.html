@@ -1072,7 +1072,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
 /* ═══ ऑफर चुनकर रिचार्ज — स्क्रीन 10 + 11 एक साथ ═══ */
 .cmb-list{display:flex;flex-direction:column;gap:11px;margin-top:18px}
-.cmb{position:relative;background:#fff;border:1.5px solid var(--stroke-pri);border-radius:16px;padding:14px 15px;
+.cmb{position:relative;display:flex;align-items:flex-start;gap:12px;
+  background:#fff;border:1.5px solid var(--stroke-pri);border-radius:16px;padding:14px 15px;
   cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent;
   opacity:0;transform:translateY(14px)}
 .cmb.show{animation:cmbIn .45s cubic-bezier(.22,1,.36,1) both}
@@ -1086,9 +1087,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cmb-free{display:inline-flex;align-items:center;gap:6px;background:var(--bg-positive-sec);color:var(--text-positive);
   border-radius:100px;padding:4px 11px;font-size:12.5px;line-height:17px;font-weight:800;white-space:nowrap}
 .cmb-tot{font-size:12.5px;line-height:17px;color:var(--text-sec);font-weight:700;white-space:nowrap}
-.cmb-ck{position:absolute;top:-8px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--bg-brand-focus);
-  display:grid;place-items:center;transform:scale(0);transition:transform .25s cubic-bezier(.34,1.6,.5,1)}
-.cmb.sel .cmb-ck{transform:scale(1)}
+.cmb-radio{width:22px;height:22px;flex:none;margin-top:2px;border-radius:50%;border:2px solid #ded9e8;
+  position:relative;transition:border-color .15s}
+.cmb.sel .cmb-radio{border-color:var(--bg-brand-focus)}
+.cmb.sel .cmb-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bg-brand-focus);
+  animation:cmbDot .25s cubic-bezier(.34,1.6,.5,1) both}
+@keyframes cmbDot{from{transform:scale(0)}to{transform:none}}
+.cmb-body{flex:1;min-width:0}
 .cmb-note{display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:12.5px;line-height:18px;color:var(--text-sec)}
 .cmb-note b{color:var(--text-pri);font-weight:700}
 @media (prefers-reduced-motion:reduce){.cmb{opacity:1;transform:none}.cmb.show{animation:none}}
@@ -1985,9 +1990,11 @@ function renderOffers(){
   l.innerHTML = OFFERS.map((o,i)=>{
     const p = PLANS[planIdxFor(o.pay)];
     return `<div class="cmb ${state.offerPick===i?'sel':''}" data-o="${i}">
-      <span class="cmb-ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <div class="cmb-top"><span class="cmb-d">${o.pay} दिन का रिचार्ज</span><span class="cmb-p">₹${p.cost}</span></div>
-      <div class="cmb-mid"><span class="cmb-free">🎁 +${o.free} दिन मुफ़्त</span><span class="cmb-tot">नेट चलेगा ${o.pay+o.free} दिन</span></div>
+      <span class="cmb-radio"></span>
+      <div class="cmb-body">
+        <div class="cmb-top"><span class="cmb-d">${o.pay} दिन का रिचार्ज</span><span class="cmb-p">₹${p.cost}</span></div>
+        <div class="cmb-mid"><span class="cmb-free">🎁 +${o.free} दिन मुफ़्त</span><span class="cmb-tot">नेट चलेगा ${o.pay+o.free} दिन</span></div>
+      </div>
     </div>`;
   }).join('');
   const cards = [...l.querySelectorAll('.cmb')];
