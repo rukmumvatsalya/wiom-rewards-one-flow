@@ -1029,165 +1029,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     .ofv.on .obig,.ofv.on .osmall,.ofv.on .opost-seal,.ofv.on .opost-h,.ofv.on .osmall-h,.ofv.on .ocoup,.ofv.on .opost-rays{animation:none}
   }
 
-  /* ═══════════ भुगतान स्क्रीन · 10 कार्ट वर्शन ═══════════ */
 .pm-link{display:block;width:100%;text-align:center;background:none;border:none;font-family:inherit;
   padding:13px 8px 2px;font-size:14px;font-weight:700;color:var(--text-brand);cursor:pointer}
-
-.pmbar{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px 10px;margin:0 -16px;
-  border-bottom:1px solid var(--stroke-pri)}
-.pmbar::-webkit-scrollbar{display:none}
-.pmbar span{flex:none;background:var(--bg-neutral-sec);color:var(--text-sec);border-radius:100px;padding:6px 12px;
-  font-size:11.5px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.pmbar span.on{background:var(--text-pri);color:#fff}
-#pmStage{padding-top:14px}
-.pmc{background:#fff;border:1px solid var(--stroke-pri);border-radius:14px;overflow:hidden}
-.pmc + .pmc{margin-top:10px}
-.pmsec{padding:13px 14px}
-.pmsec + .pmsec{border-top:1px solid #f2eff7}
-.pm-row2{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.pm-h{font-size:15px;line-height:21px;font-weight:800;color:var(--text-pri)}
-.pm-sm{font-size:11.5px;line-height:16px;color:var(--text-ter)}
-.pm-lk{font-size:13px;font-weight:700;color:var(--text-brand);cursor:pointer;white-space:nowrap}
-.pm-free{color:var(--text-positive);font-weight:800}
-.pm-amt{font-size:15px;font-weight:800;white-space:nowrap}
-.pm-dot{border-top:1px dashed #e4dfee;margin:11px 0}
-.pm-band{display:flex;align-items:center;gap:9px;padding:11px 14px;font-size:12.5px;line-height:18px;font-weight:700}
-.pm-band.green{background:var(--bg-positive-pri);color:var(--text-positive)}
-.pm-band.blue{background:var(--blue-soft);color:var(--blue)}
-.pm-band.mauve{background:var(--purple-soft);color:var(--purple)}
-.pm-band.peach{background:#FFF2E3;color:#8A5A00}
-.pm-chipline{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-.pm-chipline span{background:var(--bg-positive-pri);border:1px solid var(--stroke-positive);border-radius:100px;
-  padding:3px 9px;font-size:10.5px;line-height:15px;font-weight:800;color:var(--text-positive)}
-.pm-pill{display:inline-flex;align-items:center;gap:5px;border-radius:100px;padding:4px 10px;
-  font-size:10.5px;line-height:15px;font-weight:800}
-.pm-pill.g{background:var(--bg-positive-pri);color:var(--text-positive)}
-.pm-pill.m{background:var(--purple-soft);color:var(--purple)}
-.pm-pill.p{background:#FFF2E3;color:#8A5A00}
-.pm-tot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;background:var(--bg-neutral-sec)}
-.pm-tot .k{font-size:15px;font-weight:800}
-.pm-tot .v{font-size:21px;font-weight:800;letter-spacing:-.4px}
-.pm-btn{border:1.5px solid var(--stroke-brand);background:#fff;color:var(--text-brand);border-radius:9px;
-  padding:6px 13px;font:800 12px/17px inherit;font-family:inherit;cursor:pointer;white-space:nowrap}
-.pm-btn.ghost{border-color:var(--stroke-pri);color:var(--text-ter)}
-/* stepper */
-.pm-step{display:flex;align-items:center;gap:11px;border:1.5px solid var(--stroke-brand);border-radius:9px;padding:4px 10px;
-  font-size:13px;font-weight:800;color:var(--text-brand)}
-/* ladder */
-.pm-lad{padding:14px}
-.pm-lad-t{font-size:14px;font-weight:800;margin-bottom:12px}
-.pm-lad-track{position:relative;height:4px;background:#eee9f2;border-radius:4px;margin:22px 6px 0}
-.pm-lad-fill{position:absolute;left:0;top:0;bottom:0;background:var(--text-positive);border-radius:4px;width:0}
-.pmv-on .pm-lad-fill{transition:width .8s cubic-bezier(.22,1,.36,1)}
-.pm-lad-marks{display:flex;justify-content:space-between;margin-top:-11px}
-.pm-lad-m{display:flex;flex-direction:column;align-items:center;gap:6px;width:56px}
-.pm-lad-m i{width:18px;height:18px;border-radius:50%;background:#eee9f2;display:grid;place-items:center;font-style:normal}
-.pm-lad-m.hit i{background:var(--text-positive)}
-.pm-lad-m span{font-size:9.5px;line-height:13px;text-align:center;color:var(--text-ter);font-weight:700}
-.pm-lad-m.hit span{color:var(--text-positive)}
-/* receipt */
-.pm-rec{background:#fff;border:1px solid var(--stroke-pri);border-radius:14px 14px 0 0;padding:16px 16px 14px}
-.pm-rec-edge{height:12px;background:#fff;border:1px solid var(--stroke-pri);border-top:none;border-radius:0 0 3px 3px;
-  -webkit-mask:radial-gradient(7px 12px at 7px 0,transparent 98%,#000) repeat-x;
-  mask:radial-gradient(7px 12px at 7px 0,transparent 98%,#000) repeat-x;-webkit-mask-size:14px 12px;mask-size:14px 12px}
-.pm-rec-h{text-align:center;font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--text-ter);text-transform:uppercase}
-.pm-rec-r{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;line-height:20px;padding:5px 0;color:var(--text-sec)}
-.pm-rec-r b{color:var(--text-pri);font-weight:700}
-.pm-rec-sep{border-top:1px dashed #ddd6e8;margin:9px 0}
-/* days-first */
-.pm-days{display:flex;gap:10px;margin-top:2px}
-.pm-daybox{flex:1;border:1px solid var(--stroke-pri);border-radius:14px;padding:13px;text-align:center;background:#fff}
-.pm-daybox.g{background:var(--bg-positive-pri);border-color:var(--stroke-positive)}
-.pm-daybox .n{font-size:24px;line-height:29px;font-weight:800;letter-spacing:-.5px}
-.pm-daybox.g .n{color:var(--text-positive)}
-.pm-daybox .l{font-size:10.5px;line-height:15px;color:var(--text-ter);margin-top:3px;font-weight:600}
-.pm-daybox.g .l{color:var(--text-positive);opacity:.8}
-/* zero hero */
-.pm-zero{text-align:center;padding:18px 14px}
-.pm-zero .n{font-size:40px;line-height:46px;font-weight:800;color:var(--text-positive);letter-spacing:-1.4px}
-.pm-zero .l{font-size:13px;line-height:19px;color:var(--text-sec);margin-top:4px}
-/* entrance */
-.pmv-on .pmc,.pmv-on .pm-rec,.pmv-on .pm-band{opacity:0;transform:translateY(10px);animation:pmIn .45s cubic-bezier(.22,1,.36,1) both}
-.pmv-on > *:nth-child(1){animation-delay:.04s}
-.pmv-on > *:nth-child(2){animation-delay:.14s}
-.pmv-on > *:nth-child(3){animation-delay:.24s}
-.pmv-on > *:nth-child(4){animation-delay:.34s}
-@keyframes pmIn{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.pmv-on .pmc,.pmv-on .pm-rec,.pmv-on .pm-band{opacity:1;transform:none;animation:none}}
-
-
 .mnav{display:none;position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:83;gap:8px}
 .mnav button{width:38px;height:38px;border-radius:50%;border:none;background:rgba(22,16,33,.42);color:#fff;
   font:700 16px/1 inherit;cursor:pointer;backdrop-filter:blur(6px);display:grid;place-items:center}
 .mnav button:active{background:rgba(22,16,33,.62)}
 @media(max-width:900px){.mnav{display:flex}}
-/* वर्शन स्विच — फ़ोन के बाहर, ताकि स्क्रीन जैसी है वैसी दिखे */
-.pmside{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.pmside span{background:#221e2e;border:1px solid #322c42;color:#cfc9de;border-radius:100px;padding:6px 11px;
-  font-size:11.5px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
-.pmside span:hover{border-color:#4a4262}
-.pmside span.on{background:#fff;border-color:#fff;color:#1a1620}
-.pmpop{position:fixed;left:12px;right:12px;bottom:calc(60px + env(safe-area-inset-bottom));z-index:82;
-  background:rgba(22,16,33,.94);backdrop-filter:blur(10px);border-radius:16px;padding:12px;
-  display:none;gap:6px;flex-wrap:wrap}
-.pmpop.open{display:flex}
-.pmpop span{background:rgba(255,255,255,.12);color:#fff;border-radius:100px;padding:7px 12px;
-  font-size:12px;line-height:16px;font-weight:700;cursor:pointer;white-space:nowrap}
-.pmpop span.on{background:#fff;color:#1a1620}
-#mVer{display:none}
-/* ═══ किनारे-से-किनारे कार्ट (Flipkart जैसा) ═══ */
-#pmStage{margin:0 -16px;padding-top:0}
-.es{background:#fff;padding:14px 16px;position:relative}
-.es + .es{border-top:8px solid var(--bg-neutral-sec)}
-.es-h{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-ter);margin-bottom:9px}
-.es-r{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.es-t{font-size:15px;line-height:21px;font-weight:700;color:var(--text-pri)}
-.es-s{font-size:12px;line-height:17px;color:var(--text-ter);margin-top:2px}
-.es-p{font-size:15.5px;font-weight:800;white-space:nowrap;color:var(--text-pri)}
-.es-p.free{color:var(--text-positive);font-size:14px}
-.es-lk{font-size:13px;font-weight:800;color:var(--text-brand);cursor:pointer;white-space:nowrap}
-.es-gap{height:6px;background:var(--bg-neutral-sec);margin:13px -16px}
-.es-addr{display:flex;align-items:flex-start;gap:10px}
-.es-addr svg{flex:none;margin-top:2px}
-/* offer — must read as already added */
-.es.offer{background:var(--bg-positive-pri)}
-.es.offer::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--text-positive)}
-.es-off{display:flex;align-items:flex-start;gap:11px}
-.es-off .ic{width:34px;height:34px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center}
-.es-off .t{font-size:14.5px;line-height:20px;font-weight:800;color:var(--text-positive)}
-.es-off .s{font-size:12px;line-height:17px;color:var(--text-positive);opacity:.85;margin-top:3px}
-.es-off .tag{margin-left:auto;flex:none;background:var(--text-positive);color:#fff;border-radius:100px;
-  padding:4px 10px;font-size:10.5px;line-height:15px;font-weight:800;white-space:nowrap}
-.es-chips{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
-.es-chips span{background:#fff;border:1px solid var(--stroke-positive);border-radius:100px;padding:3px 10px;
-  font-size:10.5px;line-height:15px;font-weight:800;color:var(--text-positive)}
-/* total — expands in place */
-.es-tot{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.es-tot .v{font-size:20px;font-weight:800;letter-spacing:-.4px}
-.es-tot .cv{transition:transform .25s ease;color:var(--text-ter);font-size:19px;margin-left:2px}
-.es.open .es-tot .cv{transform:rotate(90deg)}
-.es-det{max-height:0;overflow:hidden;transition:max-height .32s cubic-bezier(.22,1,.36,1)}
-.es.open .es-det{max-height:260px}
-.es-det-in{padding-top:12px;margin-top:12px;border-top:1px dashed #e4dfee}
-.es-dr{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:13.5px;line-height:19px;color:var(--text-sec)}
-.es-dr b{font-weight:700;color:var(--text-pri)}
-.es-dr b.free{color:var(--text-positive)}
-/* savings ribbon */
-.es-rib{background:var(--bg-positive-pri);color:var(--text-positive);text-align:center;
-  padding:10px 16px;font-size:12.5px;line-height:18px;font-weight:800}
-/* big-total variant */
-.es-big{text-align:left}
-.es-big .n{font-size:30px;line-height:36px;font-weight:800;letter-spacing:-.8px;margin-top:2px}
-/* payment-summary sheet */
-.pmsheet-scrim{position:absolute;inset:0;z-index:46;background:rgba(22,16,33,.45);display:flex;align-items:flex-end;
-  animation:pmshFade .2s ease both}
-@keyframes pmshFade{from{opacity:0}to{opacity:1}}
-.pmsheet{width:100%;background:#fff;border-radius:20px 20px 0 0;padding:14px 16px 18px;animation:pmshUp .3s cubic-bezier(.22,1,.36,1) both}
-@keyframes pmshUp{from{transform:translateY(100%)}to{transform:none}}
-.pmsheet-grab{width:38px;height:4px;border-radius:2px;background:#e2ddec;margin:0 auto 14px}
-.pmsheet h3{font-size:17px;line-height:24px;font-weight:800}
-.pmv-on .es{opacity:0;transform:translateY(8px);animation:pmIn .4s cubic-bezier(.22,1,.36,1) both}
-
 /* ═══ इनाम पेज — जैसा लाइव ऐप में है ═══ */
 .rwtabs{display:flex;border-bottom:1px solid var(--stroke-pri);margin:0 -16px}
 .rwtab{flex:1;text-align:center;padding:12px 4px 11px;font-size:14px;font-weight:600;color:var(--text-sec);
@@ -1729,8 +1577,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
   </div><!-- /phone -->
 
-  <div class="pmpop" id="pmPop"></div>
-  <div class="mnav"><button id="mVer" aria-label="वर्शन">◍</button><button id="mPrev">‹</button><button id="mNext">›</button></div>
+  <div class="mnav"><button id="mPrev">‹</button><button id="mNext">›</button></div>
 
   <aside class="side">
     <div><div class="stage-title" id="stageTitle">Splash</div><div class="stage-step" id="stageStep">1 / 32</div></div>
@@ -1813,8 +1660,6 @@ const next=()=>go(state.idx+1);
 const prev=()=>go(state.idx-1,true);
 
 function onEnter(id){
-  const _mv=$('#mVer'); if(_mv) _mv.style.display = 'none';
-  if(id!=='paymethod'){ const _pp=$('#pmPop'); if(_pp) _pp.classList.remove('open'); }
   stopEdu2Auto();
   switch(id){
     case 'splash':later(()=>goTo('landing'),1600);break;
@@ -1993,265 +1838,6 @@ function renderLandmark(){
 /* amounts / confirm */
 function payPlan(){return cur();}
 
-/* ═══════════ भुगतान स्क्रीन · 10 कार्ट वर्शन ═══════════
-   Each version renders from the live plan, so the demo control and the
-   redeem recharge flow through all ten. Wiom has no struck-through rupee
-   prices to lean on, so "saving" is always told in दिन, never invented. */
-const PM_OFF = [{pay:2,free:2},{pay:7,free:7},{pay:14,free:14}];
-const PM_FREE_DAYS = PM_OFF.reduce((a,o)=>a+o.free,0);
-const PMG = c => `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex:none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="${c}" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="${c}" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
-const PM_ADDR = () => (typeof state!=='undefined' && state.locAddr) ? state.locAddr : 'Rajiv Colony, Sector 33, Gurugram';
-const pmAddrRow = () => `<div class="pmc"><div class="pmsec"><div class="pm-row2"><div><div class="pm-sm">नेट लगवाने की जगह</div><div style="font-size:13.5px;line-height:19px;margin-top:2px">${PM_ADDR()}</div></div><span class="pm-lk">बदलें</span></div></div></div>`;
-
-/* ═══ किनारे-से-किनारे कार्ट · 6 वेरिएशन ═══
-   हर सेक्शन पूरी चौड़ाई, बीच में स्लेटी पट्टी. Wiom के पास काटने वाली कीमत
-   नहीं है, इसलिए "बचत" हमेशा दिनों में — बनाई हुई ₹ में नहीं. */
-const ES_PIN = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#d9008d" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#d9008d"/></svg>';
-const esG = c => `<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="4" rx="1" stroke="${c}" stroke-width="1.8"/><path d="M5 12v8h14v-8M12 8v12" stroke="${c}" stroke-width="1.8"/><path d="M12 8C11 5 9.5 4.5 8.5 5.2 7.3 6 8 8 12 8zM12 8c1-3 2.5-3.5 3.5-2.8C16.7 6 16 8 12 8z" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
-
-const esAddr = () => `<div class="es"><div class="es-h">नेट लगने की जगह</div>
-  <div class="es-addr">${ES_PIN}<div style="flex:1"><div style="font-size:14px;line-height:20px;font-weight:700">${PM_ADDR()}</div>
-    <div class="es-s">यहीं टेक्नीशियन आकर नेट बॉक्स लगाएगा</div></div><span class="es-lk">बदलें</span></div></div>`;
-
-/* the cart: connection and recharge, split by a grey band */
-const esCart = p => `<div class="es"><div class="es-h">आपका कार्ट</div>
-  <div class="es-r"><div><div class="es-t">नेट कनेक्शन</div><div class="es-s">नेट बॉक्स + लगवाई · जमा राशि ₹0</div></div><span class="es-p free">मुफ़्त</span></div>
-  <div class="es-gap"></div>
-  <div class="es-r"><div><div class="es-t">${p.days} दिन का रिचार्ज</div><div class="es-s">80–100 Mbps · डेटा की कोई लिमिट नहीं</div></div><span class="es-p">₹${p.cost}</span></div></div>`;
-
-/* the offer must read as already added, and usable on the NEXT recharge */
-const esPick = () => (typeof state!=='undefined' && state.offerPick>=0) ? OFFERS[state.offerPick] : null;
-const esRest = () => OFFERS.filter((_,i)=>i!==state.offerPick);
-const esOffer = (chips) => { const o = esPick(); if(!o) return '';
-  return `<div class="es offer"><div class="es-off">
-  <span class="ic">${esG('#008043')}</span>
-  <div style="flex:1"><div class="t">${o.free} दिन मुफ़्त — इसी रिचार्ज पर</div>
-    <div class="s">${o.pay} दिन का रिचार्ज + ${o.free} दिन मुफ़्त · नेट चलेगा ${o.pay+o.free} दिन</div></div>
-  <span class="tag">✓ लगा</span></div>
-  ${chips===false?'':`<div class="es-chips">${esRest().map(x=>`<span>${x.pay}+${x.free} आगे के लिए</span>`).join('')}</div>`}</div>`; };
-
-const esDetail = p => `<div class="es-dr"><span>${p.days} दिन का रिचार्ज</span><b>₹${p.cost}</b></div>
-  <div class="es-dr"><span>नेट बॉक्स + लगवाई</span><b class="free">मुफ़्त</b></div>
-  <div class="es-dr"><span>जमा राशि</span><b class="free">₹0</b></div>
-  <div class="es-dr"><span>GST और बाकी सब</span><b class="free">₹0</b></div>`;
-
-const esTot = (p, mode) => `<div class="es" id="esTot">
-  <div class="es-tot" data-tot="${mode}"><div><div class="es-h" style="margin:0">कुल देना है</div>
-    <div class="v" style="margin-top:3px">₹${p.cost}</div></div>
-    <span class="es-lk">ब्यौरा <span class="cv">›</span></span></div>
-  ${mode==='inline'?`<div class="es-det"><div class="es-det-in">${esDetail(p)}</div></div>`:''}</div>`;
-
-const ES_VERSIONS = [
-{id:'e1', name:'सादा', build:p=>esAddr()+esCart(p)+esOffer()+esTot(p,'inline')},
-{id:'e2', name:'शीट', build:p=>esAddr()+esCart(p)+esOffer()+esTot(p,'sheet')},
-{id:'e3', name:'ऑफर ऊपर', build:p=>esOffer()+esAddr()+esCart(p)+esTot(p,'inline')},
-{id:'e4', name:'ऑफर कार्ट में', build:p=>esAddr()+
-  `<div class="es"><div class="es-h">आपका कार्ट</div>
-    <div class="es-r"><div><div class="es-t">नेट कनेक्शन</div><div class="es-s">नेट बॉक्स + लगवाई · जमा ₹0</div></div><span class="es-p free">मुफ़्त</span></div>
-    <div class="es-gap"></div>
-    <div class="es-r"><div><div class="es-t">${p.days} दिन का रिचार्ज</div><div class="es-s">80–100 Mbps · कोई लिमिट नहीं</div></div><span class="es-p">₹${p.cost}</span></div>
-    <div style="background:var(--bg-positive-pri);border:1px dashed var(--stroke-positive);border-radius:10px;padding:10px 12px;margin-top:13px">
-      <div class="es-off"><span style="flex:none">${esG('#008043')}</span><div style="flex:1"><div class="t" style="font-size:13.5px">${esPick()? esPick().free : 0} दिन मुफ़्त — इसी रिचार्ज पर लगे</div>
-        <div class="s">नेट चलेगा ${esPick()? esPick().pay+esPick().free : 0} दिन · बाकी 2 ऑफर आगे के लिए खाते में</div></div><span class="tag">✓</span></div></div>
-  </div>` + esTot(p,'inline')},
-{id:'e5', name:'सेव पट्टी', build:p=>`<div class="es-rib">🎉 इस बुकिंग के साथ ${PM_FREE_DAYS} दिन मुफ़्त नेट भी जुड़ा</div>`
-  +esAddr()+esCart(p)+esOffer(false)+esTot(p,'sheet')},
-{id:'e6', name:'बड़ा कुल', build:p=>esAddr()+esCart(p)+esOffer()+
-  `<div class="es es-big"><div class="es-h">कुल देना है</div><div class="n">₹${p.cost}</div>
-    <div class="es-det-in" style="border-top:1px dashed #e4dfee">${esDetail(p)}</div></div>`},
-];
-function esWire(st, p){
-  st.querySelectorAll('[data-tot]').forEach(el => el.onclick = ()=>{
-    if(el.dataset.tot === 'inline'){ el.closest('.es').classList.toggle('open'); return; }
-    openPmSheet(p);
-  });
-}
-function openPmSheet(p){
-  const scr = screenEl('paymethod'); if(!scr || scr.querySelector('.pmsheet-scrim')) return;
-  const sh = document.createElement('div');
-  sh.className = 'pmsheet-scrim';
-  sh.innerHTML = `<div class="pmsheet"><div class="pmsheet-grab"></div><h3>भुगतान का ब्यौरा</h3>
-    <div style="margin-top:10px">${esDetail(p)}</div>
-    <div class="es-dr" style="border-top:1.5px solid var(--stroke-pri);margin-top:8px;padding-top:12px;font-size:16px;font-weight:800">
-      <span style="color:var(--text-pri)">कुल देना है</span><b style="font-size:19px">₹${p.cost}</b></div>
-    <div class="es-chips" style="margin-top:12px">${PM_OFF.map(o=>`<span>${o.pay} दिन पर +${o.free} मुफ़्त</span>`).join('')}</div>
-    <button class="cta" style="margin-top:16px">ठीक है</button></div>`;
-  scr.appendChild(sh);
-  sh.onclick = e => { if(e.target === sh || e.target.classList.contains('cta')) sh.remove(); };
-}
-
-const PM_VERSIONS = ES_VERSIONS;
-const PM_OLD_VERSIONS = [
-/* ── 1 · Urban Company ── */
-{id:'uc', name:'UC', build:p=>`
-  <div class="pmc"><div class="pm-band mauve" style="border-bottom:1px solid var(--purple-stroke)">
-    <span class="pm-pill m">${PMG('#6d17ce')} इनाम</span></div>
-    <div class="pmsec"><div class="pm-row2">
-      <div style="flex:1"><div class="pm-h">3 ऑफर — ${PM_FREE_DAYS} दिन तक मुफ़्त नेट</div>
-        <div class="pm-sm" style="margin-top:3px">इस बुकिंग के बाद इस्तेमाल कर सकते हैं</div></div>
-      <span class="pm-free" style="font-size:13px">मुफ़्त</span></div></div></div>
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-row2"><span class="pm-h">${p.days} दिन का रिचार्ज</span><span class="pm-amt">₹${p.cost}</span></div>
-    <div class="pm-dot"></div>
-    <div class="pm-sm">• 80–100 Mbps · डेटा की कोई लिमिट नहीं</div>
-    <div class="pm-sm">• नेट बॉक्स + लगवाई · जमा राशि ₹0</div>
-    <div class="pm-lk" style="margin-top:10px;text-decoration:underline">रिचार्ज बदलें</div></div></div>
-  <div class="pmc"><div class="pmsec"><div class="pm-row2"><span class="pm-h" style="font-weight:700">कुल बिल <b style="margin-left:6px">₹${p.cost}</b></span><span class="pm-lk">›</span></div>
-    <div class="pm-sm" style="margin-top:3px">GST और सब कुछ इसी में</div>
-    <div style="margin-top:9px"><span class="pm-pill g">${PM_FREE_DAYS} दिन मुफ़्त नेट भी मिला</span></div></div></div>`},
-
-/* ── 2 · Zomato ── */
-{id:'zomato', name:'Zomato', build:p=>`
-  <div class="pm-band blue" style="border-radius:12px">🎉 <span>इस बुकिंग के साथ ${PM_FREE_DAYS} दिन मुफ़्त नेट भी मिला</span></div>
-  <div class="pmc" style="margin-top:10px"><div class="pm-band peach"><span style="flex:1">आपके लिए खास ऑफर</span>🎁</div>
-    <div class="pmsec"><div class="pm-row2">
-      <div style="flex:1"><div style="font-size:13.5px;line-height:19px">2+2 · 7+7 · 14+14 — जितना रिचार्ज, उतने दिन मुफ़्त</div>
-        <div class="pm-lk" style="margin-top:4px">बुकिंग के बाद इस्तेमाल करें</div></div>
-      <div style="text-align:right"><span class="pm-btn" style="border-color:var(--stroke-positive);color:var(--text-positive)">लग गया ✓</span>
-        <div class="pm-free" style="font-size:12.5px;margin-top:5px">मुफ़्त</div></div></div></div></div>
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-row2" style="align-items:flex-start"><div style="flex:1"><div class="pm-h">${p.days} दिन का रिचार्ज</div><div class="pm-sm">80–100 Mbps</div></div>
-      <div style="text-align:right"><span class="pm-step">− <b>1</b> +</span><div class="pm-amt" style="margin-top:6px">₹${p.cost}</div></div></div>
-    <div class="pm-dot"></div>
-    <div class="pm-row2" style="align-items:flex-start"><div style="flex:1"><div class="pm-h">नेट कनेक्शन</div><div class="pm-sm">नेट बॉक्स + लगवाई · जमा ₹0</div></div>
-      <div class="pm-free" style="font-size:13px">मुफ़्त</div></div>
-    <div style="display:flex;gap:8px;margin-top:12px"><span class="pm-btn">+ दिन बढ़ाएँ</span><span class="pm-btn ghost">कुछ लिखें</span></div></div></div>`},
-
-/* ── 3 · Blinkit ── */
-{id:'blinkit', name:'Blinkit', build:p=>{
-  const nx = PM_OFF[0];
-  return `
-  <div class="pm-band green" style="border-radius:12px;justify-content:center">वाह! इस बुकिंग पर ${PM_FREE_DAYS} दिन मुफ़्त नेट मिला</div>
-  <div class="pmc" style="margin-top:10px"><div class="pmsec">
-    <div class="pm-row2"><span class="pm-h">ऑफर</span><span class="pm-lk">सब देखें ›</span></div>
-    ${PM_OFF.map(o=>`<div class="pm-row2" style="margin-top:10px"><span style="font-size:13px;line-height:19px">${o.pay} दिन के रिचार्ज पर <b>+${o.free} दिन मुफ़्त</b></span><span class="pm-btn ghost">बाद में</span></div>`).join('')}
-  </div></div>
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-row2" style="align-items:flex-start"><div style="flex:1"><div class="pm-h">${p.days} दिन का रिचार्ज</div><div class="pm-sm">80–100 Mbps · कोई लिमिट नहीं</div></div>
-      <div style="text-align:right"><span class="pm-step">− <b>1</b> +</span><div class="pm-amt" style="margin-top:6px">₹${p.cost}</div></div></div></div>
-    <div class="pmsec"><div class="pm-row2"><div style="flex:1"><div class="pm-h">नेट कनेक्शन</div><div class="pm-sm">जमा राशि ₹0</div></div><span class="pm-free" style="font-size:13px">मुफ़्त</span></div></div></div>
-  <div class="pmc"><div class="pm-lad">
-    <div class="pm-lad-t">${nx.pay} दिन का रिचार्ज करें, <span class="pm-free">+${nx.free} दिन मुफ़्त</span></div>
-    <div class="pm-lad-track"><i class="pm-lad-fill" style="width:14%"></i></div>
-    <div class="pm-lad-marks">
-      <div class="pm-lad-m hit"><i>${pmTick()}</i><span>${p.days} दिन<br>अभी</span></div>
-      ${PM_OFF.map(o=>`<div class="pm-lad-m"><i></i><span>${o.pay} दिन<br>+${o.free} मुफ़्त</span></div>`).join('')}
-    </div></div></div>`}},
-
-/* ── 4 · Flipkart ── */
-{id:'flipkart', name:'Flipkart', build:p=>`
-  <div class="pmc"><div class="pmsec"><div class="pm-row2" style="align-items:flex-start">
-    <div style="flex:1"><div class="pm-sm">यहाँ लगेगा</div><div style="font-size:13.5px;line-height:19px;font-weight:700;margin-top:3px">${PM_ADDR()}</div></div>
-    <span class="pm-btn ghost">बदलें</span></div></div></div>
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-h" style="font-size:16px">${p.days} दिन का नेट रिचार्ज</div>
-    <div class="pm-sm" style="margin-top:3px">80–100 Mbps · डेटा की कोई लिमिट नहीं</div>
-    <div style="font-size:22px;font-weight:800;margin-top:9px">₹${p.cost}</div>
-    <div class="pm-sm" style="margin-top:2px">+ नेट बॉक्स, लगवाई और जमा राशि — <span class="pm-free">₹0</span></div>
-    <div class="pm-free" style="font-size:12.5px;margin-top:9px">3 ऑफर लगे · ${PM_FREE_DAYS} दिन मुफ़्त नेट आगे मिलेगा</div>
-    <div class="pm-sm" style="margin-top:9px">🚚 नेट सेटअप — दिन आप चुनेंगे</div></div></div>
-  <div class="pmc"><div class="pm-tot"><span class="k">कुल देना है</span><span class="v">₹${p.cost}</span></div></div>`},
-
-/* ── 5 · Amazon Now ── */
-{id:'amazon', name:'Amazon', build:p=>`
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-row2" style="margin-bottom:4px"><span class="pm-h">बिल का ब्यौरा</span>🧾</div>
-    <div class="pm-dot"></div>
-    <div class="pm-row2" style="padding:6px 0;font-size:13.5px"><span>${p.days} दिन का रिचार्ज</span><b>₹${p.cost}</b></div>
-    <div class="pm-row2" style="padding:6px 0;font-size:13.5px"><span>नेट बॉक्स + लगवाई</span><span class="pm-free">मुफ़्त</span></div>
-    <div class="pm-row2" style="padding:6px 0;font-size:13.5px"><span>जमा राशि</span><span class="pm-free">₹0</span></div>
-    <div class="pm-row2" style="padding:6px 0;font-size:13.5px"><span>GST</span><span class="pm-free">₹0</span></div>
-    <div class="pm-dot"></div>
-    <div class="pm-row2" style="align-items:flex-end"><div><div class="pm-h">आप देंगे</div><div class="pm-sm">सब कुछ मिलाकर</div></div>
-      <span style="font-size:26px;font-weight:800;letter-spacing:-.6px">₹${p.cost}</span></div>
-    <div style="background:var(--bg-positive-pri);border-radius:12px;padding:13px;margin-top:13px;text-align:center">
-      <div style="font-size:16px;font-weight:800;color:var(--text-positive)">साथ में ${PM_FREE_DAYS} दिन मुफ़्त नेट!</div>
-      <div class="pm-chipline" style="justify-content:center">${PM_OFF.map(o=>`<span>${o.pay} पर +${o.free}</span>`).join('')}</div>
-      <div class="pm-sm" style="margin-top:8px">आगे जब ये रिचार्ज करेंगे, अपने आप लगेंगे</div></div></div></div>`},
-
-/* ── 6 · मेरा · दिन में हिसाब ── */
-{id:'days', name:'दिन का हिसाब', build:p=>`
-  ${pmAddrRow()}
-  <div class="pmc"><div class="pmsec">
-    <div class="pm-sm" style="text-align:center;margin-bottom:10px">आप दे रहे हैं <b style="color:var(--text-pri)">₹${p.cost}</b> — बदले में</div>
-    <div class="pm-days">
-      <div class="pm-daybox"><div class="n">${p.days}</div><div class="l">दिन नेट अभी</div></div>
-      <div class="pm-daybox g"><div class="n">+${PM_FREE_DAYS}</div><div class="l">दिन मुफ़्त आगे</div></div>
-    </div>
-    <div class="pm-chipline" style="justify-content:center;margin-top:12px">${PM_OFF.map(o=>`<span>${o.pay} पर +${o.free}</span>`).join('')}</div>
-  </div>
-  <div class="pm-tot"><span class="k">अभी देना है</span><span class="v">₹${p.cost}</span></div></div>`},
-
-/* ── 7 · मेरा · सीढ़ी ── */
-{id:'ladder', name:'सीढ़ी', build:p=>`
-  ${pmAddrRow()}
-  <div class="pmc"><div class="pmsec"><div class="pm-row2"><div><div class="pm-h">${p.days} दिन का रिचार्ज</div><div class="pm-sm">नेट कनेक्शन · जमा ₹0 · मुफ़्त</div></div><span class="pm-amt">₹${p.cost}</span></div></div>
-  <div class="pm-lad" style="border-top:1px solid #f2eff7">
-    <div class="pm-lad-t">आगे और दिन का रिचार्ज = और मुफ़्त दिन</div>
-    <div class="pm-lad-track"><i class="pm-lad-fill" style="width:12%"></i></div>
-    <div class="pm-lad-marks">
-      <div class="pm-lad-m hit"><i>${pmTick()}</i><span>${p.days} दिन</span></div>
-      ${PM_OFF.map(o=>`<div class="pm-lad-m"><i></i><span>${o.pay} दिन<br><b>+${o.free}</b></span></div>`).join('')}
-    </div></div>
-  <div class="pm-tot"><span class="k">अभी देना है</span><span class="v">₹${p.cost}</span></div></div>`},
-
-/* ── 8 · मेरा · रसीद ── */
-{id:'receipt', name:'रसीद', build:p=>`
-  ${pmAddrRow()}
-  <div style="margin-top:10px"><div class="pm-rec">
-    <div class="pm-rec-h">व्योम · बुकिंग रसीद</div>
-    <div class="pm-rec-sep"></div>
-    <div class="pm-rec-r"><span>${p.days} दिन का रिचार्ज</span><b>₹${p.cost}</b></div>
-    <div class="pm-rec-r"><span>नेट बॉक्स + लगवाई</span><b class="pm-free">₹0</b></div>
-    <div class="pm-rec-r"><span>जमा राशि</span><b class="pm-free">₹0</b></div>
-    <div class="pm-rec-r"><span>GST</span><b class="pm-free">₹0</b></div>
-    <div class="pm-rec-sep"></div>
-    <div class="pm-rec-r" style="font-size:16px;font-weight:800"><span style="color:var(--text-pri)">कुल</span><b style="font-size:19px">₹${p.cost}</b></div>
-    <div class="pm-rec-sep"></div>
-    <div class="pm-rec-r" style="color:var(--text-positive);font-weight:700"><span>${PMG('#008043')} 3 ऑफर साथ में</span><b class="pm-free">${PM_FREE_DAYS} दिन मुफ़्त</b></div>
-  </div><div class="pm-rec-edge"></div></div>`},
-
-/* ── 9 · मेरा · सादा + पट्टी ── */
-{id:'strip', name:'पट्टी', build:p=>`
-  ${pmAddrRow()}
-  <div class="pmc"><div class="pmsec"><div class="pm-row2"><span style="font-size:15px">${p.days} दिन का रिचार्ज</span><span class="pm-amt">₹${p.cost}</span></div></div>
-  <div class="pmsec"><div class="pm-row2"><span style="font-size:15px">नेट कनेक्शन</span><span class="pm-free" style="font-size:14px">मुफ़्त</span></div></div>
-  <div class="pm-band green"><span style="flex:1">${PMG('#008043')} 3 ऑफर साथ में लगे</span><span>${PM_FREE_DAYS} दिन मुफ़्त</span></div></div>
-  <div class="pmc"><div class="pm-tot"><span class="k">कुल देना है</span><span class="v">₹${p.cost}</span></div></div>`},
-
-/* ── 10 · मेरा · ज़ीरो ── */
-{id:'zero', name:'ज़ीरो', build:p=>`
-  ${pmAddrRow()}
-  <div class="pmc"><div class="pm-zero">
-    <div class="n">₹0</div><div class="l">जमा राशि · लगवाई · GST · छुपा चार्ज</div></div>
-  <div class="pmsec" style="border-top:1px solid #f2eff7"><div class="pm-row2"><span style="font-size:15px">${p.days} दिन का रिचार्ज</span><span class="pm-amt">₹${p.cost}</span></div></div>
-  <div class="pm-band green"><span style="flex:1">${PMG('#008043')} 3 ऑफर भी साथ</span><span>${PM_FREE_DAYS} दिन मुफ़्त</span></div>
-  <div class="pm-tot"><span class="k">बस इतना देना है</span><span class="v">₹${p.cost}</span></div></div>`},
-];
-function pmTick(){ return '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
-let pmVer = 'e4';                       /* ऑफर कार्ट के अंदर — यही डिफ़ॉल्ट */
-function pmPlan(){ return (typeof payPlan === 'function') ? payPlan() : cur(); }
-function buildPmBar(){
-  const html = PM_VERSIONS.map((v,i)=>`<span data-v="${v.id}" class="${v.id===pmVer?'on':''}">${i+1} · ${v.name}</span>`).join('');
-  ['#pmBar','#pmPop'].forEach(sel => {
-    const host = $(sel); if(!host) return;
-    host.innerHTML = html;
-    host.querySelectorAll('span').forEach(b => b.onclick = ()=>{ setPmVer(b.dataset.v); $('#pmPop').classList.remove('open'); });
-  });
-}
-function setPmVer(v){ pmVer = v; buildPmBar(); renderPm(); }
-function renderPm(){
-  const st = $('#pmStage'); if(!st) return;
-  const v = PM_VERSIONS.find(x=>x.id===pmVer) || PM_VERSIONS[0];
-  const p = pmPlan();
-  st.className = ''; st.innerHTML = v.build(p);
-  void st.offsetWidth; st.className = 'pmv-on';
-  if(typeof esWire === 'function') esWire(st, p);
-  screenEl('paymethod').querySelectorAll('.pmsheet-scrim').forEach(e=>e.remove());
-  const f = st.querySelector('.pm-lad-fill');
-  if(f){ const w=f.style.width; f.style.width='0'; later(()=>{ f.style.width=w; }, 260); }
-}
-
 function syncAmounts(){
   const p=payPlan(), rd=state.redeemOffer>=0, amt = rd ? p.cost : payAmount();
   $('#pmTitle').textContent = `₹${amt} के भुगतान का तरीका चुनें`;
@@ -2269,7 +1855,6 @@ function syncAmounts(){
 $$('[data-go]').forEach(el=>el.addEventListener('click',e=>{if(el.disabled)return;e.stopPropagation();goTo(el.dataset.go);}));
 document.addEventListener('click',e=>{const b=e.target.closest('[data-back]');if(b)prev();});
 $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
-const _mv2=$('#mVer'); if(_mv2) _mv2.onclick=()=>$('#pmPop').classList.toggle('open');
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
 const restart=()=>{Object.assign(state,{viaSheet:false,offerPick:-1,payMode:'advance',offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
@@ -2437,7 +2022,6 @@ function initRewardTabs(){
   const _b=$('#rwBack'); if(_b) _b.onclick=leaveRewards;
   $$('#rwTabs .rwtab').forEach(t => t.onclick = ()=>{ rwTab = t.dataset.t; renderRewards(); });
 }
-function initPmVer(){ $$('#pmVer span').forEach(b=> b.onclick=()=>setPmVer(b.dataset.v)); }
 /* ═══ पूरे पेज का इनाम मोमेंट — पेमेंट के तुरंत बाद ═══ */
 const RA_GIFT_W='<svg viewBox="0 0 24 24" fill="none"><rect x="3.4" y="8.4" width="17.2" height="4" rx="1" stroke="#fff" stroke-width="1.7"/><path d="M5 12.4v7.6h14v-7.6M12 8.4v11.6" stroke="#fff" stroke-width="1.7"/><path d="M12 8.4C11 5.5 9.6 5 8.6 5.6 7.4 6.4 8.1 8.4 12 8.4zM12 8.4c1-2.9 2.4-3.4 3.4-2.8C16.6 6.4 15.9 8.4 12 8.4z" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>';
 function enterRewardsAdded(){
@@ -2600,8 +2184,7 @@ function syncCostCta(){
   b.onclick=()=>goTo('offers');
 }
 
-buildPmBar();
-buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs(); initPmVer();
+buildRail();initLanding();initPhone();initOtp();initPlanSheet();initSlider();initSlot();initOffers(); initRewardTabs();
 const q=new URLSearchParams(location.search);const start=FLOW.findIndex(f=>f.id===q.get('screen'));
 go(start>=0?start:0);
 </script>
