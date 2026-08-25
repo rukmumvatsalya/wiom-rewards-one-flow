@@ -1244,6 +1244,29 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cmb-note{display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:12.5px;line-height:18px;color:var(--text-sec)}
 .cmb-note b{color:var(--text-pri);font-weight:700}
 @media (prefers-reduced-motion:reduce){.cmb{opacity:1;transform:none}.cmb.show{animation:none}}
+
+/* ₹25 अभी · बाकी नेट लगने पर */
+.cmb-bal{display:flex;align-items:flex-start;gap:8px;background:var(--amber-soft,#fff3e0);border:1px solid var(--amber-stroke,#ffd699);
+  border-radius:12px;padding:10px 12px;margin-top:12px;font-size:12px;line-height:17px;color:var(--amber,#9a5b00);font-weight:600}
+.cmb-bal b{font-weight:800}
+.cta-sub2{display:block;width:100%;text-align:center;background:none;border:none;font-family:inherit;
+  padding:12px 8px 2px;font-size:14px;font-weight:800;color:var(--text-brand);cursor:pointer}
+/* भुगतान का तरीका — सादा */
+.pmx-addr{display:flex;align-items:center;gap:11px;background:var(--bg-brand-subtle);border:1px solid var(--stroke-brand);
+  border-radius:16px;padding:14px 15px}
+.pmx-addr .a{flex:1;font-size:14px;line-height:20px;color:var(--text-pri)}
+.pmx-card{display:flex;align-items:center;gap:13px;border:1.5px solid var(--bg-brand-focus);border-radius:16px;
+  padding:15px;margin-top:16px;cursor:pointer;background:#fff}
+.pmx-card:active{background:#fff7fc}
+.pmx-ic{width:48px;height:48px;flex:none;border-radius:50%;background:var(--bg-brand-subtle);display:grid;place-items:center}
+.pmx-t{font-size:16px;line-height:22px;font-weight:700;color:var(--text-brand)}
+.pmx-logos{display:flex;align-items:center;gap:7px;margin-top:9px}
+.pmx-logos span{height:26px;display:grid;place-items:center;background:#fff;border:1px solid var(--stroke-pri);
+  border-radius:100px;padding:0 8px;font-size:9px;font-weight:800;letter-spacing:-.2px}
+.pmx-link{display:flex;align-items:center;gap:6px;margin-top:18px;font-size:14.5px;font-weight:600;color:var(--text-pri);cursor:pointer}
+.pmx-link .c{color:var(--text-brand);font-weight:800}
+.pmx-note{display:flex;align-items:flex-start;gap:8px;background:var(--amber-soft,#fff3e0);border:1px solid var(--amber-stroke,#ffd699);
+  border-radius:12px;padding:11px 13px;margin-top:18px;font-size:12.5px;line-height:18px;color:var(--amber,#9a5b00);font-weight:600}
 </style>
 </head>
 <body>
@@ -1442,14 +1465,17 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           <p>जो चुनेंगे, उतने दिन मुफ़्त — इसी रिचार्ज पर लग जाएँगे।</p>
         </div>
         <div class="cmb-list" id="cmbList"></div>
-        <div class="figtrust rv d3" style="margin-top:18px">
+        <div class="cmb-bal" id="cmbBal" style="display:none"></div>
+        <div class="figtrust rv d3" style="margin-top:14px">
           <div class="ft-row"><span class="ft-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6.5L9.2 17.3 4 12.1" stroke="#008043" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="ft-t">नेट नहीं लगा तो पूरा पैसा वापस</div></div>
           <div class="ft-row"><span class="ft-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6.5L9.2 17.3 4 12.1" stroke="#008043" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="ft-t">रिचार्ज नेट लगने के बाद ही शुरू होगा - पहले नहीं</div></div>
           <div class="ft-row"><span class="ft-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6.5L9.2 17.3 4 12.1" stroke="#008043" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="ft-t">बॉक्स व्योम का होता है, जमा राशि ₹0 - और कुछ नहीं देना</div></div>
         </div>
-        <div class="cmb-note" id="cmbNote"></div>
       </div>
-      <div class="actions"><button class="cta off" id="offersCta">ऑफर चुनें</button></div>
+      <div class="actions">
+        <button class="cta off" id="offersCta">ऑफर चुनें</button>
+        <button class="cta-sub2" id="offersFull" style="display:none">मुझे पूरे पैसे देने हैं</button>
+      </div>
     </section>
 
 
@@ -1552,16 +1578,30 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <section class="screen" data-s="paymethod">
       <div class="statusbar" data-sb></div>
       <div class="appbar">
-        <div class="appbar-row"><div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="appbar-row">
+          <div class="appbar-icon" data-back><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#352d42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="spacer"></div>
+          <div class="appbar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13v-1a8 8 0 0116 0v1" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/><rect x="2.5" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><rect x="17" y="12.5" width="4.5" height="7" rx="2.25" stroke="#352d42" stroke-width="1.7"/><path d="M19 19.5v.5a2 2 0 01-2 2h-3" stroke="#352d42" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="appbar-icon"><svg class="ab-lang" viewBox="0 0 24 24" fill="none"><rect x="1.5" y="2.5" width="15" height="15" rx="4" fill="#352d42"/><text x="9" y="13.6" font-family="Noto Sans, sans-serif" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">A</text><rect x="10" y="9" width="12.5" height="12.5" rx="3.5" fill="#352d42" stroke="#faf9fc" stroke-width="1.4"/><text x="16.2" y="18.6" font-family="Noto Sans Devanagari, Noto Sans, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">अ</text></svg></div>
         </div>
-        <div class="appbar-title"><h1 class="t3" id="pmTitle">₹23 देकर बुकिंग पक्की करें</h1></div>
+        <div class="appbar-title"><h1 class="t3" id="pmTitle">₹25 के भुगतान का तरीका चुनें</h1></div>
       </div>
       <div class="content">
-        <div id="pmStage"></div>
-      </div>
-      <div class="actions">
-        <button class="cta" data-go="processing" id="pmCta">UPI से ₹23 दें</button>
-        <button class="pm-link">मेरे पास UPI/कार्ड नहीं है? ›</button>
+        <div class="pmx-addr rv d1">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7z" stroke="#8a8496" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" fill="#8a8496"/></svg>
+          <span class="a" id="pmLoc">Rajiv Colony, Sector 33</span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" style="flex:none;cursor:pointer"><path d="M4 20h4l10-10-4-4L4 16v4z" stroke="#d9008d" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" stroke="#d9008d" stroke-width="1.8"/></svg>
+        </div>
+        <div class="pmx-card rv d2" data-go="processing" id="pmCta">
+          <span class="pmx-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="#d9008d" stroke-width="1.8"/><path d="M10 6h4M9 11h6M9 14h6" stroke="#d9008d" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+          <div style="flex:1">
+            <div class="pmx-t">UPI / ऑनलाइन भुगतान</div>
+            <div class="pmx-logos"><span style="color:#0a3d62">BHIM</span><span style="color:#1a73e8">GPay</span><span style="color:#012a70">Paytm</span><span style="color:#5f259f">PhonePe</span></div>
+          </div>
+          <span style="color:var(--text-brand);font-size:22px;font-weight:800">›</span>
+        </div>
+        <div class="pmx-link">मेरे पास UPI/कार्ड नहीं है? <span class="c">›</span></div>
+        <div class="pmx-note" id="pmBal"></div>
       </div>
     </section>
 
@@ -1699,8 +1739,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <b>एक ही फ्लो:</b> splash → लैंडिंग → नंबर → OTP → लोकेशन परमिशन → सर्विस चेक → सर्विस है → नेट बॉक्स → रिचार्ज मॉडल (<b>रिचार्ज कितने का होता है?</b> → प्लान शीट) → <b>शुरुआत में कितना खर्चा होता है?</b> → केवल रिचार्ज → <b>3 ऑफर</b> (2+2 · 7+7 · 14+14) → रिचार्ज → पेमेंट → दिन चुनें → चैट → पता → landmark → आवाज़ → बुकिंग कन्फर्म → चैट + <b>3 इनाम</b> → गिफ्ट आइकॉन → इनाम कहाँ लगाएँ।<br>
       कोई edge केस नहीं · न Case B, न नॉन-सर्विसेबल, न मौजूदा-यूज़र लॉगिन।
     </div>
-    <div class="lab" style="font-size:11px;font-weight:800;color:#8a8496;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 0">भुगतान स्क्रीन · वर्शन</div>
-    <div class="pmside" id="pmBar"></div>
     <div class="hint"><kbd>←</kbd> <kbd>→</kbd> screens · <kbd>R</kbd> restart</div>
   </aside>
 </main>
@@ -1741,7 +1779,7 @@ const LM_TYPES=[{k:'मंदिर / मस्जिद / गुरुद्व
 const state={idx:0,plan:0,phone:'',date:'27 जुलाई',
   locAddr:'Rajiv Colony, Sector 33',serviceable:true,
   name:'',landmark:'Hanuman Mandir',voiceDone:false,timers:[],
-  viaSheet:false,offerPick:-1,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
+  viaSheet:false,offerPick:-1,payMode:'advance',offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false};
 const cur=()=>PLANS[state.plan];
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -1775,7 +1813,7 @@ const next=()=>go(state.idx+1);
 const prev=()=>go(state.idx-1,true);
 
 function onEnter(id){
-  const _mv=$('#mVer'); if(_mv) _mv.style.display = (id==='paymethod') ? 'grid' : 'none';
+  const _mv=$('#mVer'); if(_mv) _mv.style.display = 'none';
   if(id!=='paymethod'){ const _pp=$('#pmPop'); if(_pp) _pp.classList.remove('open'); }
   stopEdu2Auto();
   switch(id){
@@ -1790,7 +1828,7 @@ function onEnter(id){
     case 'paymethod':syncAmounts();break;
     case 'processing':syncAmounts();later(()=>goTo('paydone'),2000);break;
     case 'paydone':
-      $('#pdSub').textContent=`अमाउंट: ₹${cur().cost}`;
+      $('#pdSub').textContent=`अमाउंट: ₹${state.redeemOffer>=0?cur().cost:payAmount()}`;
       if(state.redeemOffer>=0){                     /* redeem recharge — the offer lands, back to the wallet */
         state.rewardPick=state.redeemOffer; state.rewardApplied=true; state.rewardMsgPending=true;
         state.redeemOffer=-1; rwTab='used';
@@ -2215,11 +2253,15 @@ function renderPm(){
 }
 
 function syncAmounts(){
-  renderPm();
-  const p=payPlan(), rd=state.redeemOffer>=0;
-  $('#pmTitle').textContent = rd ? `₹${p.cost} का रिचार्ज करें` : `₹${p.cost} देकर बुकिंग पक्की करें`;
-  $('#pmCta').textContent=`UPI से ₹${p.cost} दें`;
-  $('#procAmt').textContent=`₹${p.cost} रिचार्ज की स्थिति जाँची जा रही है`;
+  const p=payPlan(), rd=state.redeemOffer>=0, amt = rd ? p.cost : payAmount();
+  $('#pmTitle').textContent = `₹${amt} के भुगतान का तरीका चुनें`;
+  $('#procAmt').textContent = `₹${amt} के भुगतान की स्थिति जाँची जा रही है`;
+  $('#pmLoc').textContent   = state.locAddr;
+  const bal = $('#pmBal'), left = rd ? 0 : payBalance();
+  if(bal){
+    bal.style.display = left > 0 ? '' : 'none';
+    if(left > 0) bal.innerHTML = `<span>ⓘ</span><span>यह <b>₹${amt}</b> बुकिंग के लिए है। बाकी <b>₹${left}</b> नेट सेटअप के समय देने होंगे — तभी ${p.days} दिन का रिचार्ज और <b>+${OFFERS[state.offerPick]?OFFERS[state.offerPick].free:0} दिन मुफ़्त</b> चालू होंगे।</span>`;
+  }
 }
 
 
@@ -2230,7 +2272,7 @@ $('#btnNext').onclick=next;$('#btnPrev').onclick=prev;
 const _mv2=$('#mVer'); if(_mv2) _mv2.onclick=()=>$('#pmPop').classList.toggle('open');
 const _mp=$('#mPrev'); if(_mp)_mp.onclick=prev;
 const _mn=$('#mNext'); if(_mn)_mn.onclick=next;
-const restart=()=>{Object.assign(state,{viaSheet:false,offerPick:-1,offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
+const restart=()=>{Object.assign(state,{viaSheet:false,offerPick:-1,payMode:'advance',offersGrabbed:false,rewardPick:1,rewardApplied:false,rewardMsgPending:false,redeemOffer:-1,celeDone:false,plan:0,phone:'',locAddr:'Rajiv Colony, Sector 33',serviceable:true,name:'',landmark:'Hanuman Mandir',voiceDone:false});setLocAddr('Rajiv Colony, Sector 33');go(0);};
 $('#btnRestart').onclick=restart;
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='Escape'){closeSheets();return;}if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='r')restart();});
 
@@ -2349,7 +2391,10 @@ const bonusDays=()=> state.rewardPick>=0 ? OFFERS[state.rewardPick].free : 0;
 const installDays=()=> PLANS[state.plan].days + bonusDays();
 
 /* स्क्रीन 10+11 एक साथ — तीनों ऑफर बराबर, एक चुनकर उसी का रिचार्ज */
+const ADVANCE = 25;                       /* बुकिंग पूरी करने के लिए अभी इतना */
 const planIdxFor = days => PLANS.findIndex(p => p.days === days);
+const payAmount = () => state.payMode === 'full' ? PLANS[state.plan].cost : ADVANCE;
+const payBalance = () => PLANS[state.plan].cost - payAmount();
 function renderOffers(){
   const l = $('#cmbList'); if(!l) return;
   l.innerHTML = OFFERS.map((o,i)=>{
@@ -2369,19 +2414,23 @@ function renderOffers(){
   syncOffersCta();
 }
 function syncOffersCta(){
-  const b = $('#offersCta'), n = $('#cmbNote'); if(!b) return;
+  const b = $('#offersCta'), f = $('#offersFull'), bal = $('#cmbBal');
+  if(!b) return;
   state.offersGrabbed = true;
   if(state.offerPick < 0){
     b.classList.add('off'); b.textContent = 'ऑफर चुनें'; b.onclick = null;
-    if(n) n.innerHTML = 'तीनों में से एक चुनें — बाकी दो आपके खाते में आगे के लिए रखे रहेंगे।';
+    if(f) f.style.display = 'none';
+    if(bal){ bal.style.display = ''; bal.innerHTML = '<span>ⓘ</span><span>तीनों में से एक चुनें — बाकी दो आपके खाते में आगे के लिए रखे रहेंगे।</span>'; }
     return;
   }
   const o = OFFERS[state.offerPick], p = PLANS[planIdxFor(o.pay)];
   b.classList.remove('off');
-  b.textContent = `₹${p.cost} का रिचार्ज करें`;
-  b.onclick = ()=> goTo('paymethod');
+  b.textContent = `₹${ADVANCE} देकर बुकिंग पूरी करें`;
+  b.onclick = ()=>{ state.payMode = 'advance'; goTo('paymethod'); };
+  if(f){ f.style.display = ''; f.textContent = `मुझे पूरे पैसे देने हैं — ₹${p.cost}`;
+         f.onclick = ()=>{ state.payMode = 'full'; goTo('paymethod'); }; }
   const rest = OFFERS.filter((_,i)=>i!==state.offerPick).map(x=>`${x.pay}+${x.free}`).join(' और ');
-  if(n) n.innerHTML = `<span>🎁</span><span>इस रिचार्ज पर <b>+${o.free} दिन मुफ़्त</b> लग जाएँगे — नेट चलेगा <b>${o.pay+o.free} दिन</b>. बाकी दो ऑफर (<b>${rest}</b>) आगे के लिए खाते में रहेंगे।</span>`;
+  if(bal){ bal.style.display = ''; bal.innerHTML = `<span>ⓘ</span><span>अभी <b>₹${ADVANCE}</b> देंगे तो बाकी <b>₹${p.cost-ADVANCE}</b> नेट सेटअप के समय देने होंगे। बाकी दो ऑफर (<b>${rest}</b>) आपके खाते में रहेंगे।</span>`; }
 }
 function initOffers(){}
 function initRewardTabs(){
